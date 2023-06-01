@@ -1,0 +1,49 @@
+<form class="row g-3">
+  <div class="col-md-4">
+    <label for="validationName" class="form-label">Nombre</label>
+    <input type="text" class="form-control is-valid" id="validationName" value="Mark" required="">
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationLastName1" class="form-label">Primer Apellido</label>
+    <input type="text" class="form-control is-valid" id="validationLastName1" value="Otto" required="">
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationLastName2" class="form-label">Segundo Apellido</label>
+    <input type="text" class="form-control is-valid" id="validationLastName2" value="Otto" required="">
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationServerCedula" class="form-label">Cedula</label>
+    <div class="input-group has-validation">
+      <input type="text" class="form-control is-invalid" id="validationServerCedula" aria-describedby="inputGroupPrepend3 validationServerCedulaFeedback" required="">
+      <div id="validationServerCedulaFeedback" class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationAddress" class="form-label">Dirección</label>
+    <input type="text" class="form-control is-invalid" id="validationAddress" aria-describedby="validationAddressFeedback" required="">
+    <div id="validationAddressFeedback" class="invalid-feedback">
+      Please provide a valid city
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationTelf" class="form-label">Teléfono</label>
+    <input type="text" class="form-control is-invalid" id="validationTelf" aria-describedby="validationTelfFeedback" required="">
+    <div id="validationTelfFeedback" class="invalid-feedback">
+      Please provide a valid city
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Guardar</button>
+  </div>
+</form>
