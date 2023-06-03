@@ -1,6 +1,7 @@
 import { Component, Directive, HostListener, Input, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder,Validators} from '@angular/forms';
 import {CustomerI} from "../../shared/model/customer.interface";
+import {ApiService} from '../../shared/services/api.service';
 
 @Component({
   selector: 'app-customer-add',
@@ -10,8 +11,10 @@ import {CustomerI} from "../../shared/model/customer.interface";
 export class CustomerAddComponent implements OnInit{
 
   loginform: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
+  errorMsg:any = "";
+  creationCustomerOK:boolean = false;
+  customerCreate:boolean = false;
+  constructor(private formBuilder: FormBuilder,private api:ApiService) {
     this.loginform = this.formBuilder.group({
       customerName: ['', [Validators.required, Validators.minLength(2)]],
       lastName1: ['', [Validators.required, Validators.minLength(4)]],
@@ -38,8 +41,27 @@ export class CustomerAddComponent implements OnInit{
 
       // Aquí puedes hacer lo que necesites con el objeto formValues, como enviarlo a través de una API, procesarlo, etc.
       console.log(formValues);
+
+      this.api.addCustomer(formValues).subscribe(data => {
+        console.log(data);
+        if (data.status == 201) {
+          this.creationCustomerOK = true;
+          this.errorMsg = "Empleado creado correctamente."
+        }
+      }, error => {
+        this.customerCreate = true;
+        console.log(error);
+        if (error.status == 400) {
+          this.errorMsg = "Error. Hacen falta campos obligatorios";
+        } else if (error.status == 409) {
+          this.errorMsg = "Error. El empleado ya existe";
+        } else {
+          this.errorMsg = "Error en cración de empleado. Contacte con el administrador del sistema";
+        }
+      })
     } else {
       // El formulario no es válido, puedes mostrar mensajes de error o realizar otras acciones.
+      this.errorMsg = "Los dos campos son obligatorios\"";
     }
 
     console.log("Los dos campos son obligatorios", "F.E.N.W.")
