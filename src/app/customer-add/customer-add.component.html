@@ -1,32 +1,92 @@
-<div class="general">
-  <div>
-    <p class="titulo">Ejemplo de formulario reactivo</p>
-    <br /><br />
-    <form (submit)="sendit(loginform)" [formGroup]="loginform" >
+<div class="container-md bg-success bg-opacity-10 border ">
+  <div class="p-5 ">
+    <h2 class="titulo  text-center">Crear empleado</h2>
+  </div>
+  <div class="p-2 ">
+    <form class="row " (submit)="sendit(loginform)" [formGroup]="loginform" >
 
-      <label>Usuario:</label>
-      <input type="text" name="customerName" formControlName="customerName" placeholder="Nombre de empleado" required/>
-      <label>Primer apellido:</label>
-      <input type="text" name="lastName1" formControlName="lastName1" placeholder="Primer apellido" required/>
-
-      <label>Segundo apellido:</label>
-      <input type="text" name="lastName2" formControlName="lastName2" placeholder="Segundo apellido" />
-
-      <label>Cédula:</label>
-      <input type="text" name="cedula" formControlName="cedula" placeholder="Cédula" required/>
-
-      <label>Dirección:</label>
-      <input type="text" name="address" formControlName="address" placeholder="Dirección" required/>
-
-      <label>Teléfono:</label>
-      <input type="text" name="telephone" formControlName="telephone" placeholder="Teléfono" required/>
-
-
-      <br />
-      <div>
-        <button type="submit" [disabled] = "!loginform.valid"> Enviar </button>
-        <button type="reset" [disabled]="loginform.pristine">Reset</button>
+      <div class=" d-grid gap-3">
+        <div class="p-2 ">
+          <div class="row  justify-content-center align-items-center  " >
+            <div class="col-md-2">
+              <label class="form-label">Nombre* :</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control " name="customerName" formControlName="customerName"  required/>
+            </div>
+          </div>
+        </div>
+        <div class=" d-grid gap-3 ">
+          <div class="p-2  ">
+            <div class="row justify-content-center align-items-center   ">
+              <div class="col-md-2">
+                  <label class="form-label">Primer apellido* :</label>
+              </div>
+            <div class="col-md-6">
+                <input class="form-control " type="text" name="lastName1" formControlName="lastName1"  required/>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class=" d-grid gap-3">
+          <div class="p-2 ">
+            <div class="row justify-content-center align-items-center ">
+              <div class="col-md-2">
+                <label class="form-label" >Segundo apellido:</label>
+              </div>
+              <div class="col-md-6">
+                <input class="form-control " type="text" name="lastName2" formControlName="lastName2"  />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=" d-grid gap-3">
+          <div class="p-2 ">
+            <div class="row justify-content-center align-items-center  ">
+              <div class="col-md-2">
+                <label class="form-label">Cédula* :</label>
+              </div>
+              <div class="col-md-6">
+                <input class="form-control " type="text" name="cedula" formControlName="cedula"  required/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=" d-grid gap-3">
+          <div class="p-2 ">
+            <div class="row justify-content-center align-items-center ">
+              <div class="col-md-2">
+                <label class="form-label">Dirección* :</label>
+              </div>
+              <div class="col-md-6">
+                <input class="form-control " type="text" name="address" formControlName="address"  required/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=" d-grid gap-3">
+          <div class="p-2 ">
+            <div class="row justify-content-center align-items-center ">
+              <div class="col-md-2">
+                <label class="form-label">Teléfono* :</label>
+              </div>
+              <div class="col-md-6">
+                <input class="form-control " type="text" name="telephone" formControlName="telephone"  required/>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="row justify-content-center align-items-center p-4">
+        <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+          <button class="btn btn-primary" type="submit" [disabled] = "!loginform.valid"> Enviar </button>
+        </div>
+        <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+          <button class="btn btn-info" type="reset" [disabled]="loginform.pristine">Reset</button>
+        </div>
+      </div>
+      <p>* son campos obligatorios</p>
     </form>
   </div>
 </div>
