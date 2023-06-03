@@ -3,25 +3,25 @@
     <p class="titulo">Ejemplo de formulario reactivo</p>
     <br /><br />
     <form (submit)="sendit(loginform)" [formGroup]="loginform" >
-      <div >
-        <label> Usuario:</label>
-          <input type='text'  name='customerName' formControlName="customerName" placeholder="nombre de empleado" required/>
-        <label> Clave:</label>
-          <input type="text" name='lastName1' formControlName="lastName1" placeholder="Primer apellido" required/>
 
-        <label> Clave:</label>
-        <input type="text" name='lastName2' formControlName="lastName2" placeholder="Segundo apellido" />
+      <label>Usuario:</label>
+      <input type="text" name="customerName" formControlName="customerName" placeholder="Nombre de empleado" required/>
+      <label>Primer apellido:</label>
+      <input type="text" name="lastName1" formControlName="lastName1" placeholder="Primer apellido" required/>
 
-        <label> Clave:</label>
-        <input type="text" name='cedula' formControlName="cedula" placeholder="Cedula" required/>
+      <label>Segundo apellido:</label>
+      <input type="text" name="lastName2" formControlName="lastName2" placeholder="Segundo apellido" />
 
-        <label> Clave:</label>
-        <input type="text" name='address' formControlName="address" placeholder="Direccion" required/>
+      <label>Cédula:</label>
+      <input type="text" name="cedula" formControlName="cedula" placeholder="Cédula" required/>
 
-        <label> Clave:</label>
-        <input type="text" name='telephone' formControlName="telephone" placeholder="Telefono" required/>
+      <label>Dirección:</label>
+      <input type="text" name="address" formControlName="address" placeholder="Dirección" required/>
 
-      </div>
+      <label>Teléfono:</label>
+      <input type="text" name="telephone" formControlName="telephone" placeholder="Teléfono" required/>
+
+
       <br />
       <div>
         <button type="submit" [disabled] = "!loginform.valid"> Enviar </button>
