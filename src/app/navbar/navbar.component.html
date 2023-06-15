@@ -1,5 +1,64 @@
+<!--<mat-toolbar color="primary">
+  <header>
+    <div *ngIf="!isAuthenticated(); else authenticatedBlock">
+      <a class="logo" routerLink="/home">RENOWAT</a>
+    </div>
+    <h1 #authenticatedBlock>
+      no autenticado!
+      <a class="logo" routerLink="/home/addCustomer">RENOWAT</a>
+    </h1>
+  </header>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="spacer"> </div>
+  <div>
+    <button routerLink="/home" *ngIf="!isAuthenticated()"  mat-button>
+      <span>Hogares</span>
+    </button>
+    <button  [matMenuTriggerFor]="profile" *ngIf="!isAuthenticated()"  mat-button>
+      <mat-icon>drag_indicator</mat-icon>
+      <span>Conócenos</span>
+    </button>
+    <button  [matMenuTriggerFor]="profile2" *ngIf="isAuthenticated()"  mat-button>
+      <mat-icon>drag_indicator</mat-icon>
+      <span>Conócenos</span>
+    </button>
+    <button routerLink="/home/login" *ngIf="!isAuthenticated()" mat-button>
+      <mat-icon>lock</mat-icon>
+      <span>Accede</span>
+    </button>
+    <button (click)="logout()" *ngIf="isAuthenticated()" mat-button>
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Logout</span>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #profile="matMenu" xPosition="before">
+  <button mat-menu-item routerLink="/home/about">
+    <mat-icon>shopping_basket</mat-icon>
+    <span>Sobre nosotros</span>
+  </button>
+  <button mat-menu-item routerLink="/home/contact">
+    <mat-icon>shopping_basket</mat-icon>
+    <span>Contacto</span>
+  </button>
+</mat-menu>
+
+<mat-menu #profile2="matMenu" xPosition="before">
+  <button mat-menu-item routerLink="/home/about" >
+    <mat-icon>grade</mat-icon>
+    <span>Sobre nosotros</span>
+  </button>
+  <button mat-menu-item routerLink="/home/contact">
+    <mat-icon>shopping_basket</mat-icon>
+    <span>Contacto</span>
+  </button>
+</mat-menu>-->
+
+
+
+<ng-container >
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark" >
 
   <div class="container-fluid d-flex">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -43,3 +102,8 @@
     </div>
   </div>
 </nav>
+</ng-container>
+<div #authenticatedBlock >
+  No autenticado!
+
+</div>

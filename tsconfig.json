@@ -4,7 +4,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@env": ["environments/environment"]
+      "@env": ["environments/environment"],
+      "@services/*": ["app/shared/services/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
