@@ -32,7 +32,7 @@ import { CpanelComponent } from './cpanel/cpanel.component';*/
     CpanelComponent*/
   ],
   imports: [
-    //CommonModule,
+    CommonModule,
     HomeRoutingModule,
     //SharedModule,
     ReactiveFormsModule,
