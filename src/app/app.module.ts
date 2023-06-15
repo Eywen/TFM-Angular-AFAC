@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -14,14 +18,18 @@ import { CustomerAddComponent } from './customer-add/customer-add.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
