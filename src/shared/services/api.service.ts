@@ -1,47 +1,158 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
+
 import {CustomerI} from "../model/customer.interface";
-import { catchError } from 'rxjs/operators';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {CredentialI} from "../model/credential.interface";
+import {catchError, EMPTY, map, Observable, throwError} from 'rxjs';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private baseurl = "http://127.0.0.1:8080";
+  private baseurl = "http://localhost:8080";
 
+  static CONNECTION_REFUSE = 0;
+  static UNAUTHORIZED = 401;
 
+  // @ts-ignore
+  private headers: HttpHeaders;
+  // @ts-ignore
+  private params: HttpParams;
+  // @ts-ignore
+  private responseType: string;
+  private successfulNotification = undefined;
+  private errorNotification = undefined;
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,/*private snackBar: MatSnackBar,*/private router: Router) {
+    this.resetOptions();/*
+    this.headers = new HttpHeaders();
+    this.params = new HttpParams();
+    this.responseType = 'json';*/
+  }
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  addCustomer(form:CustomerI):Observable<HttpResponse<CustomerI>>{
-    let direccion = this.baseurl + "/employee";
-    const headers = new HttpHeaders()
-      .set("Content-Type", "application/json")
-      .set("Authorization",  'Basic ' + btoa('user:20755980-7db6-4305-bcfc-98cf4af04fee'));
-    return this.http.post<CustomerI>(direccion,form,{headers,observe: 'response'});
+
+
+  getToken(){
+    return localStorage.getItem('token');
   }
 
-  /*getPreuba() :Observable<HttpResponse<CustomerI>>{
-    const headers = new HttpHeaders()
-      .set("Content-Type", "application/json")
-      .set("Authorization",  'Basic ' + btoa('user:62cf4700-12f3-459d-bba5-99d7b05e57f7'));
-    let direccion = this.baseurl + "/employee";
-    console.log("se va a llamar a la url: "+ direccion);
-    return this.http.get<CustomerI>(direccion,{headers,observe: 'response'});
+  addCustomer(form:CustomerI):Observable<HttpResponse<Object>>{
+    let direccion = this.baseurl + "/customers";
+    return this.http.post(direccion,form,{observe: 'response'});}
+
+  authBasic(username: string, password: string): ApiService {
+    return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
+  }
+
+  header(key: string, value: string): ApiService {
+    if (value != null) {
+      this.headers = this.headers.append(key, value); // This class is immutable
+    }
+    return this;
+  }
+
+  private resetOptions(): void {
+    this.headers = new HttpHeaders();
+    this.params = new HttpParams();
+    this.responseType = 'json';
+  }
+
+  private createOptions(): any {
+    const options: any = {
+      headers: this.headers,
+      params: this.params,
+      responseType: this.responseType,
+      observe: 'response'
+    };
+    this.resetOptions();
+    return options;
+  }
+
+  post(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .post(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
+  }
+
+  // @ts-ignore
+  private extractData(response): any {
+    if (this.successfulNotification) {
+      /*this.snackBar.open(this.successfulNotification, '', {
+        duration: 2000
+      });*/
+      this.successfulNotification = undefined;
+    }
+    const contentType = response.headers.get('content-type');
+    if (contentType) {
+      if (contentType.indexOf('application/pdf') !== -1) {
+        const blob = new Blob([response.body], {type: 'application/pdf'});
+        window.open(window.URL.createObjectURL(blob));
+      } else if (contentType.indexOf('application/json') !== -1) {
+        return response.body; // with 'text': JSON.parse(response.body);
+      }
+    } else {
+      return response;
+    }
+  }
+
+  private showError(notification: string): void {
+    if (this.errorNotification) {
+      //this.snackBar.open(this.errorNotification, 'Error', {duration: 5000});
+      this.errorNotification = undefined;
+    } else {
+      //this.snackBar.open(notification, 'Error', {duration: 5000});
+    }
+  }
+
+  // @ts-ignore
+  private handleError(response): any {
+    let error: Error;
+    if (response.status === ApiService.UNAUTHORIZED) {
+      this.showError('Unauthorized');
+      this.router.navigate(['']).then();
+      return EMPTY;
+    } else if (response.status === ApiService.CONNECTION_REFUSE) {
+      this.showError('Connection Refuse');
+      return EMPTY;
+    } else {
+      try {
+        error = response.error; // with 'text': JSON.parse(response.error);
+        this.showError(error.message + ' (' + response.status + '): ' + error.message);
+        return throwError(() => error);
+      } catch (e) {
+        this.showError('Not response');
+        return throwError(() => response.error);
+      }
+    }
+  }
+
+
+
+  /* login(cred: CredentialI){
+    let direccion = this.baseurl + "/login";
+    return this.http.post(direccion,cred,{
+      observe: 'response'
+    }).pipe(map((response: HttpResponse<any>) => {
+        const  body = response.body;
+        const headers = response.headers;
+
+        const bearerToken = headers.get('Authorization')!;
+        const token = bearerToken.replace('Bearer', '');
+
+        localStorage.setItem('token', token);
+
+        return body;
+        }
+      )
+    )
   }*/
-
-  getEmployee(): Observable<HttpResponse<CustomerI>> {
-    const url = this.baseurl + "/employee";
-
-    return this.http.get<CustomerI>(url, { observe: 'response' }).pipe(
-      catchError((error: any) => {
-        return throwError(error);
-      })
-    );
-  }
 }

@@ -17,7 +17,7 @@ export class CustomerAddComponent implements OnInit{
   customerCreate:boolean = false;
   employee: CustomerI | null = null;
   constructor(private formBuilder: FormBuilder,private api:ApiService) {
-    this.prueba();
+    //this.prueba();
 
     this.loginform = this.formBuilder.group({
       customerName: ['', [Validators.required, Validators.minLength(2)]],
@@ -79,7 +79,7 @@ export class CustomerAddComponent implements OnInit{
   }
 
   prueba(){
-    this.api.getEmployee().subscribe(
+    /*this.api.getEmployee().subscribe(
       (response: HttpResponse<CustomerI>) => {
         this.employee = response.body;
         console.error('employee:', this.employee);
@@ -88,7 +88,7 @@ export class CustomerAddComponent implements OnInit{
         console.error('Error:', error);
       }
     );
-    console.log("fin llamada api de prueba");
+    console.log("fin llamada api de prueba");*/
   }
 
 
