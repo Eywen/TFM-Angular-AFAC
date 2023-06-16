@@ -1,13 +1,10 @@
 <ng-container *ngIf="!isAuthenticated()">
 <div clas = "container py-5">
-
   <div class="container">
-    <div class="row">
-      <div class="span12">
+      <div class="row span12">
+        <div class="col-3 text-center"></div>
+        <div class="col-6 07 p-5">
         <form class="form-horizontal" style="max-width: 30rem;" #loginForm="ngForm" (ngSubmit)="login()">
-            <div id="legend">
-              <legend class="">Login</legend>
-            </div>
 
             <h1 class="mb-5 text-center"> Inicio de sesión</h1>
 
@@ -23,15 +20,26 @@
 
             <div class="mb-3">
                 <button class="btn btn-lg btn-primary" [disabled]="!loginForm.form.valid"> Login</button>
-              <button class="btn btn-lg btn-primary" (click)="logout()"  >logout</button>
             </div>
 
         </form>
+        </div>
+        <div class="col-3 text-center"></div>
       </div>
-    </div>
   </div>
 </div>
 </ng-container>
+
+<!--<header>
+  &lt;!&ndash;  <ng-container *ngIf="!isAuthenticated(); else authenticatedBlock">&ndash;&gt;
+  <ng-container *ngIf="!isAuthenticated()">
+    <h4 class="mb-5 text-center"> No autenticado</h4>
+    &lt;!&ndash;    <a class="btn btn-warning" routerLink="/home/login">Login</a>&ndash;&gt;
+  </ng-container>
+  <ng-template #authenticatedBlock>
+    <a class="logo" routerLink="/home">RENOWAT</a>
+  </ng-template>
+</header>-->
 
 <!--<mat-card>
   <mat-card-content>

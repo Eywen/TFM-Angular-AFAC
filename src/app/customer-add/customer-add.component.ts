@@ -30,6 +30,7 @@ export class CustomerAddComponent implements OnInit{
   }
   sendit(data: FormGroup){
     if (this.loginform.valid) {
+      // @ts-ignore
       const formValues: CustomerI = {
         customerName: this.loginform.get('customerName')?.value || null,
         lastName1: this.loginform.get('lastName1')?.value || null,

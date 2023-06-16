@@ -60,7 +60,7 @@ export class LoginComponent {
 
   logout(): void {
     this.sessionService.destroySession();
-    this.router.navigate(['/']);
+    this.router.navigate(['/home/login']);
   }
 
 
