@@ -50,7 +50,7 @@ export class EmployeeAddComponent {
       this.api.addCustomer(formValues).subscribe(data => {
         //this.api.getPreuba().subscribe(data => {
         console.log("data: "+data);
-        this.errorMsg = "datosr respuesta api get "
+        this.errorMsg = "datos respuesta api get "
         if (data.status == 200) {
           this.creationCustomerOK = true;
           this.errorMsg = "Empleado creado correctamente."
