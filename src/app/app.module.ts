@@ -8,20 +8,33 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerAddComponent } from './customer-add/customer-add.component';
 
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import { HomeComponent } from './home/home.component';
+import {LoginComponent} from "./login/login.component";
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    CustomerAddComponent
+    //NavbarComponent,
+    CustomerAddComponent,
+    LoginComponent,
+    //HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
