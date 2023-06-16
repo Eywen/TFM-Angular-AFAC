@@ -10,6 +10,8 @@ import {HomeRoutingModule} from "./home-routing.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
+import {LoginComponent} from "../login/login.component";
+import {AlertComponent} from "../alert/alert.component";
 /*import { AboutComponent } from './about/about.component';
 import { AlertComponent } from './alert/alert.component';
 import { ContactComponent } from './contact/contact.component';
@@ -26,6 +28,8 @@ import { CpanelComponent } from './cpanel/cpanel.component';*/
     AlertComponent,
     ContactComponent,*/
     NavbarComponent,
+    LoginComponent,
+    AlertComponent,
     /*RetailComponent,
     RegisterComponent,
     LoginComponent,
