@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -23,7 +24,7 @@ import {LoginComponent} from "./login/login.component";
     AppComponent,
     //NavbarComponent,
     CustomerAddComponent,
-    LoginComponent,
+    //LoginComponent,
     //HomeComponent
   ],
   imports: [

@@ -22,7 +22,7 @@ export class NavbarComponent {
 
   logout(): void {
     this.sessionService.destroySession();
-    this.router.navigate(['/']);
+    this.router.navigate(['/home/login']);
   }
 
   goLogin()  {

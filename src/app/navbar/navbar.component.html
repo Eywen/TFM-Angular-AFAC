@@ -60,8 +60,9 @@
 
 <!--<ng-container *ngIf="showLogin"> *ngIf="!isAuthenticated(); else authenticatedBlock"&ndash;&gt;-->
 <!--<ng-container *ngIf="isAuthenticated() else notAutenthicated"> autenticado-->
-<ng-container *ngIf="isAuthenticated()">
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark" >
+<ng-container >
+<!--<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark " data-bs-theme="dark" >-->
+  <nav class="navbar navbar-dark navbar-expand-lg border-bottom border-bottom-dark bg-success">
 
   <div class="container-fluid d-flex">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -77,11 +78,12 @@
         <li class="nav-item">
           <a class="nav-link " href="#">Features</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="isAuthenticated()">
           <a class="nav-link dropdown-toggle me-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Empleado
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" >
+            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>
             <li><a class="dropdown-item" routerLink="addEmployee">Crear</a></li>
             <li><a class="dropdown-item" href="#">Modificar</a></li>
             <li><a class="dropdown-item" href="#">Ver</a></li>
@@ -97,8 +99,8 @@
             Login
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/home/login">Login</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" routerLink="/home/login" *ngIf="!isAuthenticated()">Login</a></li>
+            <li><a class="dropdown-item" (click)="logout()" *ngIf="isAuthenticated()">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -106,14 +108,5 @@
   </div>
 </nav>
 </ng-container>
-<header>
-<!--  <ng-container *ngIf="!isAuthenticated(); else authenticatedBlock">-->
-  <ng-container *ngIf="!isAuthenticated()">
-    <h4 class="mb-5 text-center"> No autenticado</h4>
-<!--    <a class="btn btn-warning" routerLink="/home/login">Login</a>-->
-  </ng-container>
-  <ng-template #authenticatedBlock>
-    <a class="logo" routerLink="/home">RENOWAT</a>
-  </ng-template>
-</header>
+
 
