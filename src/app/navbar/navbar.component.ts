@@ -24,4 +24,8 @@ export class NavbarComponent {
     this.sessionService.destroySession();
     this.router.navigate(['/']);
   }
+
+  goLogin()  {
+    this.router.navigate(['/home/login']);
+  }
 }
