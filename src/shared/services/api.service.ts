@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 
-import {CustomerI} from "../model/customer.interface";
+//import {EmployeeI} from "../model/customer.interface";
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {CredentialI} from "../model/credential.interface";
 import {catchError, EMPTY, map, Observable, throwError} from 'rxjs';
@@ -42,9 +42,16 @@ export class ApiService {
     return localStorage.getItem('token');
   }
 
-  addCustomer(form:CustomerI):Observable<HttpResponse<Object>>{
-    let direccion = this.baseurl + "/customers";
-    return this.http.post(direccion,form,{observe: 'response'});}
+
+
+  /*post(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .post(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
+  }*/
 
   authBasic(username: string, password: string): ApiService {
     return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
@@ -70,6 +77,7 @@ export class ApiService {
       responseType: this.responseType,
       observe: 'response'
     };
+    debugger;
     this.resetOptions();
     return options;
   }
@@ -78,18 +86,23 @@ export class ApiService {
     return this.http
       .post(endpoint, body, this.createOptions())
       .pipe(
-        map(response => this.extractData(response)),
-        catchError(error => this.handleError(error))
-      );
+        map(response => (response: HttpResponse<any>) => {
+            const  body = response.body;
+            debugger;
+            return body;
+          }
+        //catchError(error => this.handleError(error))
+          //.pipe(map((response: HttpResponse<any>) => {
+      ));
   }
 
   // @ts-ignore
-  private extractData(response): any {
+  /*private extractData(response): any {
     if (this.successfulNotification) {
       /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
       });*/
-      this.successfulNotification = undefined;
+     /* this.successfulNotification = undefined;
     }
     const contentType = response.headers.get('content-type');
     if (contentType) {
@@ -102,7 +115,7 @@ export class ApiService {
     } else {
       return response;
     }
-  }
+  }*/
 
   private showError(notification: string): void {
     if (this.errorNotification) {

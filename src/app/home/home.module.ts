@@ -12,7 +12,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {EmployeeAddComponent} from "../employee/employee-add/employee-add.component";
 import {LoginComponent} from "../login/login.component";
-import {AlertComponent} from "../alert/alert.component";
+//import {AlertComponent} from "../alert/alert.component";
 /*import { AboutComponent } from './about/about.component';
 import { AlertComponent } from './alert/alert.component';
 import { ContactComponent } from './contact/contact.component';
@@ -31,7 +31,7 @@ import { CpanelComponent } from './cpanel/cpanel.component';*/
     NavbarComponent,
     EmployeeAddComponent,
     LoginComponent,
-    AlertComponent,
+    //AlertComponent,
     /*RetailComponent,
     RegisterComponent,
     LoginComponent,

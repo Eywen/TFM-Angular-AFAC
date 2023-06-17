@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomerI} from "../../../shared/model/customer.interface";
 import {ApiService} from "../../../shared/services/api.service";
+import {EmployeeService} from "../../../shared/services/employee.service";
 
 @Component({
   selector: 'app-employee-add',
@@ -12,10 +13,11 @@ export class EmployeeAddComponent {
 
   loginform: FormGroup;
   errorMsg:any = "inicio";
+  succesMsg:any = "inicio";
   creationCustomerOK:boolean = false;
   customerCreate:boolean = false;
   employee: CustomerI | null = null;
-  constructor(private formBuilder: FormBuilder,private api:ApiService) {
+  constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService) {
     //this.prueba();
 
     this.loginform = this.formBuilder.group({
@@ -32,10 +34,32 @@ export class EmployeeAddComponent {
   ngOnInit() {
 
   }
-  sendit(data: FormGroup){
+
+  create(data: FormGroup): void {
+    if (this.loginform.valid) {
+      if (this.loginform.valid) {
+        const formValues: CustomerI = {
+          employeeName: this.loginform.get('customerName')?.value || null,
+          lastName1: this.loginform.get('lastName1')?.value || null,
+          lastName2: this.loginform.get('lastName2')?.value || null,
+          cedula: this.loginform.get('cedula')?.value || null,
+          address: this.loginform.get('address')?.value || null,
+          city: this.loginform.get('city')?.value || null,
+          telephone: this.loginform.get('telephone')?.value || null
+        };
+        console.log("forms: " +formValues);
+        this.employeeService
+          .createEmployee(formValues)
+          .subscribe(() =>
+            this.succesMsg = formValues.employeeName + " Creado correctamente"
+          );
+      }
+    }
+  }
+  /*sendit(data: FormGroup){
     if (this.loginform.valid) {
       const formValues: CustomerI = {
-        customerName: this.loginform.get('customerName')?.value || null,
+        employeeName: this.loginform.get('customerName')?.value || null,
         lastName1: this.loginform.get('lastName1')?.value || null,
         lastName2: this.loginform.get('lastName2')?.value || null,
         cedula: this.loginform.get('cedula')?.value || null,
@@ -75,9 +99,9 @@ export class EmployeeAddComponent {
     }
 
     console.log("fin llamada api Los dos campos son obligatorios", "F.E.N.W.")
-  }
+  }*/
 
-  prueba(){
+ // prueba(){
     /*this.api.getEmployee().subscribe(
       (response: HttpResponse<CustomerI>) => {
         this.employee = response.body;
@@ -88,6 +112,6 @@ export class EmployeeAddComponent {
       }
     );
     console.log("fin llamada api de prueba");*/
-  }
+  //}
 
 }

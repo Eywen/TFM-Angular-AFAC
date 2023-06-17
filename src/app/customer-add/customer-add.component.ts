@@ -37,7 +37,7 @@ export class CustomerAddComponent implements OnInit{
     if (this.loginform.valid) {
       // @ts-ignore
       const formValues: CustomerI = {
-        customerName: this.loginform.get('customerName')?.value || null,
+        employeeName: this.loginform.get('customerName')?.value || null,
         lastName1: this.loginform.get('lastName1')?.value || null,
         lastName2: this.loginform.get('lastName2')?.value || null,
         cedula: this.loginform.get('cedula')?.value || null,
@@ -49,7 +49,7 @@ export class CustomerAddComponent implements OnInit{
       // Aquí puedes hacer lo que necesites con el objeto formValues, como enviarlo a través de una API, procesarlo, etc.
       console.log("forValues: "+formValues);
 
-      this.api.addCustomer(formValues).subscribe(data => {
+      /*this.api.addCustomer(formValues).subscribe(data => {
       //this.api.getPreuba().subscribe(data => {
         console.log("data: "+data);
         this.errorMsg = "datosr respuesta api get "
@@ -69,7 +69,7 @@ export class CustomerAddComponent implements OnInit{
           //debugger;
           this.errorMsg = "Error en cración de empleado. Contacte con el administrador del sistema: " + error.status;
         }
-      })
+      })*/
     } else {
       // El formulario no es válido, puedes mostrar mensajes de error o realizar otras acciones.
       this.errorMsg = "Los dos campos son obligatorios\"";
