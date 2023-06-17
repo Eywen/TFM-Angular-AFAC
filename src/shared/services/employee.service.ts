@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "./api.service";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {CustomerI} from "../model/customer.interface";
 
 @Injectable({
@@ -19,6 +19,21 @@ export class EmployeeService {
   createEmployee(employee: CustomerI): Observable<CustomerI> {
     debugger;
     return this.apiService
-      .post(EmployeeService.END_POINT_EMPLOYEE, employee);
+      .post(EmployeeService.END_POINT_EMPLOYEE, employee)
+      .pipe(
+        catchError(error => {
+          //console.log("error: " +error);
+          /*if (error.status === 409) {
+            // Manejo específico para el estado 409
+            const errorMessage = 'Error: El empleado ya existe';
+            // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de error en el componente
+            //return throwError(errorMessage);
+          }*/
+          // Si no es un error 409, propagar el error original
+          return throwError(error);
+        })
+      )
+
+      ;
   }
 }

@@ -16,7 +16,6 @@ export class NavbarComponent {
   isAuthenticated(): boolean {
     this.showLogin= this.sessionService.isAuthenticated();
     console.log("autenticado: " +this.showLogin);
-    debugger;
     return this.showLogin;
   }
 

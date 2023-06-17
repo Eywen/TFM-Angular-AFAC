@@ -107,9 +107,17 @@
           </form>
         </div>
       </div>
-      <div class="row p-3">
+      <div class="row p-3" *ngIf="iserrorMsg">
         <div class="alert alert-danger" >
           <span>{{errorMsg}}</span>
+        </div>
+        <div class="col-md-8">
+          * son campos obligatorios
+        </div>
+      </div>
+      <div class="row p-3" >
+        <div class="alert bg-success p-2 text-white bg-opacity-50"  *ngIf="iscreateEmployee">
+          <span>{{succesMsg}}</span>
         </div>
         <div class="col-md-8">
           * son campos obligatorios

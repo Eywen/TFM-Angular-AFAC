@@ -77,7 +77,6 @@ export class ApiService {
       responseType: this.responseType,
       observe: 'response'
     };
-    debugger;
     this.resetOptions();
     return options;
   }
@@ -90,10 +89,22 @@ export class ApiService {
             const  body = response.body;
             debugger;
             return body;
+            },
+        catchError(error => {
+          console.log("error: " +error.getSortStatusMessageBySortValue);
+          if (error.status === 409) {
+            // Manejo específico para el estado 409
+            const errorMessage = 'Error: El empleado ya existe';
+            // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de error en el componente
+            //return throwError(errorMessage);
           }
+          // Si no es un error 409, propagar el error original
+          return throwError(error);
+        })
         //catchError(error => this.handleError(error))
           //.pipe(map((response: HttpResponse<any>) => {
-      ));
+      ))
+      ;
   }
 
   // @ts-ignore
