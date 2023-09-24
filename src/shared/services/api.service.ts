@@ -155,4 +155,12 @@ export class ApiService {
       )
     )
   }*/
+  get(listUrl: string) {
+    return this.http
+      .get(listUrl, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
+  }
 }
