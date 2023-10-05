@@ -8,10 +8,10 @@
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row" *ngFor="let employee of employees">1</th>
+  <tr *ngFor="let employee of employees">
+    <th scope="row" >1</th>
     <td>{{employee.employeeName}}rk</td>
-    <td>{{employee.lastName1lastName1}}{{ lastName2}}Otto</td>
+    <td>{{employee.lastName1}}{{ employee.lastName2}}Otto</td>
     <td>{{employee.city}}@mdo</td>
     <td>{{employee.telephone}}do</td>
   </tr>
