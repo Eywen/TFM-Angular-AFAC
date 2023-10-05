@@ -14,6 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import { AlertComponent } from './alert/alert.component';
+import {CoreModule} from "./core/core.module";
 //import { EmployeeComponent } from './employee/employee.component';
 
 
@@ -30,12 +31,13 @@ import { AlertComponent } from './alert/alert.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

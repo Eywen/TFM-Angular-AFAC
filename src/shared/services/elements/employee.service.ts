@@ -10,10 +10,11 @@ export class EmployeeService {
 
   //static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/employees';
   static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
+  private findAll = "/readall";
   constructor(private api : ApiService) {  }
 
   getEmployeeList ( ) : Observable<EmployeeI[]> {
     return this.api
-      .get(EmployeeService.END_POINT_EMPLOYEE);
+      .get(EmployeeService.END_POINT_EMPLOYEE + this.findAll);
   }
 }

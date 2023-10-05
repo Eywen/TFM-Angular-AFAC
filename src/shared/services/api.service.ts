@@ -47,6 +47,7 @@ export class ApiService {
     return this.http.post(direccion,form,{observe: 'response'});}
 
   authBasic(username: string, password: string): ApiService {
+    debugger;
     return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
   }
 
