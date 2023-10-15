@@ -7,9 +7,6 @@ import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'afac'},
- /* {path: 'addCustomer', component: CustomerAddComponent },
-  {path: 'login', component: LoginComponent },
-  {path: 'home', component: HomeComponent },*/
   {path: 'afac', loadChildren: () => import('./home/home.module').then(module => module.HomeModule)}, // lazy load
 ];
 
@@ -20,7 +17,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export  const routingComponents = [
-  //CustomerAddComponent,
-  //LoginComponent,
-  //HomeComponent
+
   ]
