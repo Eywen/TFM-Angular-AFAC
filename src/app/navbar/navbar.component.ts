@@ -16,16 +16,15 @@ export class NavbarComponent {
   isAuthenticated(): boolean {
     this.showLogin= this.sessionService.isAuthenticated();
     console.log("autenticado: " +this.showLogin);
-    debugger;
     return this.showLogin;
   }
 
   logout(): void {
     this.sessionService.destroySession();
-    this.router.navigate(['/home/login']);
+    this.router.navigate(['/afac/login']);
   }
 
   goLogin()  {
-    this.router.navigate(['/home/login']);
+    this.router.navigate(['/afac/login']);
   }
 }

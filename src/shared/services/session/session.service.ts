@@ -33,7 +33,6 @@ export class SessionService {
   }
 
   validateCredentials(username: string, password: string): Observable<any> {
-    debugger;
     return this.api.authBasic(username, password)
       .post(SessionService.END_POINT)
       .pipe(
@@ -55,7 +54,6 @@ export class SessionService {
 
   isAuthenticated(): boolean {
     var b = this.session != null && !(new JwtHelperService().isTokenExpired(this.session.token));
-    debugger;
     return this.session != null && !(new JwtHelperService().isTokenExpired(this.session.token));
   }
 

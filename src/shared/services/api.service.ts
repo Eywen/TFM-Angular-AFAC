@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 
 import {CustomerI} from "../model/customer.interface";
+//import {EmployeeI} from "../model/customer.interface";
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {CredentialI} from "../model/credential.interface";
 import {catchError, EMPTY, map, Observable, throwError} from 'rxjs';
@@ -47,6 +48,7 @@ export class ApiService {
     return this.http.post(direccion,form,{observe: 'response'});}
 
   authBasic(username: string, password: string): ApiService {
+    debugger;
     return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
   }
 
@@ -154,5 +156,48 @@ export class ApiService {
         }
       )
     )
+  }*/
+  get(listUrl: string) {
+    return this.http
+      .get(listUrl, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
+  }
+
+ /* post(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .post(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => (response: HttpResponse<any>) => {
+            const  body = response.body;
+            debugger;
+            return body;
+          },
+          catchError(error => {
+            console.log("error: " +error.getSortStatusMessageBySortValue);
+            if (error.status === 409) {
+              // Manejo específico para el estado 409
+              const errorMessage = 'Error: El empleado ya existe';
+              // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de error en el componente
+              //return throwError(errorMessage);
+            }
+            // Si no es un error 409, propagar el error original
+            return throwError(error);
+          })
+          //catchError(error => this.handleError(error))
+          //.pipe(map((response: HttpResponse<any>) => {
+        ))
+      ;
+  }*/
+
+  /*post(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .post(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
   }*/
 }

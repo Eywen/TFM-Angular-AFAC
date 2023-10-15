@@ -83,14 +83,15 @@
             Empleado_old
           </a>
           <ul class="dropdown-menu" >
-            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>
+<!--            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>-->
+            <li><a class="dropdown-item" routerLink="addEmployee" *ngIf="isAuthenticated()">Crear</a></li>
             <li><a class="dropdown-item" href="#">Modificar</a></li>
             <li><a class="dropdown-item" href="#">Ver</a></li>
             <li><a class="dropdown-item" href="#">Desahabilitar</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">Empleado</a>
+          <a class="nav-link " routerLink="employee_list">Empleado</a>
         </li>
 
 
@@ -101,7 +102,7 @@
             Login
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/home/login" *ngIf="!isAuthenticated()">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/afac/login" *ngIf="!isAuthenticated()">Login</a></li>
             <li><a class="dropdown-item" (click)="logout()" *ngIf="isAuthenticated()">Logout</a></li>
           </ul>
         </li>
