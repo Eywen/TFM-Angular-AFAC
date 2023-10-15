@@ -22,10 +22,10 @@ export class NavbarComponent {
 
   logout(): void {
     this.sessionService.destroySession();
-    this.router.navigate(['/home/login']);
+    this.router.navigate(['/afac/login']);
   }
 
   goLogin()  {
-    this.router.navigate(['/home/login']);
+    this.router.navigate(['/afac/login']);
   }
 }

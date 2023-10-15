@@ -13,6 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {LoginComponent} from "../login/login.component";
 import {AlertComponent} from "../alert/alert.component";
 import {Employee_listComponent} from "../employee/employee-list/employee_list.component";
+import {AfacRoutingModule} from "./afac.routing.module";
 /*import { AboutComponent } from './about/about.component';
 import { AlertComponent } from './alert/alert.component';
 import { ContactComponent } from './contact/contact.component';
@@ -39,7 +40,8 @@ import { CpanelComponent } from './cpanel/cpanel.component';*/
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    //HomeRoutingModule,
+    AfacRoutingModule,
     //SharedModule,
     ReactiveFormsModule,
     FormsModule,
