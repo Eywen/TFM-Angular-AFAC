@@ -63,13 +63,4 @@ export class LoginComponent {
     this.router.navigate(['/home/login']);
   }
 
-
-  /*loginAux(form: NgForm){
-    console.log('form value: ', form.value);
-    this.api.login(this.cred)
-      .subscribe(response => {
-        this.router.navigate(['addCustomer'])
-      })
-  }*/
-
 }
