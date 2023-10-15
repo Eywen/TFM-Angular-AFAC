@@ -11,11 +11,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {CoreModule} from "./core/core.module";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerAddComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

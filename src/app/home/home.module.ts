@@ -15,7 +15,6 @@ import {AfacRoutingModule} from "./afac.routing.module";
 @NgModule({
   declarations: [
     HomeComponent,
-    NavbarComponent,
     EmployeeAddComponent,
     LoginComponent,
     AlertComponent,
