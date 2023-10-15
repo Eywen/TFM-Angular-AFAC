@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './home.component';
 import {LoginComponent} from "../login/login.component";
 import {CustomerAddComponent} from "../customer-add/customer-add.component";
-import {EmployeeComponent} from "../employee/employee-list/employee.component";
+import {Employee_listComponent} from "../employee/employee-list/employee_list.component";
 //import {AboutComponent} from "./about/about.component";
 //import {RetailComponent} from './retail/retail.component';
 //import {ContactComponent} from './contact/contact.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
       {path: 'contact', component: ContactComponent},
       {path: 'register', component: RegisterComponent},*/
       {path: 'login', component: LoginComponent},
-      {path: 'employee', component: EmployeeComponent },
+      {path: 'employee_list', component: Employee_listComponent },
       {path: 'addCustomer', component: CustomerAddComponent },
       //{path: 'cpanel', loadChildren: () => CpanelModule},
     ]

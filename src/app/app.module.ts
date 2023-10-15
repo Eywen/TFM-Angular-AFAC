@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import { AlertComponent } from './alert/alert.component';
 import {CoreModule} from "./core/core.module";
-//import { EmployeeComponent } from './employee/employee.component';
+//import { Employee_listComponent } from './employee/employee.component';
 
 
 
@@ -24,7 +24,7 @@ import {CoreModule} from "./core/core.module";
     AppComponent,
     //NavbarComponent,
     CustomerAddComponent,
-    //EmployeeComponent,
+    //Employee_listComponent,
     //LoginComponent,
     //HomeComponent
   ],

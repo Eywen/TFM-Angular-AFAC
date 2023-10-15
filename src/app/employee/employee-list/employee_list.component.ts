@@ -4,10 +4,10 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 
 @Component({
   selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  templateUrl: './employee_list.component.html',
+  styleUrls: ['./employee_list.component.css']
 })
-export class EmployeeComponent {
+export class Employee_listComponent {
 
   employees: EmployeeI[];
 
