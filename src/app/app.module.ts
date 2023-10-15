@@ -12,12 +12,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {CoreModule} from "./core/core.module";
 import {NavbarComponent} from "./navbar/navbar.component";
+import {AlertComponent} from "./alert/alert.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerAddComponent,
     NavbarComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
