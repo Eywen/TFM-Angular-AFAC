@@ -1,0 +1,16 @@
+.bg-success {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.wrapper {
+  margin-top: 50px;
+  max-width: 800vw;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+.contenedor{
+  max-width: 800vw;
+
+}
