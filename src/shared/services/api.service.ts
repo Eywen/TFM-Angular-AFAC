@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 
+import {CustomerI} from "../model/customer.interface";
 //import {EmployeeI} from "../model/customer.interface";
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {CredentialI} from "../model/credential.interface";
@@ -42,18 +43,12 @@ export class ApiService {
     return localStorage.getItem('token');
   }
 
-
-
-  /*post(endpoint: string, body?: object): Observable<any> {
-    return this.http
-      .post(endpoint, body, this.createOptions())
-      .pipe(
-        map(response => this.extractData(response)),
-        catchError(error => this.handleError(error))
-      );
-  }*/
+  addCustomer(form:CustomerI):Observable<HttpResponse<Object>>{
+    let direccion = this.baseurl + "/customers";
+    return this.http.post(direccion,form,{observe: 'response'});}
 
   authBasic(username: string, password: string): ApiService {
+    debugger;
     return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
   }
 
@@ -85,35 +80,18 @@ export class ApiService {
     return this.http
       .post(endpoint, body, this.createOptions())
       .pipe(
-        map(response => (response: HttpResponse<any>) => {
-            const  body = response.body;
-            debugger;
-            return body;
-            },
-        catchError(error => {
-          console.log("error: " +error.getSortStatusMessageBySortValue);
-          if (error.status === 409) {
-            // Manejo específico para el estado 409
-            const errorMessage = 'Error: El empleado ya existe';
-            // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de error en el componente
-            //return throwError(errorMessage);
-          }
-          // Si no es un error 409, propagar el error original
-          return throwError(error);
-        })
-        //catchError(error => this.handleError(error))
-          //.pipe(map((response: HttpResponse<any>) => {
-      ))
-      ;
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
   }
 
   // @ts-ignore
-  /*private extractData(response): any {
+  private extractData(response): any {
     if (this.successfulNotification) {
       /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
       });*/
-     /* this.successfulNotification = undefined;
+      this.successfulNotification = undefined;
     }
     const contentType = response.headers.get('content-type');
     if (contentType) {
@@ -126,7 +104,7 @@ export class ApiService {
     } else {
       return response;
     }
-  }*/
+  }
 
   private showError(notification: string): void {
     if (this.errorNotification) {
@@ -178,5 +156,48 @@ export class ApiService {
         }
       )
     )
+  }*/
+  get(listUrl: string) {
+    return this.http
+      .get(listUrl, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
+  }
+
+ /* post(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .post(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => (response: HttpResponse<any>) => {
+            const  body = response.body;
+            debugger;
+            return body;
+          },
+          catchError(error => {
+            console.log("error: " +error.getSortStatusMessageBySortValue);
+            if (error.status === 409) {
+              // Manejo específico para el estado 409
+              const errorMessage = 'Error: El empleado ya existe';
+              // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de error en el componente
+              //return throwError(errorMessage);
+            }
+            // Si no es un error 409, propagar el error original
+            return throwError(error);
+          })
+          //catchError(error => this.handleError(error))
+          //.pipe(map((response: HttpResponse<any>) => {
+        ))
+      ;
+  }*/
+
+  /*post(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .post(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
   }*/
 }

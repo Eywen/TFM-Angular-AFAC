@@ -26,7 +26,7 @@ import {CoreModule} from "./core/core.module";
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
