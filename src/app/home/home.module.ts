@@ -17,7 +17,7 @@ import {AfacRoutingModule} from "./afac.routing.module";
     HomeComponent,
     EmployeeAddComponent,
     LoginComponent,
-    AlertComponent,
+    //AlertComponent,
     Employee_listComponent
   ],
   imports: [
