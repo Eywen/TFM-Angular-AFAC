@@ -1,20 +1,28 @@
-<table class="table">
-  <thead>
+<table class="table  table-striped">
+<thead>
     <tr>
-      <th scope="col">nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Ciudad</th>
-      <th scope="col">Telefono</th>
-      <th scope="col" ><i class="fa-solid fa-sort"></i></th>
+      <th scope="col">nombre <i class="fa-solid fa-sort" (click)="sort('employeeName')"></i> </th>
+      <th scope="col">Apellido <i class="fa-solid fa-sort" (click)="sort('lastName1')"></i> </th>
+      <th scope="col">Ciudad <i class="fa-solid fa-sort" (click)="sort('city')"></i> </th>
+      <th scope="col">Telefono </th>
     </tr>
   </thead>
   <tbody>
   <tr *ngFor="let employee of employees">
     <td>{{employee.employeeName}}</td>
-    <td>{{employee.lastName1}}{{ employee.lastName2}}</td>
+    <td>{{employee.lastName1}} {{employee.lastName2}}</td>
     <td>{{employee.city}}</td>
     <td>{{employee.telephone}}</td>
-    <td></td>
+  </tr>
+  <tr>
+    <td align="right"><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+    <td colspan="2" align="center">
+      <span *ngFor="let p of totalPages; let numPage  = index" class="cen">
+        <a style="cursor: pointer; text-decoration: none;" (click)="setPage(numPage)"
+           [ngClass]="{'text-primary': numPage == page, 'text-black': numPage != page}"> {{ numPage + 1}} &nbsp; &nbsp;</a>
+      </span>
+    </td>
+    <td><i class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
   </tr>
   </tbody>
 </table>
