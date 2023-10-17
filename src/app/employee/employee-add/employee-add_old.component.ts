@@ -6,10 +6,10 @@ import {EmployeeService} from "../../../shared/services/employee.service";
 
 @Component({
   selector: 'app-employee-add',
-  templateUrl: './employee-add.component.html',
-  styleUrls: ['./employee-add.component.css']
+  templateUrl: './employee-add_old.component.html',
+  styleUrls: ['./employee-add_old.component.css']
 })
-export class EmployeeAddComponent {
+export class EmployeeAdd_oldComponent {
 
   loginform: FormGroup;
   errorMsg = "ff";

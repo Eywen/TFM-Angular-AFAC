@@ -6,7 +6,7 @@ import {NavbarComponent} from "../navbar/navbar.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
-import {EmployeeAddComponent} from "../employee/employee-add/employee-add.component";
+import {EmployeeAdd_oldComponent} from "../employee/employee-add/employee-add_old.component";
 import {LoginComponent} from "../login/login.component";
 import {AlertComponent} from "../alert/alert.component";
 import {Employee_listComponent} from "../employee/employee-list/employee_list.component";
@@ -15,7 +15,7 @@ import {AfacRoutingModule} from "./afac.routing.module";
 @NgModule({
   declarations: [
     HomeComponent,
-    EmployeeAddComponent,
+    EmployeeAdd_oldComponent,
     LoginComponent,
     //AlertComponent,
     Employee_listComponent

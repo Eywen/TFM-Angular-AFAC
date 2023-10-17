@@ -9,7 +9,12 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 })
 export class Employee_listComponent {
 
-  employees: EmployeeI[];
+  //employees: EmployeeI[];
+  employees: Array<EmployeeI>;
+  page = 0;
+  size = 10;
+  order = "lastName1";
+  acs = true;
 
   constructor(private employeeService: EmployeeService){  }
 
@@ -18,8 +23,10 @@ export class Employee_listComponent {
   }
 
   getEmployeeList(){
-    this.employeeService.getEmployeeList().subscribe(data => {
-      this.employees = data;
+    this.employeeService.getEmployeeListPage(this.page,this.size,this.order,this.acs).subscribe(data => {
+      debugger;
+      // @ts-ignore
+      this.employees = data.content;
       }
     )
   }

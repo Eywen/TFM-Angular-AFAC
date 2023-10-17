@@ -4,7 +4,7 @@ import {HomeComponent} from './home.component';
 import {LoginComponent} from "../login/login.component";
 import {CustomerAddComponent} from "../customer-add/customer-add.component";
 import {Employee_listComponent} from "../employee/employee-list/employee_list.component";
-import {EmployeeAddComponent} from "../employee/employee-add/employee-add.component";
+import {EmployeeAdd_oldComponent} from "../employee/employee-add/employee-add_old.component";
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       {path: 'login', component: LoginComponent},
       {path: 'addCustomer', component: CustomerAddComponent },
-      {path: 'addEmployee', component: EmployeeAddComponent },
+      //{path: 'addEmployee', component: EmployeeAdd_oldComponent },
     ]
   },
 

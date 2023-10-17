@@ -87,6 +87,7 @@ export class ApiService {
 
   // @ts-ignore
   private extractData(response): any {
+    debugger;
     if (this.successfulNotification) {
       /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
@@ -158,6 +159,7 @@ export class ApiService {
     )
   }*/
   get(listUrl: string) {
+    debugger;
     return this.http
       .get(listUrl, this.createOptions())
       .pipe(
