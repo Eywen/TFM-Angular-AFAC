@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       {path: 'login', component: LoginComponent},
       {path: 'addCustomer', component: CustomerAddComponent },
-      //{path: 'addEmployee', component: EmployeeAdd_oldComponent },
+      {path: 'addEmployee', component: EmployeeAdd_oldComponent },
     ]
   },
 

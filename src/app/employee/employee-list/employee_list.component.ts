@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {EmployeeService} from "../../../shared/services/elements/employee.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-employee',
@@ -19,7 +20,7 @@ export class Employee_listComponent {
   isLastPage = false;
   totalPages: Array<number>;
 
-  constructor(private employeeService: EmployeeService){  }
+  constructor(private employeeService: EmployeeService, private router: Router){  }
 
   ngOnInit(){
     this.getEmployeeList();
@@ -61,5 +62,9 @@ export class Employee_listComponent {
   setPage(page: number){
     this.page = page;
     this.getEmployeeList();
+  }
+
+  addEmploye() {
+    this.router.navigate(['/afac/addEmployee']);
   }
 }
