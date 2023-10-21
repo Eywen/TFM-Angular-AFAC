@@ -21,7 +21,8 @@ export class EmployeeAdd_oldComponent {
   iserrorMsg:boolean;
   iscreateEmployee:boolean;
   customerCreate:boolean = false;
-  employee: CustomerI | null = null;
+  //employee: CustomerI | null = null;
+  employee: EmployeeI ;
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService) {
 
@@ -70,15 +71,16 @@ export class EmployeeAdd_oldComponent {
             () => {
               this.iscreateEmployee = true;
               this.succesMsg = formValues.employeeName + ' Creado correctamente';
-            },
+            }/*,
             error => {
               this.iserrorMsg = true;
-              if (error.status === 409) {
+              this.errorMsg = error;
+              /*if (error.status === 409) {
                 this.errorMsg = this.existEmployee;
               } else { // Manejo para otros errores
                 this.errorMsg = 'Error al crear empleado.';
-              }
-            }
+              }*/
+            /*}*/
           );
       }
     }

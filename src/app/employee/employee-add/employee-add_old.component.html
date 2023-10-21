@@ -1,3 +1,10 @@
+<div >
+  <div  *ngIf="iserrorMsg">
+    <div class="alert alert-danger" >
+      <span>{{errorMsg}}</span>
+    </div>
+  </div>
+</div>
 <form class="row g-3" (submit)="create(employeeform)" [formGroup]="employeeform">
   <div class="col-12">
     <label for="inputName" class="form-label">Nombre*</label>
@@ -52,6 +59,15 @@
     </div>
   </div>
 </form>
+<div  >
+  <div class="alert bg-success p-2 text-white bg-opacity-50"  *ngIf="iscreateEmployee">
+    <span>{{succesMsg}}</span>
+  </div>
+  <div class="col-md-8">
+    * son campos obligatorios
+  </div>
+</div>
+
 <!--
 <div class="row">
   <div class="col-md-2"></div>

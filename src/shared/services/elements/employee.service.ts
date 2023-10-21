@@ -30,16 +30,16 @@ export class EmployeeService {
     return this.api
       .post(EmployeeService.END_POINT_EMPLOYEE, employee)
       .pipe(
-        catchError(error => {
-          console.log("error: " + error.status);
-          if (error.status === 409) {
+        catchError(response => {
+          console.log("error: " + response.status);
+          if ([409].includes(response.status)){
+          //if (error.status === 409) {
             // Manejo específico para el estado 409
-            const errorMessage = 'Error: El empleado ya existe';
-            // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de error en el componente
-            return throwError(errorMessage);
+            const errorMessage = "El empleado con cedula: " +employee.cedula +" ya existe";
+            this.api.showError(errorMessage);
           }
           // Si no es un error 409, propagar el error original
-          return throwError(error);
+          return throwError(response.error);
         })
       )
 

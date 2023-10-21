@@ -13,6 +13,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {CoreModule} from "./core/core.module";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {AlertComponent} from "./alert/alert.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {AlertComponent} from "./alert/alert.component";
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
