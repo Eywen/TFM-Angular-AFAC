@@ -15,6 +15,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {AlertComponent} from "./alert/alert.component";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CustomerAddComponent,
     NavbarComponent,
     AlertComponent,
+    EmployeeDetailComponent,
   ],
   imports: [
     BrowserModule,

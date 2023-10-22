@@ -8,6 +8,9 @@
       <th scope="col">Apellido <i class="fa-solid fa-sort" (click)="sort('lastName1')"></i> </th>
       <th scope="col">Ciudad <i class="fa-solid fa-sort" (click)="sort('city')"></i> </th>
       <th scope="col">Telefono </th>
+      <th scope="col">  </th>
+      <th scope="col">  </th>
+      <th scope="col">  </th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +19,9 @@
     <td>{{employee.lastName1}} {{employee.lastName2}}</td>
     <td>{{employee.city}}</td>
     <td>{{employee.telephone}}</td>
+    <td> <button class="btn btn-info" routerLink="/afac/updateEmployee">Ver <i class="fa-solid fa-eye"></i> </button> </td>
+    <td> <button class="btn btn-warning">Modificar <i class="fa-solid fa-pen"></i> </button> </td>
+    <td> <button class="btn btn-danger">Eliminar <i class="fa-solid fa-eye"></i> </button> </td>
   </tr>
   <tr>
     <td align="right"><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
