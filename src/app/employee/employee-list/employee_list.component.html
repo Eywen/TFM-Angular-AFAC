@@ -1,37 +1,45 @@
 <div>
   <button type="button" class="btn btn-primary" (click)="addEmploye()">Crear empleado</button>
 </div>
-<table class="table  table-striped">
-<thead>
-    <tr>
-      <th scope="col">nombre <i class="fa-solid fa-sort" (click)="sort('employeeName')"></i> </th>
-      <th scope="col">Apellido <i class="fa-solid fa-sort" (click)="sort('lastName1')"></i> </th>
-      <th scope="col">Ciudad <i class="fa-solid fa-sort" (click)="sort('city')"></i> </th>
-      <th scope="col">Telefono </th>
-      <th scope="col">  </th>
-      <th scope="col">  </th>
-      <th scope="col">  </th>
+<div class="p-4">
+  <table class="table  table-striped">
+  <thead>
+      <tr>
+        <th scope="col">nombre <i class="fa-solid fa-sort" (click)="sort('employeeName')"></i> </th>
+        <th scope="col">Apellido <i class="fa-solid fa-sort" (click)="sort('lastName1')"></i> </th>
+        <th scope="col">Ciudad <i class="fa-solid fa-sort" (click)="sort('city')"></i> </th>
+        <th scope="col">Telefono </th>
+        <th scope="col">  </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.employeeName}}</td>
+      <td>{{employee.lastName1}} {{employee.lastName2}}</td>
+      <td>{{employee.city}}</td>
+      <td>{{employee.telephone}}</td>
+      <td align="right">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+        <button class="btn btn-info" routerLink="/afac/updateEmployee">Ver <i class="fa-solid fa-eye"></i> </button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+        <button class="btn btn-warning">Modificar <i class="fa-solid fa-pen"></i> </button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Third group">
+        <button class="btn btn-danger">Eliminar <i class="fa-solid fa-eye"></i> </button>
+        </div>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let employee of employees">
-    <td>{{employee.employeeName}}</td>
-    <td>{{employee.lastName1}} {{employee.lastName2}}</td>
-    <td>{{employee.city}}</td>
-    <td>{{employee.telephone}}</td>
-    <td> <button class="btn btn-info" routerLink="/afac/updateEmployee">Ver <i class="fa-solid fa-eye"></i> </button> </td>
-    <td> <button class="btn btn-warning">Modificar <i class="fa-solid fa-pen"></i> </button> </td>
-    <td> <button class="btn btn-danger">Eliminar <i class="fa-solid fa-eye"></i> </button> </td>
-  </tr>
-  <tr>
-    <td align="right"><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
-    <td colspan="2" align="center">
-      <span *ngFor="let p of totalPages; let numPage  = index" class="cen">
-        <a style="cursor: pointer; text-decoration: none;" (click)="setPage(numPage)"
-           [ngClass]="{'text-primary': numPage == page, 'text-black': numPage != page}"> {{ numPage + 1}} &nbsp; &nbsp;</a>
-      </span>
-    </td>
-    <td><i class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
-  </tr>
-  </tbody>
-</table>
+    <tr>
+      <td align="right"><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+      <td colspan="2" align="center">
+        <span *ngFor="let p of totalPages; let numPage  = index" class="cen">
+          <a style="cursor: pointer; text-decoration: none;" (click)="setPage(numPage)"
+             [ngClass]="{'text-primary': numPage == page, 'text-black': numPage != page}"> {{ numPage + 1}} &nbsp; &nbsp;</a>
+        </span>
+      </td>
+      <td><i class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
