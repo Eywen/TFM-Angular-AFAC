@@ -11,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class EmployeeDetailComponent {
 
-  id:string;
+  id:number;
   employeeDetail: EmployeeI;
 
   constructor(private api:ApiService,private employeeService: EmployeeService,private route: ActivatedRoute) {

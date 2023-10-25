@@ -6,5 +6,5 @@ export interface EmployeeI {
   cedula: string;
   city: string;
   address: string;
-  telephone: string;
+  telephone: number;
 }

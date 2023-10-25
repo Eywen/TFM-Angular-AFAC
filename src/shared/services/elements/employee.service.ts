@@ -46,7 +46,7 @@ export class EmployeeService {
       ;
   }
 
-  findEmployeeById(id: string): Observable<EmployeeI> {
+  findEmployeeById(id: number): Observable<EmployeeI> {
     return this.api
       .get(EmployeeService.END_POINT_EMPLOYEE+"/"+id)
       ;
