@@ -20,7 +20,7 @@
       <td>{{employee.telephone}}</td>
       <td align="right">
         <div class="btn-group me-2" role="group" aria-label="First group">
-        <button class="btn btn-info" routerLink="/afac/updateEmployee">Ver <i class="fa-solid fa-eye"></i> </button>
+        <button class="btn btn-info" [routerLink]="['/afac', 'updateEmployee', employee.id]">Ver <i class="fa-solid fa-eye"></i> </button>
         </div>
         <div class="btn-group me-2" role="group" aria-label="Second group">
         <button class="btn btn-warning">Modificar <i class="fa-solid fa-pen"></i> </button>

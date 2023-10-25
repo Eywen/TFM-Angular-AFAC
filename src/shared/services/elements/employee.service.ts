@@ -45,4 +45,11 @@ export class EmployeeService {
 
       ;
   }
+
+  findEmployeeById(id: string): Observable<EmployeeI> {
+    return this.api
+      .get(EmployeeService.END_POINT_EMPLOYEE+"/"+id)
+      ;
+
+  }
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent},
       {path: 'addCustomer', component: CustomerAddComponent },
       {path: 'addEmployee', component: EmployeeAdd_oldComponent },
-      {path: 'updateEmployee', component: EmployeeDetailComponent },
+      {path: 'updateEmployee/:id', component: EmployeeDetailComponent },
     ]
   },
 
