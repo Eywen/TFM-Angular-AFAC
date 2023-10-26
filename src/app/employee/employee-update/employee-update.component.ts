@@ -55,9 +55,9 @@ export class EmployeeUpdateComponent {
 
     console.log("form update valido: " + this.employeeform.valid);
     if (this.employeeform.valid) {
-      /*this.employeeService.update(this.id,this.employeeDetail).subscribe(
+      this.employeeService.update(this.id,this.employeeDetail).subscribe(
         data => {console.log("update: " + data)}
-      );*/
+      );
     } else {
       let errors: FieldError[] = []
       getFormErrors(this.employeeform, "root", "", errors);

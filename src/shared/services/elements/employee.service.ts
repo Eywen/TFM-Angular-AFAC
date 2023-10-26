@@ -53,10 +53,10 @@ export class EmployeeService {
 
   }
 
-  update(id: any, employee: EmployeeI) {
+  update(id: number, employee: EmployeeI) {
     return this.api
       .successful()
-      .put(EmployeeService.END_POINT_EMPLOYEE+"/"+id+employee);
+      .put(EmployeeService.END_POINT_EMPLOYEE+"/"+id,employee);
   }
 
   showMessage(message: string, duration:number){
