@@ -30,15 +30,22 @@
   </div>
 
   <div class="col-md-4">
-    <label for="employeeCityDetail" class="form-label">Ciudad:</label>
-    <input class="form-control " type="text" id="employeeCityDetail" name="inputEmployeeCityDetail" [(ngModel)]="employeeDetail.city" />
+    <label for="employeeCityDetail" class="form-label">Ciudad* :</label>
+    <select class="form-select" id="employeeCityDetail" aria-label="Default select example" [(ngModel)]="employeeDetail.city">
+      <option selected>{{employeeDetail.city}}</option>
+      <option value="Palmira">Palmira</option>
+      <option value="Tulua">Tulua</option>
+      <option value="Sevilla">Sevilla</option>
+    </select>
   </div>
+
+
 
   <div class="p-2"></div>
   <div class="row justify-content-right align-items-right p-2">
     <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
-<!--      <button class="btn btn-primary" (click)="update()" [disabled] = "!employeeform.valid"> Enviar </button>-->
-     <button class="btn btn-primary" (click)="update()" > Enviar </button>
+    <button class="btn btn-primary" (click)="update()" [disabled] = "!employeeform.valid"> Enviar </button>
+<!--     <button class="btn btn-primary" (click)="update()" > Enviar </button>-->
     </div>
     <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
       <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
