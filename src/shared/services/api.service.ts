@@ -28,6 +28,7 @@ export class ApiService {
   private successfulNotification = undefined;
   private errorNotification = undefined;
   private horizontalPosition: MatSnackBarHorizontalPosition = "center";
+  private duration: number =  5000;
 
   constructor(private http: HttpClient,private snackBar: MatSnackBar,private router: Router) {
     this.resetOptions();/*
@@ -109,12 +110,12 @@ export class ApiService {
     }
   }
 
-  public showError(notification: string): void {
+  public showError(notification: string, duration: number): void {
     if (this.errorNotification) {
-      this.snackBar.open(this.errorNotification, 'Error', {duration: 5000});
+      this.snackBar.open(this.errorNotification, 'Error', {duration: duration});
       this.errorNotification = undefined;
     } else {
-      this.snackBar.open(notification, 'Error', { horizontalPosition: this.horizontalPosition, duration: 5000,  panelClass: ['error-snackbar']});
+      this.snackBar.open(notification, 'Error', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['error-snackbar']});
     }
   }
 
@@ -123,24 +124,30 @@ export class ApiService {
     debugger;
     let error: Error;
     if (response.status === ApiService.UNAUTHORIZED) {
-      this.showError('Unauthorized');
+      this.showError('Unauthorized', this.duration);
       this.router.navigate(['']).then();
       return EMPTY;
     } else if (response.status === ApiService.CONNECTION_REFUSE) {
-      this.showError('Connection Refuse');
+      this.showError('Connection Refuse',this.duration);
       return EMPTY;
     } else if (response.status === ApiService.CONFLICT){
       return throwError(() => response);
     } else {
       try {
         error = response.error; // with 'text': JSON.parse(response.error);
-        this.showError(error.message + ' (' + response.status + '): ' + error.message);
+        this.showError(error.message + ' (' + response.status + '): ' + error.message,this.duration);
         return throwError(() => error);
       } catch (e) {
-        this.showError('Not response');
+        this.showError('Not response',this.duration);
         return throwError(() => response.error);
       }
     }
+  }
+
+  successful(notification = 'Successful'): ApiService{
+    // @ts-ignore
+    this.successfulNotification = notification;
+    return this;
   }
 
 
@@ -167,6 +174,16 @@ export class ApiService {
     debugger;
     return this.http
       .get(listUrl, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response)),
+        catchError(error => this.handleError(error))
+      );
+  }
+
+  put(endpoint: string, body?: object): Observable<any> {
+    console.log(" url update: " + endpoint);
+    return this.http
+      .put(endpoint, body, this.createOptions())
       .pipe(
         map(response => this.extractData(response)),
         catchError(error => this.handleError(error))

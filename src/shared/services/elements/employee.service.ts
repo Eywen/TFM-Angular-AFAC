@@ -36,7 +36,7 @@ export class EmployeeService {
           //if (error.status === 409) {
             // Manejo específico para el estado 409
             const errorMessage = "El empleado con cedula: " +employee.cedula +" ya existe";
-            this.api.showError(errorMessage);
+            this.showMessage(errorMessage,  5000);
           }
           // Si no es un error 409, propagar el error original
           return throwError(response.error);
@@ -51,5 +51,15 @@ export class EmployeeService {
       .get(EmployeeService.END_POINT_EMPLOYEE+"/"+id)
       ;
 
+  }
+
+  update(id: any, employee: EmployeeI) {
+    return this.api
+      .successful()
+      .put(EmployeeService.END_POINT_EMPLOYEE+"/"+id+employee);
+  }
+
+  showMessage(message: string, duration:number){
+    this.api.showError(message, duration);
   }
 }

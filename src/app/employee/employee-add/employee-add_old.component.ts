@@ -57,17 +57,8 @@ export class EmployeeAdd_oldComponent {
           city: this.employeeform.get('employeeCity')?.value || null,
           telephone: this.employeeform.get('employeeTelephone')?.value || null
         };
-        /*console.log("forms: " +formValues.employeeName);
-        console.log("forms: " +formValues.lastName1);
-        console.log("forms: " +formValues.lastName2);
-        console.log("forms: " +formValues.cedula);
-        console.log("forms: " +formValues.address);
-        console.log("forms: " +formValues.city);
-        console.log("forms: " +formValues.telephone);*/
         this.employeeService
           .createEmployee(formValues)
-          /*.subscribe(() =>
-            this.succesMsg = formValues.employeeName + " Creado correctamente"  );*/
           .subscribe(
             () => {
               this.iscreateEmployee = true;
