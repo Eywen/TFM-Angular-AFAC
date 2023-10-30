@@ -31,11 +31,12 @@
 
   <div class="col-md-4">
     <label for="employeeCityDetail" class="form-label">Ciudad* :</label>
-    <select class="form-select" id="employeeCityDetail" aria-label="Default select example" [(ngModel)]="employeeDetail.city">
-      <option selected>{{employeeDetail.city}}</option>
-      <option value="Palmira">Palmira</option>
-      <option value="Tulua">Tulua</option>
-      <option value="Sevilla">Sevilla</option>
+    <select class="form-select" id="employeeCityDetail"  [(ngModel)]="employeeDetail.city">
+      <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+<!--      <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>-->
+<!--      can use [ngValue]="c" instead of [ngValue]="c.id" where c is the complete country object.-->
+<!--      [value]="..." only supports string values-->
+<!--      [ngValue]="..." supports any type-->
     </select>
   </div>
 
@@ -45,7 +46,6 @@
   <div class="row justify-content-right align-items-right p-2">
     <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
     <button class="btn btn-primary" (click)="update()" [disabled] = "!employeeform.valid"> Enviar </button>
-<!--     <button class="btn btn-primary" (click)="update()" > Enviar </button>-->
     </div>
     <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
       <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>

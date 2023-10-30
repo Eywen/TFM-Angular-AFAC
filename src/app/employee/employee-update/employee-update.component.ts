@@ -5,6 +5,8 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {FieldError, getFormErrors} from "../../../shared/model/FieldError.interface";
+import {CiudadService} from "../../../shared/services/elements/ciudad.service";
+import {CityI} from "../../../shared/model/city.interface";
 
 @Component({
   selector: 'app-employee-update',
@@ -17,10 +19,18 @@ export class EmployeeUpdateComponent {
   employeeform: FormGroup;
   employeeDetail: EmployeeI;
   mesagge: string = "";
+  cities: CityI[];
 
-  constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,private route: ActivatedRoute) {
+
+  constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
+              private ciudadService : CiudadService,private route: ActivatedRoute) {
   }
   ngOnInit(){
+  this.ciudadService.getCitiesList().subscribe(data => {
+      this.cities = data;
+      console.log("city: " + this.cities[0]);
+    }
+  );
     this.doFormBuilder();
     this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -50,7 +60,7 @@ export class EmployeeUpdateComponent {
 
   update(): void {
 
-    console.log("form update valido: " + this.employeeDetail.lastName1);
+    console.log("form ciudad from select: " + this.employeeDetail.city);
     this.setFormValues();
 
     console.log("form update valido: " + this.employeeform.valid);
