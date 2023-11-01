@@ -12,6 +12,7 @@ export class EmployeeService {
   //static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/employees';
   static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
   private findAll = "/readall";
+  private findAllActivate = "/readallactivate?";
   private findAllPage = "/readallpage?";
   constructor(private api : ApiService) {  }
 
@@ -23,6 +24,10 @@ export class EmployeeService {
   getEmployeeListPage(page: number, size: number, order: string, asc: boolean):Observable<any[]> {
     return this.api
       .get(EmployeeService.END_POINT_EMPLOYEE + this.findAllPage + `page=${page}&size=${size}&order=${order}&asc=${asc}`);
+  }
+  getEmployeeActivateListPage(page: number, size: number, order: string, asc: boolean):Observable<any[]> {
+    return this.api
+      .get(EmployeeService.END_POINT_EMPLOYEE + this.findAllActivate + `page=${page}&size=${size}&order=${order}&asc=${asc}`);
   }
 
   createEmployee(employee: EmployeeI): Observable<EmployeeI> {

@@ -23,11 +23,25 @@ export class Employee_listComponent {
   constructor(private employeeService: EmployeeService, private router: Router){  }
 
   ngOnInit(){
-    this.getEmployeeList();
+    //this.getEmployeeList();
+    this.getEmployeeActivateList();
   }
 
   getEmployeeList(){
     this.employeeService.getEmployeeListPage(this.page,this.size,this.order,this.acs).subscribe(data => {
+      // @ts-ignore
+      this.employees = data.content;
+      // @ts-ignore
+      this.isFirstPage = data.first;
+      // @ts-ignore
+      this.isLastPage = data.last;
+      // @ts-ignore
+      this.totalPages = new Array(data['totalPages']);
+      }
+    )
+  }
+  getEmployeeActivateList(){
+    this.employeeService.getEmployeeActivateListPage(this.page,this.size,this.order,this.acs).subscribe(data => {
       // @ts-ignore
       this.employees = data.content;
       // @ts-ignore
