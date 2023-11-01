@@ -36,12 +36,23 @@
     <input class="form-control " type="text" id="inputEmployeeAddress" name="inputEmployeeAddress" formControlName="employeeAddress"  required/>
   </div>
 
-  <div class="col-md-4">
+  <!--<div class="col-md-4">
     <label for="employeeCity" class="form-label">Ciudad* :</label>
     <select class="form-select"  id = "employeeCity" name = "employeeCity" formControlName="employeeCity">
       <option selected value="Palmira">Palmira</option>
       <option value="Tulua" >Tulua</option>
       <option value="Sevilla">Sevilla</option>
+    </select>
+  </div>-->
+
+  <div class="col-md-4">
+    <label for="employeeCity" class="form-label">Ciudad* :</label>
+    <select class="form-select"  id = "employeeCity" name = "employeeCity" formControlName="employeeCity">
+      <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+      <!--      <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>-->
+      <!--      can use [ngValue]="c" instead of [ngValue]="c.id" where c is the complete country object.-->
+      <!--      [value]="..." only supports string values-->
+      <!--      [ngValue]="..." supports any type-->
     </select>
   </div>
 
@@ -61,7 +72,11 @@
 </form>
 <div  >
   <div class="alert bg-success p-2 text-white bg-opacity-50"  *ngIf="iscreateEmployee">
-    <span>{{succesMsg}}</span>
+<!--    <span>{{succesMsg}}</span>-->
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
+    </div>
+
   </div>
   <div class="col-md-8">
     * son campos obligatorios

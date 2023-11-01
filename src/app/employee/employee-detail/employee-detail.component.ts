@@ -17,13 +17,11 @@ export class EmployeeDetailComponent {
   constructor(private api:ApiService,private employeeService: EmployeeService,private route: ActivatedRoute) {
   }
   ngOnInit(){
-    debugger;
     this.route.params.subscribe(params => {
       this.id = params['id'];
       console.log("param id: " + this.id);
       this.employeeService
         .findEmployeeById(this.id).subscribe(data => {
-        debugger;
         this.employeeDetail = data;
         console.log(this.employeeDetail.employeeName);
       });

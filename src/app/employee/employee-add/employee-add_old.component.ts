@@ -5,6 +5,10 @@ import {ApiService} from "../../../shared/services/api.service";
 //import {EmployeeService} from "../../../shared/services/employee.service";
 import {EmployeeService} from "../../../shared/services/elements/employee.service";
 import {EmployeeI} from "../../../shared/model/Employee.interface";
+import {CiudadService} from "../../../shared/services/elements/ciudad.service";
+import {CityI} from "../../../shared/model/city.interface";
+import {Route, Router} from "@angular/router";
+import {UtilService} from "../../../shared/services/util.service";
 
 @Component({
   selector: 'app-employee-add',
@@ -23,8 +27,10 @@ export class EmployeeAdd_oldComponent {
   customerCreate:boolean = false;
   //employee: CustomerI | null = null;
   employee: EmployeeI ;
+  cities: CityI[];
 
-  constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService) {
+  constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
+              private ciudadService : CiudadService, private router: Router, private utilService: UtilService) {
 
     this.iserrorMsg = false;
     this.iscreateEmployee = false;
@@ -41,7 +47,10 @@ export class EmployeeAdd_oldComponent {
   }
 
   ngOnInit() {
-
+    this.ciudadService.getCitiesList().subscribe(data => {
+        this.cities = data;
+      }
+    );
   }
 
   create(data: FormGroup): void {
@@ -61,8 +70,20 @@ export class EmployeeAdd_oldComponent {
           .createEmployee(formValues)
           .subscribe(
             () => {
-              this.iscreateEmployee = true;
+              //this.iscreateEmployee = true;
               this.succesMsg = formValues.employeeName + ' Creado correctamente';
+
+              (async () => {
+                // Do something before delay
+                this.employeeService.showMessageSuccess(this.succesMsg ,2000);
+
+                await this.utilService.delaytime(3000);
+
+                // Do something after
+                this.router.navigate(['../../../employee_list']);
+              })();
+
+
             }/*,
             error => {
               this.iserrorMsg = true;

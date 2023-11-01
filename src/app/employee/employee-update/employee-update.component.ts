@@ -37,7 +37,6 @@ export class EmployeeUpdateComponent {
       console.log("param id: " + this.id);
       this.employeeService
         .findEmployeeById(this.id).subscribe(data => {
-        debugger;
         this.employeeDetail = data;
         console.log(this.employeeDetail.cedula);
         console.log("form update valido: " + this.employeeDetail.lastName1);
@@ -74,7 +73,7 @@ export class EmployeeUpdateComponent {
       errors.forEach(elem => {
         this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
       });
-      this.employeeService.showMessage(this.mesagge,20000);
+      this.employeeService.showMessageError(this.mesagge,20000);
     }
   }
   private setFormValues() {

@@ -36,12 +36,11 @@ export class EmployeeService {
       .post(EmployeeService.END_POINT_EMPLOYEE, employee)
       .pipe(
         catchError(response => {
-          console.log("error: " + response.status);
           if ([409].includes(response.status)){
           //if (error.status === 409) {
             // Manejo específico para el estado 409
             const errorMessage = "El empleado con cedula: " +employee.cedula +" ya existe";
-            this.showMessage(errorMessage,  5000);
+            this.showMessageError(errorMessage,  5000);
           }
           // Si no es un error 409, propagar el error original
           return throwError(response.error);
@@ -60,11 +59,16 @@ export class EmployeeService {
 
   update(id: number, employee: EmployeeI) {
     return this.api
-      .successful()
-      .put(EmployeeService.END_POINT_EMPLOYEE+"/"+id,employee);
+      //.successful()
+      .put(EmployeeService.END_POINT_EMPLOYEE+"/"+id,employee)
+      //.pipe()
+      ;
   }
 
-  showMessage(message: string, duration:number){
+  showMessageError(message: string, duration:number){
     this.api.showError(message, duration);
+  }
+  showMessageSuccess(message: string, duration:number){
+    this.api.showSucces(message, duration);
   }
 }

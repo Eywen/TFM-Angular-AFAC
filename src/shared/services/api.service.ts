@@ -91,12 +91,13 @@ export class ApiService {
   // @ts-ignore
   private extractData(response): any {
     debugger;
-    if (this.successfulNotification) {
-      this.snackBar.open(this.successfulNotification, '', {
+    //if (this.successfulNotification) {
+      /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
-      });
-      this.successfulNotification = undefined;
-    }
+      });*/
+      this.showSucces("Operación realizada",2000);
+      //this.successfulNotification = undefined;
+    //}
     const contentType = response.headers.get('content-type');
     if (contentType) {
       if (contentType.indexOf('application/pdf') !== -1) {
@@ -116,6 +117,14 @@ export class ApiService {
       this.errorNotification = undefined;
     } else {
       this.snackBar.open(notification, 'Error', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['error-snackbar']});
+    }
+  }
+  public showSucces(notification: string, duration: number): void {
+    if (this.successfulNotification) {
+      this.snackBar.open(this.successfulNotification, '', {duration: duration});
+      this.successfulNotification = undefined;
+    } else {
+      this.snackBar.open(notification, '', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['success-snackbar']});
     }
   }
 
@@ -145,6 +154,7 @@ export class ApiService {
   }
 
   successful(notification = 'Successful'): ApiService{
+    debugger;
     // @ts-ignore
     this.successfulNotification = notification;
     return this;
