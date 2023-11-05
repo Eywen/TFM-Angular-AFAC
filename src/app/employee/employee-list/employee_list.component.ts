@@ -58,25 +58,25 @@ export class Employee_listComponent {
   sort(order : string) {
     this.acs = !this.acs;
     this.order = order;
-    this.getEmployeeList();
+    this.getEmployeeActivateList();
   }
 
   rewind() {
     if (!this.isFirstPage){
       this.page--;
-      this.getEmployeeList();
+      this.getEmployeeActivateList();
     }
   }
   forward() {
     if (!this.isLastPage){
       this.page++;
-      this.getEmployeeList();
+      this.getEmployeeActivateList();
     }
   }
 
   setPage(page: number){
     this.page = page;
-    this.getEmployeeList();
+    this.getEmployeeActivateList();
   }
 
   addEmploye() {
