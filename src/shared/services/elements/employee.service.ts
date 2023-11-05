@@ -14,6 +14,7 @@ export class EmployeeService {
   private findAll = "/readall";
   private findAllActivate = "/readallactivate?";
   private findAllPage = "/readallpage?";
+  private disableurl = "/disable";
   constructor(private api : ApiService) {  }
 
   getEmployeeList ( ) : Observable<EmployeeI[]> {
@@ -65,10 +66,15 @@ export class EmployeeService {
       ;
   }
 
+  disable(id: number) {
+    return this.api.put(EmployeeService.END_POINT_EMPLOYEE+this.disableurl+"/"+id);
+  }
+
   showMessageError(message: string, duration:number){
     this.api.showError(message, duration);
   }
   showMessageSuccess(message: string, duration:number){
     this.api.showSucces(message, duration);
   }
+
 }

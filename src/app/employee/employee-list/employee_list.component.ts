@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
 })
 export class Employee_listComponent {
 
-  //employees: EmployeeI[];
   employees: Array<EmployeeI>;
   page = 0;
   size = 10;
@@ -19,11 +18,13 @@ export class Employee_listComponent {
   isFirstPage = false;
   isLastPage = false;
   totalPages: Array<number>;
+  selectedEmployeeId: number;
+  modalDisableTitle: string;
+  selectedEmployeeName: string;
 
   constructor(private employeeService: EmployeeService, private router: Router){  }
 
   ngOnInit(){
-    //this.getEmployeeList();
     this.getEmployeeActivateList();
   }
 
@@ -80,5 +81,18 @@ export class Employee_listComponent {
 
   addEmploye() {
     this.router.navigate(['/afac/addEmployee']);
+  }
+
+
+  confirmDisable(employeeId: number) {
+      this.employeeService.disable(employeeId).subscribe(() => {
+        this.getEmployeeActivateList();
+      });
+  }
+
+  setSelectedEmployeeId(employee: EmployeeI) {
+    this.modalDisableTitle = "Eliminar empleado";
+    this.selectedEmployeeId = employee.id;
+    this.selectedEmployeeName = employee.employeeName + " " + employee.lastName1 + " " + (null != employee.lastName2 ? employee.lastName2 : "");
   }
 }

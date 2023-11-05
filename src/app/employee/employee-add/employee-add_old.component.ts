@@ -57,7 +57,7 @@ export class EmployeeAdd_oldComponent {
     if (this.employeeform.valid) {
       if (this.employeeform.valid) {
         const formValues: EmployeeI = {
-          id: "",
+          id: 0,
           employeeName: this.employeeform.get('employeeName')?.value || null,
           lastName1: this.employeeform.get('employeeLastName1')?.value || null,
           lastName2: this.employeeform.get('employeeLastName2')?.value || null,
