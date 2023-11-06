@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmployeeAdd_oldComponent } from './employee-add_old.component';
+import { EmployeeAddComponent } from './employee-add.component';
 
 describe('EmployeeAddComponent', () => {
-  let component: EmployeeAdd_oldComponent;
-  let fixture: ComponentFixture<EmployeeAdd_oldComponent>;
+  let component: EmployeeAddComponent;
+  let fixture: ComponentFixture<EmployeeAddComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EmployeeAdd_oldComponent]
+      declarations: [EmployeeAddComponent]
     });
-    fixture = TestBed.createComponent(EmployeeAdd_oldComponent);
+    fixture = TestBed.createComponent(EmployeeAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

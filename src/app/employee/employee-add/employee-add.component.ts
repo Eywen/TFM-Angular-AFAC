@@ -12,10 +12,10 @@ import {UtilService} from "../../../shared/services/util.service";
 
 @Component({
   selector: 'app-employee-add',
-  templateUrl: './employee-add_old.component.html',
-  styleUrls: ['./employee-add_old.component.css']
+  templateUrl: './employee-add.component.html',
+  styleUrls: ['./employee-add.component.css']
 })
-export class EmployeeAdd_oldComponent {
+export class EmployeeAddComponent {
 
   employeeform: FormGroup;
   succesMsg = "iniicio";

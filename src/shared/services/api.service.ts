@@ -83,18 +83,19 @@ export class ApiService {
     return this.http
       .post(endpoint, body, this.createOptions())
       .pipe(
-        map(response => this.extractData(response)),
+        map(response => this.extractData(response, true)),
         catchError(error => this.handleError(error))
       );
   }
 
   // @ts-ignore
-  private extractData(response): any {
+  private extractData(response, showMessagge: boolean): any {
     debugger;
     //if (this.successfulNotification) {
       /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
       });*/
+    if (showMessagge)
       this.showSucces("Operación realizada",2000);
       //this.successfulNotification = undefined;
     //}
@@ -185,17 +186,16 @@ export class ApiService {
     return this.http
       .get(listUrl, this.createOptions())
       .pipe(
-        map(response => this.extractData(response)),
+        map(response => this.extractData(response, false)),
         catchError(error => this.handleError(error))
       );
   }
 
   put(endpoint: string, body?: object): Observable<any> {
-    console.log(" url update: " + endpoint);
     return this.http
       .put(endpoint, body, this.createOptions())
       .pipe(
-        map(response => this.extractData(response)),
+        map(response => this.extractData(response, true)),
         catchError(error => this.handleError(error))
       );
   }
