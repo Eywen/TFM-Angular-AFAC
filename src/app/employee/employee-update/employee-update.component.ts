@@ -20,6 +20,9 @@ export class EmployeeUpdateComponent {
   employeeDetail: EmployeeI;
   mesagge: string = "";
   cities: CityI[];
+  modalDisableTitle: string;
+  selectedEmployeeId: number;
+  selectedEmployeeName: string;
 
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
@@ -58,11 +61,7 @@ export class EmployeeUpdateComponent {
   }
 
   update(): void {
-
-    console.log("form ciudad from select: " + this.employeeDetail.city);
     this.setFormValues();
-
-    console.log("form update valido: " + this.employeeform.valid);
     if (this.employeeform.valid) {
       this.employeeService.update(this.id,this.employeeDetail).subscribe(
         data => {console.log("update: " + data)}
@@ -76,6 +75,7 @@ export class EmployeeUpdateComponent {
       this.employeeService.showMessageError(this.mesagge,20000);
     }
   }
+
   private setFormValues() {
     this.employeeform.patchValue({
       employeeName: this.employeeDetail.employeeName,
@@ -86,6 +86,13 @@ export class EmployeeUpdateComponent {
       employeeCity: this.employeeDetail.city,
       employeeTelephone: this.employeeDetail.telephone
     });
+  }
+
+  setSelectedEmployeeId(employee: EmployeeI) {
+      this.modalDisableTitle = "Modificar empleado";
+      this.selectedEmployeeId = employee.id;
+      this.selectedEmployeeName = employee.employeeName + " " + employee.lastName1 + " " + (null != employee.lastName2 ? employee.lastName2 : "");
+
   }
 
 }
