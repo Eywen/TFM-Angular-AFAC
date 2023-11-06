@@ -1,18 +1,75 @@
-<table class="table">
+<div>
+  <button type="button" class="btn btn-primary" (click)="addEmploye()">Crear empleado</button>
+</div>
+<div class="p-4">
+  <table class="table  table-striped">
   <thead>
-    <tr>
-      <th scope="col">nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Ciudad</th>
-      <th scope="col">Telefono</th>
+      <tr>
+        <th scope="col">nombre <i class="fa-solid fa-sort" (click)="sort('employeeName')"></i> </th>
+        <th scope="col">Apellido <i class="fa-solid fa-sort" (click)="sort('lastName1')"></i> </th>
+        <th scope="col">Ciudad <i class="fa-solid fa-sort" (click)="sort('city')"></i> </th>
+        <th scope="col">Telefono </th>
+        <th scope="col">  </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.employeeName}}</td>
+      <td>{{employee.lastName1}} {{employee.lastName2}}</td>
+      <td>{{employee.city}}</td>
+      <td>{{employee.telephone}}</td>
+      <td align="right">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+        <button class="btn btn-info" [routerLink]="['/afac', 'detailEmployee', employee.id]"><i class="fa-solid fa-eye"></i> Ver</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+          <button class="btn btn-warning" [routerLink]="['/afac', 'updateEmployee', employee.id]"><i class="fa-solid fa-pen-to-square"></i> Modificar</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Third group">
+          <button type="button" class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#customConfirmationModal"
+                  (click)="setSelectedEmployeeId(employee)">
+            <i class="fa-solid fa-trash-can"></i>
+            Eliminar
+          </button>
+        </div>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let employee of employees">
-    <td>{{employee.employeeName}}rk</td>
-    <td>{{employee.lastName1}}{{ employee.lastName2}}Otto</td>
-    <td>{{employee.city}}@mdo</td>
-    <td>{{employee.telephone}}do</td>
-  </tr>
-  </tbody>
-</table>
+    <tr>
+      <td align="right"><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+      <td colspan="2" align="center">
+        <span *ngFor="let p of totalPages; let numPage  = index" class="cen">
+          <a style="cursor: pointer; text-decoration: none;" (click)="setPage(numPage)"
+             [ngClass]="{'text-primary': numPage == page, 'text-black': numPage != page}"> {{ numPage + 1}} &nbsp; &nbsp;</a>
+        </span>
+      </td>
+      <td><i class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="customConfirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{modalDisableTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Está seguro de que deseas eliminar el empleado:  {{selectedEmployeeName}} ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmDisable(selectedEmployeeId)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
