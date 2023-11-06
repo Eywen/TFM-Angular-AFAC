@@ -14,6 +14,7 @@ import {Router} from "@angular/router";
 export class ApiService {
 
   private baseurl = "http://localhost:8080";
+  private LOGIN_VALIDATE_END_POINT = 'http://localhost:8080/users/token';
 
   static CONNECTION_REFUSE = 0;
   static UNAUTHORIZED = 401;
@@ -29,6 +30,7 @@ export class ApiService {
   private errorNotification = undefined;
   private horizontalPosition: MatSnackBarHorizontalPosition = "center";
   private duration: number =  5000;
+  private LOGIN_END_POINT: boolean;
 
   constructor(private http: HttpClient,private snackBar: MatSnackBar,private router: Router) {
     this.resetOptions();/*
@@ -83,7 +85,9 @@ export class ApiService {
     return this.http
       .post(endpoint, body, this.createOptions())
       .pipe(
-        map(response => this.extractData(response, true)),
+        map(response => this.extractData(response,
+          endpoint != this.LOGIN_VALIDATE_END_POINT)
+        ),
         catchError(error => this.handleError(error))
       );
   }
