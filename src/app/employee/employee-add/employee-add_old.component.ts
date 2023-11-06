@@ -17,15 +17,10 @@ import {UtilService} from "../../../shared/services/util.service";
 })
 export class EmployeeAdd_oldComponent {
 
-  loginform: FormGroup;
   employeeform: FormGroup;
-  errorMsg = "ff";
   succesMsg = "iniicio";
-  existEmployee = 'Error: El empleado ya existe'
   iserrorMsg:boolean;
   iscreateEmployee:boolean;
-  customerCreate:boolean = false;
-  //employee: CustomerI | null = null;
   employee: EmployeeI ;
   cities: CityI[];
 
@@ -82,55 +77,9 @@ export class EmployeeAdd_oldComponent {
                 // Do something after
                 this.router.navigate(['../../../employee_list']);
               })();
-
-
-            }/*,
-            error => {
-              this.iserrorMsg = true;
-              this.errorMsg = error;
-              /*if (error.status === 409) {
-                this.errorMsg = this.existEmployee;
-              } else { // Manejo para otros errores
-                this.errorMsg = 'Error al crear empleado.';
-              }*/
-            /*}*/
-          );
-      }
-    }
-  }
-
-  /*create(data: FormGroup): void {
-    if (this.loginform.valid) {
-      if (this.loginform.valid) {
-        const formValues: CustomerI = {
-          employeeName: this.loginform.get('customerName')?.value || null,
-          lastName1: this.loginform.get('lastName1')?.value || null,
-          lastName2: this.loginform.get('lastName2')?.value || null,
-          cedula: this.loginform.get('cedula')?.value || null,
-          address: this.loginform.get('address')?.value || null,
-          city: this.loginform.get('city')?.value || null,
-          telephone: this.loginform.get('telephone')?.value || null
-        };
-        console.log("forms: " +formValues);
-        this.employeeService
-          .createEmployee(formValues)
-          /*.subscribe(() =>
-            this.succesMsg = formValues.employeeName + " Creado correctamente"  );*/
-       /*   .subscribe(
-            () => {
-              this.iscreateEmployee = true;
-              this.succesMsg = formValues.employeeName + ' Creado correctamente';
-            },
-            error => {
-              this.iserrorMsg = true;
-              if (error.status === 409) {
-                this.errorMsg = this.existEmployee;
-              } else { // Manejo para otros errores
-                this.errorMsg = 'Error al crear empleado.';
-              }
             }
           );
       }
     }
-  }*/
+  }
 }
