@@ -7,14 +7,15 @@ import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarModule} from '@an
 import {CredentialI} from "../model/credential.interface";
 import {catchError, EMPTY, map, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private baseurl = "http://localhost:8080";
-  private LOGIN_VALIDATE_END_POINT = 'http://localhost:8080/users/token';
+  private baseurl = environment.REST_BACKEND;//"http://localhost:8080";
+  private LOGIN_VALIDATE_END_POINT = this.baseurl + '/users/token';
 
   static CONNECTION_REFUSE = 0;
   static UNAUTHORIZED = 401;
