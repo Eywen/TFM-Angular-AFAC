@@ -3,14 +3,15 @@ import {ApiService} from "../api.service";
 import {EmployeeI} from "../../model/Employee.interface";
 import {catchError, Observable, throwError} from "rxjs";
 import {CustomerI} from "../../model/customer.interface";
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  //static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/employees';
-  static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
+  static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/employees';
+  //static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
   private findAll = "/readall";
   private findAllActivate = "/readallactivate?";
   private findAllPage = "/readallpage?";
