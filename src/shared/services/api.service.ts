@@ -3,20 +3,23 @@ import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common
 
 import {CustomerI} from "../model/customer.interface";
 //import {EmployeeI} from "../model/customer.interface";
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarModule} from '@angular/material/snack-bar';
 import {CredentialI} from "../model/credential.interface";
 import {catchError, EMPTY, map, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private baseurl = "http://localhost:8080";
+  private baseurl = environment.REST_BACKEND;//"http://localhost:8080";
+  private LOGIN_VALIDATE_END_POINT = this.baseurl + '/users/token';
 
   static CONNECTION_REFUSE = 0;
   static UNAUTHORIZED = 401;
+  static CONFLICT = 409;
 
   // @ts-ignore
   private headers: HttpHeaders;
@@ -26,8 +29,11 @@ export class ApiService {
   private responseType: string;
   private successfulNotification = undefined;
   private errorNotification = undefined;
+  private horizontalPosition: MatSnackBarHorizontalPosition = "center";
+  private duration: number =  5000;
+  private LOGIN_END_POINT: boolean;
 
-  constructor(private http: HttpClient,/*private snackBar: MatSnackBar,*/private router: Router) {
+  constructor(private http: HttpClient,private snackBar: MatSnackBar,private router: Router) {
     this.resetOptions();/*
     this.headers = new HttpHeaders();
     this.params = new HttpParams();
@@ -80,19 +86,24 @@ export class ApiService {
     return this.http
       .post(endpoint, body, this.createOptions())
       .pipe(
-        map(response => this.extractData(response)),
+        map(response => this.extractData(response,
+          endpoint != this.LOGIN_VALIDATE_END_POINT)
+        ),
         catchError(error => this.handleError(error))
       );
   }
 
   // @ts-ignore
-  private extractData(response): any {
-    if (this.successfulNotification) {
+  private extractData(response, showMessagge: boolean): any {
+    debugger;
+    //if (this.successfulNotification) {
       /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
       });*/
-      this.successfulNotification = undefined;
-    }
+    if (showMessagge)
+      this.showSucces("Operación realizada",2000);
+      //this.successfulNotification = undefined;
+    //}
     const contentType = response.headers.get('content-type');
     if (contentType) {
       if (contentType.indexOf('application/pdf') !== -1) {
@@ -106,35 +117,53 @@ export class ApiService {
     }
   }
 
-  private showError(notification: string): void {
+  public showError(notification: string, duration: number): void {
     if (this.errorNotification) {
-      //this.snackBar.open(this.errorNotification, 'Error', {duration: 5000});
+      this.snackBar.open(this.errorNotification, 'Error', {duration: duration});
       this.errorNotification = undefined;
     } else {
-      //this.snackBar.open(notification, 'Error', {duration: 5000});
+      this.snackBar.open(notification, 'Error', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['error-snackbar']});
+    }
+  }
+  public showSucces(notification: string, duration: number): void {
+    if (this.successfulNotification) {
+      this.snackBar.open(this.successfulNotification, '', {duration: duration});
+      this.successfulNotification = undefined;
+    } else {
+      this.snackBar.open(notification, '', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['success-snackbar']});
     }
   }
 
   // @ts-ignore
   private handleError(response): any {
+    debugger;
     let error: Error;
     if (response.status === ApiService.UNAUTHORIZED) {
-      this.showError('Unauthorized');
+      this.showError('Unauthorized', this.duration);
       this.router.navigate(['']).then();
       return EMPTY;
     } else if (response.status === ApiService.CONNECTION_REFUSE) {
-      this.showError('Connection Refuse');
+      this.showError('Connection Refuse',this.duration);
       return EMPTY;
+    } else if (response.status === ApiService.CONFLICT){
+      return throwError(() => response);
     } else {
       try {
         error = response.error; // with 'text': JSON.parse(response.error);
-        this.showError(error.message + ' (' + response.status + '): ' + error.message);
+        this.showError(error.message + ' (' + response.status + '): ' + error.message,this.duration);
         return throwError(() => error);
       } catch (e) {
-        this.showError('Not response');
+        this.showError('Not response',this.duration);
         return throwError(() => response.error);
       }
     }
+  }
+
+  successful(notification = 'Successful'): ApiService{
+    debugger;
+    // @ts-ignore
+    this.successfulNotification = notification;
+    return this;
   }
 
 
@@ -158,10 +187,20 @@ export class ApiService {
     )
   }*/
   get(listUrl: string) {
+    debugger;
     return this.http
       .get(listUrl, this.createOptions())
       .pipe(
-        map(response => this.extractData(response)),
+        map(response => this.extractData(response, false)),
+        catchError(error => this.handleError(error))
+      );
+  }
+
+  put(endpoint: string, body?: object): Observable<any> {
+    return this.http
+      .put(endpoint, body, this.createOptions())
+      .pipe(
+        map(response => this.extractData(response, true)),
         catchError(error => this.handleError(error))
       );
   }

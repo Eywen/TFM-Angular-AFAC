@@ -1,0 +1,43 @@
+<div class="p-2 row g-3">
+  <div class="col-12">
+    <label for="inputNameDetail" class="form-label">Nombre</label>
+    <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [ngModel]="employeeDetail.employeeName" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName1Detail" class="form-label">Primer apellido</label>
+    <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" [ngModel]="employeeDetail.lastName1" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName2Detail" class="form-label">Segundo apellido:</label>
+    <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" [ngModel]="employeeDetail.lastName2" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmployeeCedulaDetail" class="form-label">Cédula:</label>
+    <input class="form-control " type="text" id="inputEmployeeCedulaDetail" name="inputEmployeeCedulaDetail" [ngModel]="employeeDetail.cedula" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmployeeTelephoneDetail" class="form-label">Teléfono:</label>
+    <input class="form-control " type="text"  id="inputEmployeeTelephoneDetail" name="inputEmployeeTelephoneDetail" [ngModel]="employeeDetail.telephone" disabled/>
+  </div>
+
+  <div class="col-8">
+    <label for="inputEmployeeAddressDetail" class="form-label">Dirección:</label>
+    <input class="form-control " type="text" id="inputEmployeeAddressDetail" name="inputEmployeeAddressDetail" [ngModel]="employeeDetail.address" disabled/>
+  </div>
+
+  <div class="col-md-4">
+    <label for="employeeCityDetail" class="form-label">Ciudad:</label>
+    <input class="form-control " type="text" id="employeeCityDetail" name="inputEmployeeCityDetail" [ngModel]="employeeDetail.city" disabled/>
+  </div>
+
+  <div class="p-2"></div>
+  <div class="row justify-content-right align-items-right p-2">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
+    </div>
+  </div>
+</div>

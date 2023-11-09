@@ -1,3 +1,89 @@
+<!--<div >
+  <div  *ngIf="iserrorMsg">
+    <div class="alert alert-danger" >
+      <span>{{errorMsg}}</span>
+    </div>
+  </div>
+</div>-->
+<form class="row g-3" (submit)="create(employeeform)" [formGroup]="employeeform">
+  <div class="col-12">
+    <label for="inputName" class="form-label">Nombre*</label>
+    <input type="text" class="form-control " id="inputName" name="inputName" formControlName="employeeName"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName1" class="form-label">Primer apellido*</label>
+    <input class="form-control " type="text" id="inputLastName1" name="inputLastName1" formControlName="employeeLastName1"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName2" class="form-label">Segundo apellido:</label>
+    <input class="form-control " type="text" id="inputLastName2" name="inputLastName2" formControlName="employeeLastName2"  /> <!--[(ngModel)] = employee.name-->
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmployeeCedula" class="form-label">Cédula* :</label>
+    <input class="form-control " type="text" id="inputEmployeeCedula" name="inputEmployeeCedula" formControlName="employeeCedula"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmployeeTelephone" class="form-label">Teléfono* :</label>
+    <input class="form-control " type="text"  id="inputEmployeeTelephone" name="inputEmployeeTelephone"  formControlName="employeeTelephone"  required/>
+  </div>
+
+  <div class="col-8">
+    <label for="inputEmployeeAddress" class="form-label">Dirección* :</label>
+    <input class="form-control " type="text" id="inputEmployeeAddress" name="inputEmployeeAddress" formControlName="employeeAddress"  required/>
+  </div>
+
+  <!--<div class="col-md-4">
+    <label for="employeeCity" class="form-label">Ciudad* :</label>
+    <select class="form-select"  id = "employeeCity" name = "employeeCity" formControlName="employeeCity">
+      <option selected value="Palmira">Palmira</option>
+      <option value="Tulua" >Tulua</option>
+      <option value="Sevilla">Sevilla</option>
+    </select>
+  </div>-->
+
+  <div class="col-md-4">
+    <label for="employeeCity" class="form-label">Ciudad* :</label>
+    <select class="form-select"  id = "employeeCity" name = "employeeCity" formControlName="employeeCity">
+      <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+      <!--      <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>-->
+      <!--      can use [ngValue]="c" instead of [ngValue]="c.id" where c is the complete country object.-->
+      <!--      [value]="..." only supports string values-->
+      <!--      [ngValue]="..." supports any type-->
+    </select>
+  </div>
+
+  <div class="p-2"></div>
+ <!-- <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>-->
+
+  <div class="row justify-content-center align-items-center p-4">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+      <button class="btn btn-primary" type="submit" [disabled] = "!employeeform.valid"> Enviar </button>
+    </div>
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info" type="reset" [disabled]="employeeform.pristine">Reset</button>
+    </div>
+  </div>
+</form>
+<div  >
+  <div class="alert bg-success p-2 text-white bg-opacity-50"  *ngIf="iscreateEmployee">
+<!--    <span>{{succesMsg}}</span>-->
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+    * son campos obligatorios
+  </div>
+</div>
+
+<!--
 <div class="row">
   <div class="col-md-2"></div>
   <div class="container-md col-md-8 bg-success bg-opacity-10 border ">
@@ -127,3 +213,4 @@
   </div>
   <div class="col-md-2"></div>
 </div>
+-->

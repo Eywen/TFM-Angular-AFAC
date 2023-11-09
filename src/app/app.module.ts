@@ -13,6 +13,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {CoreModule} from "./core/core.module";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {AlertComponent} from "./alert/alert.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
+import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import {AlertComponent} from "./alert/alert.component";
     CustomerAddComponent,
     NavbarComponent,
     AlertComponent,
+    EmployeeDetailComponent,
+    EmployeeUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,8 @@ import {AlertComponent} from "./alert/alert.component";
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
