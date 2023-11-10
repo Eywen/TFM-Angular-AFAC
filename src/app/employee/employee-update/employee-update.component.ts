@@ -8,6 +8,7 @@ import {FieldError, getFormErrors} from "../../../shared/model/FieldError.interf
 import {CiudadService} from "../../../shared/services/elements/ciudad.service";
 import {CityI} from "../../../shared/model/city.interface";
 import {AlertService} from "../../../shared/services/alert-service.service";
+import {UtilService} from "../../../shared/services/util.service";
 
 @Component({
   selector: 'app-employee-update',
@@ -24,11 +25,12 @@ export class EmployeeUpdateComponent {
   modalDisableTitle: string;
   selectedEmployeeId: number;
   selectedEmployeeName: string;
+  private errorValidation: string;
 
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
               private ciudadService : CiudadService,private route: ActivatedRoute,
-              private alertService: AlertService) {
+              private alertService: AlertService, private utilService: UtilService ) {
   }
   ngOnInit(){
   this.ciudadService.getCitiesList().subscribe(data => {
@@ -73,12 +75,16 @@ export class EmployeeUpdateComponent {
       let errors: FieldError[] = []
       getFormErrors(this.employeeform, "root", "", errors);
       errors.forEach(elem => {
-        this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
+        //this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
+        this.mesagge = this.utilService.getValidationEmployeeFormErrorMessagge(elem,this.mesagge);
       });
       ///this.employeeService.showMessageError(this.mesagge,20000);
       this.alertService.error(this.mesagge);
+      this.ngOnInit();
     }
   }
+
+
 
   private setFormValues() {
     this.employeeform.patchValue({
