@@ -7,7 +7,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {map, Observable} from "rxjs";
 import {Role} from "../../model/enums/Role";
 import {CONFIG} from "../../../app/config";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../environments/environment.development";
 //import {environment} from '@env';
 
 @Injectable({
@@ -15,8 +15,8 @@ import {environment} from "../../../environments/environment";
 })
 export class SessionService {
 
-  //static END_POINT = environment.REST_BACKEND + '/users/token';
-  static END_POINT = 'http://localhost:8080' + '/users/token';
+  static END_POINT = environment.REST_BACKEND + '/users/token';
+  //static END_POINT = 'http://localhost:8080' + '/users/token';
   private session: Session | null;
 
   constructor(private api: ApiService, private router: Router) {

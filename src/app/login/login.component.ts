@@ -8,6 +8,7 @@ import {SessionService} from "../../shared/services/session/session.service";
 import {AlertService} from "../../shared/services/alert-service.service";
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import {UtilService} from "../../shared/services/util.service";
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent {
   };
 
   constructor(private api:ApiService,private sessionService: SessionService,
-              private router: Router, private alertService: AlertService) {  }
+              private router: Router, private alertService: AlertService,
+              private utilService: UtilService) {  }
 
   ngOnInit() {
     this.credentials = new Credentials();
@@ -38,7 +40,6 @@ export class LoginComponent {
     this.sessionService.validateCredentials(this.credentials.username,this.credentials.password)
       .subscribe({
         next: results => {
-          console.log("ruta");
           this.handleLoginResult(results)
         },
         error: err => {
@@ -51,7 +52,20 @@ export class LoginComponent {
     this.sessionService.createSession(results.token, results.name, results.email, results.role)
       .subscribe();
     //this.router.navigate(['/home/cpanel']);
-    this.router.navigate(['home']);
+    (async () => {
+      // Do something before delay
+      //this.employeeService.showMessageSuccess(this.succesMsg ,2000);
+      this.alertService.success('Identificación correcta');
+
+      //wait time 3 s
+      await this.utilService.delaytime(3000);
+
+
+      // Do something after
+      this.router.navigate(['home']);
+    })();
+
+
   }
 
   isAuthenticated(): boolean {

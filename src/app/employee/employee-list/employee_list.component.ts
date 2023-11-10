@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {EmployeeService} from "../../../shared/services/elements/employee.service";
 import {Router} from "@angular/router";
+import {AlertService} from "../../../shared/services/alert-service.service";
+import {UtilService} from "../../../shared/services/util.service";
 
 @Component({
   selector: 'app-employee',
@@ -22,7 +24,8 @@ export class Employee_listComponent {
   modalDisableTitle: string;
   selectedEmployeeName: string;
 
-  constructor(private employeeService: EmployeeService, private router: Router){  }
+  constructor(private employeeService: EmployeeService, private router: Router,
+              private alertService: AlertService, private utilService: UtilService){  }
 
   ngOnInit(){
     this.getEmployeeActivateList();
@@ -86,7 +89,17 @@ export class Employee_listComponent {
 
   confirmDisable(employeeId: number) {
       this.employeeService.disable(employeeId).subscribe(() => {
-        this.getEmployeeActivateList();
+        (async () => {
+          // Do something before delay
+          this.alertService.success("Empleado eliminado correctamente");
+          //wait time 3 s
+          await this.utilService.delaytime(3000);
+          // Do something after
+          this.getEmployeeActivateList();
+        })();
+
+      }, error => {
+        this.alertService.error('Error al intentar eliminar el empleado, contacte con el administrador del sistema');
       });
   }
 
