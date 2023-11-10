@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/for
 import {FieldError, getFormErrors} from "../../../shared/model/FieldError.interface";
 import {CiudadService} from "../../../shared/services/elements/ciudad.service";
 import {CityI} from "../../../shared/model/city.interface";
+import {AlertService} from "../../../shared/services/alert-service.service";
 
 @Component({
   selector: 'app-employee-update',
@@ -26,7 +27,8 @@ export class EmployeeUpdateComponent {
 
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
-              private ciudadService : CiudadService,private route: ActivatedRoute) {
+              private ciudadService : CiudadService,private route: ActivatedRoute,
+              private alertService: AlertService) {
   }
   ngOnInit(){
   this.ciudadService.getCitiesList().subscribe(data => {
@@ -37,12 +39,11 @@ export class EmployeeUpdateComponent {
     this.doFormBuilder();
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log("param id: " + this.id);
       this.employeeService
         .findEmployeeById(this.id).subscribe(data => {
         this.employeeDetail = data;
-        console.log(this.employeeDetail.cedula);
-        console.log("form update valido: " + this.employeeDetail.lastName1);
+        /*console.log(this.employeeDetail.cedula);
+        console.log("form update valido: " + this.employeeDetail.lastName1);*/
         this.setFormValues();
       });
     });
@@ -64,7 +65,9 @@ export class EmployeeUpdateComponent {
     this.setFormValues();
     if (this.employeeform.valid) {
       this.employeeService.update(this.id,this.employeeDetail).subscribe(
-        data => {console.log("update: " + data)}
+        data => {
+          this.alertService.success('Empleado modificado correctamente');
+        }
       );
     } else {
       let errors: FieldError[] = []
@@ -72,7 +75,8 @@ export class EmployeeUpdateComponent {
       errors.forEach(elem => {
         this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
       });
-      this.employeeService.showMessageError(this.mesagge,20000);
+      ///this.employeeService.showMessageError(this.mesagge,20000);
+      this.alertService.error(this.mesagge);
     }
   }
 

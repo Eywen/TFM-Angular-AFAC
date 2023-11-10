@@ -23,7 +23,6 @@ export class EmployeeDetailComponent {
       this.employeeService
         .findEmployeeById(this.id).subscribe(data => {
         this.employeeDetail = data;
-        console.log(this.employeeDetail.employeeName);
       });
 
     });

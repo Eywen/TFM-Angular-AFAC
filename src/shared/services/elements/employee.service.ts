@@ -4,6 +4,7 @@ import {EmployeeI} from "../../model/Employee.interface";
 import {catchError, Observable, throwError} from "rxjs";
 import {CustomerI} from "../../model/customer.interface";
 import {environment} from "../../../environments/environment.development";
+import {AlertService} from "../alert-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class EmployeeService {
   private findAllActivate = "/readallactivate?";
   private findAllPage = "/readallpage?";
   private disableurl = "/disable";
-  constructor(private api : ApiService) {  }
+
+  constructor(private api : ApiService, private alertService: AlertService) {  }
 
   getEmployeeList ( ) : Observable<EmployeeI[]> {
     return this.api
@@ -38,13 +40,17 @@ export class EmployeeService {
       .post(EmployeeService.END_POINT_EMPLOYEE, employee)
       .pipe(
         catchError(response => {
-          if ([409].includes(response.status)){
-          //if (error.status === 409) {
+          if ([409].includes(response.status)) {
+            //if (error.status === 409) {
             // Manejo específico para el estado 409
-            const errorMessage = "El empleado con cedula: " +employee.cedula +" ya existe";
-            this.showMessageError(errorMessage,  5000);
+            const errorMessage = "El empleado con cedula: " + employee.cedula + " ya existe";
+            //this.showMessageError(errorMessage,  5000);
+            this.alertService.error(errorMessage);
+          } else {
+
+            // Si no es un error 409, propagar el error original
+            this.alertService.error("Error al crear el usuario");
           }
-          // Si no es un error 409, propagar el error original
           return throwError(response.error);
         })
       )
@@ -71,11 +77,11 @@ export class EmployeeService {
     return this.api.put(EmployeeService.END_POINT_EMPLOYEE+this.disableurl+"/"+id);
   }
 
-  showMessageError(message: string, duration:number){
+  /*showMessageError(message: string, duration:number){
     this.api.showError(message, duration);
   }
   showMessageSuccess(message: string, duration:number){
     this.api.showSucces(message, duration);
-  }
+  }*/
 
 }

@@ -9,6 +9,7 @@ import {CiudadService} from "../../../shared/services/elements/ciudad.service";
 import {CityI} from "../../../shared/model/city.interface";
 import {Route, Router} from "@angular/router";
 import {UtilService} from "../../../shared/services/util.service";
+import {AlertService} from "../../../shared/services/alert-service.service";
 
 @Component({
   selector: 'app-employee-add',
@@ -25,7 +26,8 @@ export class EmployeeAddComponent {
   cities: CityI[];
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
-              private ciudadService : CiudadService, private router: Router, private utilService: UtilService) {
+              private ciudadService : CiudadService, private router: Router, private utilService: UtilService,
+              private alertService: AlertService) {
 
     this.iserrorMsg = false;
     this.iscreateEmployee = false;
@@ -70,9 +72,12 @@ export class EmployeeAddComponent {
 
               (async () => {
                 // Do something before delay
-                this.employeeService.showMessageSuccess(this.succesMsg ,2000);
+                //this.employeeService.showMessageSuccess(this.succesMsg ,2000);
+                this.alertService.success("Empleado Creado");
 
+                //wait time 3 s
                 await this.utilService.delaytime(3000);
+
 
                 // Do something after
                 this.router.navigate(['../../../employee_list']);
