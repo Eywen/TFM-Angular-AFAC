@@ -5,7 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
 
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
@@ -26,6 +26,7 @@ import { EmployeeUpdateComponent } from './employee/employee-update/employee-upd
     AlertComponent,
     EmployeeDetailComponent,
     EmployeeUpdateComponent,
+    //CustomerListComponent,
   ],
   imports: [
     BrowserModule,

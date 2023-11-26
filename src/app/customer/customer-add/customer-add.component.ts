@@ -1,7 +1,7 @@
 import { Component, Directive, HostListener, Input, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder,Validators} from '@angular/forms';
-import {CustomerI} from "../../shared/model/customer.interface";
-import {ApiService} from '../../shared/services/api.service';
+import {CustomerI} from "../../../shared/model/customer.interface";
+import {ApiService} from '../../../shared/services/api.service';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({
@@ -37,13 +37,13 @@ export class CustomerAddComponent implements OnInit{
     if (this.loginform.valid) {
       // @ts-ignore
       const formValues: CustomerI = {
-        employeeName: this.loginform.get('customerName')?.value || null,
+       /* employeeName: this.loginform.get('customerName')?.value || null,
         lastName1: this.loginform.get('lastName1')?.value || null,
         lastName2: this.loginform.get('lastName2')?.value || null,
         cedula: this.loginform.get('cedula')?.value || null,
         address: this.loginform.get('address')?.value || null,
         city: this.loginform.get('city')?.value || null,
-        telephone: this.loginform.get('telephone')?.value || null
+        telephone: this.loginform.get('telephone')?.value || null*/
       };
 
       // Aquí puedes hacer lo que necesites con el objeto formValues, como enviarlo a través de una API, procesarlo, etc.

@@ -1,10 +1,9 @@
 export interface CustomerI {
-  employeeName: string ;
-  lastName1: string;
-  lastName2?: string | null;
-  cedula: string ;
+  id:number;
+  customerName: string ;
   city: string ;
   address: string ;
   telephone: string ;
+  closeMonthDate: Date;
 }
 
