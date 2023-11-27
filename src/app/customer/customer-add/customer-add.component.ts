@@ -55,9 +55,9 @@ export class CustomerAddComponent {
     this.customerform = this.formBuilder.group({
       customerName: ['', [Validators.required, Validators.minLength(2)]],
       customerAddress: ['', [Validators.required, Validators.minLength(4)]],
-      customerCity: ['', [Validators.required]],
+      customerCity: [''],
       customerTelephone: ['', [Validators.required, Validators.minLength(4)]],
-      customerCloseMonthDay: ['', ]
+      customerCloseMonthDay: ['']
     });
   }
 
