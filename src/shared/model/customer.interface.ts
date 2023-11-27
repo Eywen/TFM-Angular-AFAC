@@ -4,6 +4,6 @@ export interface CustomerI {
   city: string ;
   address: string ;
   telephone: string ;
-  closeMonthDate: Date;
+  closeMonthDay: number;
 }
 

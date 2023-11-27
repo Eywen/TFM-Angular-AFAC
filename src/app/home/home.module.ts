@@ -12,6 +12,7 @@ import {AlertComponent} from "../alert/alert.component";
 import {Employee_listComponent} from "../employee/employee-list/employee_list.component";
 import {AfacRoutingModule} from "./afac.routing.module";
 import {CustomerListComponent} from "../customer/customer-list/customer-list.component";
+import {CustomerDetailComponent} from "../customer/customer-detail/customer-detail.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {CustomerListComponent} from "../customer/customer-list/customer-list.com
     LoginComponent,
     //AlertComponent,
     Employee_listComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CustomerDetailComponent
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
+import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [

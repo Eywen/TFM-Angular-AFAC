@@ -1,0 +1,35 @@
+<div class="p-2 row g-3">
+  <div class="col-12">
+    <label for="inputNameDetail" class="form-label">Nombre</label>
+    <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [ngModel]="customerDetail.customerName" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCustomerTelephoneDetail" class="form-label">Teléfono:</label>
+    <input class="form-control " type="text"  id="inputCustomerTelephoneDetail" name="inputCustomerTelephoneDetail" [ngModel]="customerDetail.telephone" disabled/>
+  </div>
+
+  <div class="col-8">
+    <label for="inputCustomerAddressDetail" class="form-label">Dirección:</label>
+    <input class="form-control " type="text" id="inputCustomerAddressDetail" name="inputCustomerAddressDetail" [ngModel]="customerDetail.address" disabled/>
+  </div>
+
+  <div class="col-md-4">
+    <label for="customerCityDetail" class="form-label">Ciudad:</label>
+    <input class="form-control " type="text" id="customerCityDetail" name="inputCustomerCityDetail" [ngModel]="customerDetail.city" disabled/>
+  </div>
+
+
+  <div class="col-md-6">
+    <label for="inputCustomerCloseMonthDateDetail" class="form-label">Cédula:</label>
+    <input class="form-control " type="text" id="inputCustomerCloseMonthDateDetail" name="inputCustomerCloseMonthDateDetail" [ngModel]="customerDetail.closeMonthDay" disabled/>
+  </div>
+
+  <div class="p-2"></div>
+  <div class="row justify-content-right align-items-right p-2">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../customer_list">Volver</button>
+    </div>
+  </div>
+</div>
+
