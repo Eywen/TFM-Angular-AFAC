@@ -1,0 +1,66 @@
+<div class="p-2 row g-3">
+
+  <div class="col-12">
+    <label for="inputCustomerName" class="form-label">Nombre*</label>
+    <input type="text" class="form-control " id="inputCustomerName" name="inputCustomerName" [(ngModel)]="customerDetail.customerName"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCustomerTelephone" class="form-label">Teléfono* :</label>
+    <input class="form-control " type="text"  id="inputCustomerTelephone" name="inputCustomerTelephone"  [(ngModel)]="customerDetail.telephone"  required/>
+  </div>
+
+  <div class="col-8">
+    <label for="inputCustomerAddress" class="form-label">Dirección* :</label>
+    <input class="form-control " type="text" id="inputCustomerAddress" name="inputCustomerAddress" [(ngModel)]="customerDetail.address"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">Ciudad :</label>
+    <input class="form-control " type="text" id="inputCity" name="inputCity" [(ngModel)]="customerDetail.city"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="customerCloseMonthDay" class="form-label">Dia cierre :</label>
+    <input class="form-control " type="text" id="customerCloseMonthDay" name="customerCloseMonthDay" [(ngModel)]="customerDetail.closeMonthDay"/>
+  </div>
+
+
+  <div class="p-2"></div>
+  <div class="row justify-content-right align-items-right p-2">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+      <!--    <button class="btn btn-primary" (click)="update()" [disabled] = "!customerform.valid"> Enviar -->
+
+      <button type="button" class="btn btn-primary" [disabled] = "!customerform.valid"
+              data-bs-toggle="modal"
+              data-bs-target="#updateCustomerConfirmationModal"
+              (click)="setSelectedCustomerId(customerDetail)">Enviar
+
+      </button>
+
+    </div>
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../customer_list">Volver</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateCustomerConfirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalDisableTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro de que desea modificar el cliente:  {{selectedCustomerName}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

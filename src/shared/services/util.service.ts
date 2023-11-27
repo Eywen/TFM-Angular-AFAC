@@ -9,7 +9,7 @@ export class UtilService {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  getValidationEmployeeFormErrorMessagge(elem: FieldError, mesagge: string) {
+  getValidationFormErrorMessagge(elem: FieldError, mesagge: string) {
     let errorValidation = '';
     if (elem.errorCode === 'minlength') {
       errorValidation = 'tamaño minimo no superado';
