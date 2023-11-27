@@ -8,6 +8,7 @@ import {EmployeeAddComponent} from "../employee/employee-add/employee-add.compon
 import {EmployeeDetailComponent} from "../employee/employee-detail/employee-detail.component";
 import {EmployeeUpdateComponent} from "../employee/employee-update/employee-update.component";
 import {CustomerDetailComponent} from "../customer/customer-detail/customer-detail.component";
+import {CustomerUpdateComponent} from "../customer/customer-update/customer-update.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path: 'detailEmployee/:id', component: EmployeeDetailComponent },
       {path: 'updateEmployee/:id', component:  EmployeeUpdateComponent},
       {path: 'detailCustomer/:id', component: CustomerDetailComponent },
+      {path: 'updateCustomer/:id', component: CustomerUpdateComponent },
     ]
   },
 

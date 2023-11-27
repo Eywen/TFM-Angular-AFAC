@@ -57,4 +57,11 @@ export class CustomerService {
       )
       ;
   }
+
+  update(id: number, customer: CustomerI) {
+      return this.api
+        .put(CustomerService.END_POINT_EMPLOYEE+"/"+id,customer)
+        ;
+
+  }
 }
