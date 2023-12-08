@@ -1,0 +1,76 @@
+<div>
+  <button type="button" class="btn btn-primary" (click)="addCustomer()">Crear cliente</button>
+</div>
+<div class="p-4">
+  <table class="table  table-striped">
+    <thead>
+    <tr>
+      <th scope="col">nombre <i class="fa-solid fa-sort" (click)="sort('customerName')"></i> </th>
+      <th scope="col">Ciudad <i class="fa-solid fa-sort" (click)="sort('city')"></i> </th>
+      <th scope="col">Telefono </th>
+      <th scope="col">Fecha corte <i class="fa-solid fa-sort" (click)="sort('closeMonthDate')"></i> </th>
+      <th scope="col">  </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{customer.customerName}}</td>
+      <td>{{customer.city}}</td>
+      <td>{{customer.telephone}}</td>
+      <td>{{customer.closeMonthDay}}</td>
+      <td align="right">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <button class="btn btn-info" [routerLink]="['/afac', 'detailCustomer', customer.id]"><i class="fa-solid fa-eye"></i> Ver</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+          <button class="btn btn-warning" [routerLink]="['/afac', 'updateCustomer', customer.id]"><i class="fa-solid fa-pen-to-square"></i> Modificar</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Third group">
+          <button type="button" class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#customConfirmationCustomerModal"
+                  (click)="setSelectedCustomerId(customer)">
+            <i class="fa-solid fa-trash-can"></i>
+            Eliminar
+          </button>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="right"><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+      <td colspan="2" align="center">
+        <span *ngFor="let p of totalPages; let numPage  = index" class="cen">
+          <a style="cursor: pointer; text-decoration: none;" (click)="setPage(numPage)"
+             [ngClass]="{'text-primary': numPage == page, 'text-black': numPage != page}"> {{ numPage + 1}} &nbsp; &nbsp;</a>
+        </span>
+      </td>
+      <td><i class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="customConfirmationCustomerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{modalDisableTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Está seguro de que deseas eliminar el cliente:  {{selectedCustomerName}} ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmDisable(selectedCustomerId)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

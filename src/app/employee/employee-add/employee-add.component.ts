@@ -19,7 +19,7 @@ import {AlertService} from "../../../shared/services/alert-service.service";
 export class EmployeeAddComponent {
 
   employeeform: FormGroup;
-  succesMsg = "iniicio";
+  succesMsg = "inicio";
   iserrorMsg:boolean;
   iscreateEmployee:boolean;
   employee: EmployeeI ;

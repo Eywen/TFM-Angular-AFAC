@@ -76,7 +76,7 @@ export class EmployeeUpdateComponent {
       getFormErrors(this.employeeform, "root", "", errors);
       errors.forEach(elem => {
         //this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
-        this.mesagge = this.utilService.getValidationEmployeeFormErrorMessagge(elem,this.mesagge);
+        this.mesagge = this.utilService.getValidationFormErrorMessagge(elem,this.mesagge);
       });
       ///this.employeeService.showMessageError(this.mesagge,20000);
       this.alertService.error(this.mesagge);
