@@ -19,6 +19,7 @@ import { EmployeeDetailComponent } from './employee/employee-detail/employee-det
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
+import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
 
 @NgModule({
   declarations: [

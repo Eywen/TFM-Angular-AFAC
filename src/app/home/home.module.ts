@@ -14,6 +14,7 @@ import {AfacRoutingModule} from "./afac.routing.module";
 import {CustomerListComponent} from "../customer/customer-list/customer-list.component";
 import {CustomerDetailComponent} from "../customer/customer-detail/customer-detail.component";
 import {CustomerUpdateComponent} from "../customer/customer-update/customer-update.component";
+import {GuideHomeComponent} from "../guide/guide-home/guide-home.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {CustomerUpdateComponent} from "../customer/customer-update/customer-upda
     CustomerListComponent,
     CustomerDetailComponent,
     CustomerUpdateComponent,
+    GuideHomeComponent,
   ],
   imports: [
     CommonModule,
