@@ -26,7 +26,6 @@ import {GuideHomeComponent} from "../guide/guide-home/guide-home.component";
     CustomerListComponent,
     CustomerDetailComponent,
     CustomerUpdateComponent,
-    GuideHomeComponent,
   ],
   imports: [
     CommonModule,

@@ -29,6 +29,7 @@ import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
     AlertComponent,
     EmployeeDetailComponent,
     EmployeeUpdateComponent,
+    GuideHomeComponent,
     //CustomerListComponent,
   ],
   imports: [
