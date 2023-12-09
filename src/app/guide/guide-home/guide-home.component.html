@@ -8,15 +8,15 @@
   </div>
   <div class="col-md-6 row" >
     <div class="col-md-6">
-      <input class="form-control mr-sm-2" type="search" placeholder="Número de guia" aria-label="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Número de guia"  [(ngModel)]="numGuide"/>
     </div>
     <div class="col-md-3" >
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="findByGuideId()">Buscar</button>
     </div>
   </div>
 
   <div class="p-4">
-    <table class="table  table-striped">
+    <table class="table  table-striped" *ngIf="null != guideDetail">
       <thead>
         <tr>
           <th scope="col">Guia  </th>
@@ -29,15 +29,17 @@
         </tr>
       </thead>
       <tbody>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{guideDetail.idGuide}}</td>
+        <td>{{guideDetail.status}}</td>
+        <td>{{guideDetail.formatEntryDate}}</td>
+        <td>{{guideDetail.formatassignmentDate}}</td>
+        <td>{{guideDetail.employee.employeeName}}</td>
+        <td>{{guideDetail.customer.customerName}}</td>
         <td align="right">
           <div class="btn-group me-2" role="group" aria-label="First group">
-            <button class="btn btn-info" ><i class="fa-solid fa-eye"></i> Ver</button>
+            <button class="btn btn-info" data-bs-toggle="modal"
+                    data-bs-target="#viewGuideModal"><i class="fa-solid fa-eye"></i> Ver</button>
+
           </div>
           <div class="btn-group me-2" role="group" aria-label="Second group">
             <button class="btn btn-warning" ><i class="fa-solid fa-pen-to-square"></i> Modificar</button>
@@ -57,4 +59,77 @@
   </div>
 
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="viewGuideModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="p-2 row g-3">
+          <div class="col-12">
+            <label for="inputNameDetail" class="form-label">Número guía</label>
+            <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [ngModel]="guideDetail.idGuide" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputLastName1Detail" class="form-label">Estado</label>
+            <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" [ngModel]="guideDetail.status" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputLastName2Detail" class="form-label">Fecha entrada</label>
+            <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" [ngModel]="guideDetail.formatEntryDate" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputAssignmentDateGuideDetail" class="form-label">Fecha cargue</label>
+            <input class="form-control " type="text" id="inputAssignmentDateGuideDetail" name="inputAssignmentDateGuideDetail" [ngModel]="guideDetail.formatassignmentDate" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputDeliveryDateGuideDetail" class="form-label">Fecha entrega</label>
+            <input class="form-control " type="text" id="inputDeliveryDateGuideDetail" name="inputDeliveryDateGuideDetail" [ngModel]="guideDetail.formatDeliveryDate" disabled/>
+          </div>
+
+          <div class="col-md-10">
+            <label for="inputEmployeeGuideDetail" class="form-label">Empleado</label>
+            <input class="form-control " type="text"  id="inputEmployeeGuideDetail" name="inputEmployeeGuideDetail" [ngModel]="guideDetail.employee.employeeName" disabled/>
+          </div>
+
+          <div class="col-10">
+            <label for="inputClienteGuideDetail" class="form-label">Cliente</label>
+            <input class="form-control " type="text" id="inputClienteGuideDetail" name="inputClienteGuideDetail" [ngModel]="guideDetail.customer.customerName" disabled/>
+          </div>
+
+          <div class="col-md-4">
+            <label for="employeeCityDetail" class="form-label">Ciudad</label>
+            <input class="form-control " type="text" id="employeeCityDetail" name="inputEmployeeCityDetail" [ngModel]="guideDetail.city" disabled/>
+          </div>
+
+          <div class="col-md-4">
+            <label for="employeeAddressDetail" class="form-label">Dirección</label>
+            <input class="form-control " type="text" id="employeeAddressDetail" name="inputEmployeeCityDetail" [ngModel]="guideDetail.address" disabled/>
+          </div>
+
+          <div class="col-md-4">
+            <label for="inputTelephoneGuideDetail" class="form-label">Teléfono</label>
+            <input class="form-control " type="text" id="inputTelephoneGuideDetail" name="inputTelephoneGuideDetail" [ngModel]="guideDetail.telephone" disabled/>
+          </div>
+
+        </div>
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
