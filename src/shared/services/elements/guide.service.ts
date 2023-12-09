@@ -20,4 +20,10 @@ export class GuideService {
       .get(GuideService.END_POINT_GUIDE+"/"+id)
       ;
   }
+
+  update(numGuide: number, guide: GuideI) {
+    return this.api
+      .put(GuideService.END_POINT_GUIDE+"/"+numGuide,guide)
+      ;
+  }
 }

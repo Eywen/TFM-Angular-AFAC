@@ -25,7 +25,6 @@ export class GuideHomeComponent {
   }
 
   findByGuideId() {
-    debugger;
     this.guideService
       .findCustomerById(this.numGuide).subscribe(data => {
       this.guideDetail = data;

@@ -20,6 +20,7 @@ import { EmployeeUpdateComponent } from './employee/employee-update/employee-upd
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
 import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
+import { GuideUpdateComponent } from './guide/guide-update/guide-update.component';
 
 @NgModule({
   declarations: [
