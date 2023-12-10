@@ -14,15 +14,22 @@ export class CustomerService {
   static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/customers';
   //static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
   private findAll = "/readall";
-  private findAllActivate = "/readallactivate?";
+  //private findAllActivate = "/readallactivate?";
+  private findAllActivate = "/activate?";
   private findAllPage = "/readallpage?";
   private disableurl = "/disable";
+  private activateurl = "/activate";
 
   constructor(private api : ApiService, private alertService: AlertService) {  }
 
   getCustomerActivateListPage(page: number, size: number, order: string, asc: boolean) {
     return this.api
       .get(CustomerService.END_POINT_EMPLOYEE + this.findAllActivate + `page=${page}&size=${size}&order=${order}&asc=${asc}`);
+  }
+
+  getCustomersActivate(activate: boolean) {
+    return this.api
+      .get(CustomerService.END_POINT_EMPLOYEE + this.activateurl + "/" + activate);
   }
 
   disable(customerId: number) {
