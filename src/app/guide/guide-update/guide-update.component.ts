@@ -57,7 +57,7 @@ export class GuideUpdateComponent {
     this.route.params.subscribe(params => {
       this.numGuide = params['idguide'];
       this.guideService
-        .findCustomerById(this.numGuide).subscribe(data => {
+        .findByGuideId(this.numGuide).subscribe(data => {
         this.guideDetail = data;
         this.generateFormatDate(data);
         this.setFormValues();

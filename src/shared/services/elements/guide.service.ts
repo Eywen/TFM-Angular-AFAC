@@ -12,10 +12,11 @@ import {GuideI} from "../../model/guide.interface";
 export class GuideService {
 
   static END_POINT_GUIDE = environment.REST_BACKEND + '/guide';
+  private disableurl =  "/disable";
 
   constructor(private api : ApiService, private alertService: AlertService) {  }
 
-  findCustomerById(id: number): Observable<GuideI> {
+  findByGuideId(id: number): Observable<GuideI> {
     return this.api
       .get(GuideService.END_POINT_GUIDE+"/"+id)
       ;
@@ -25,5 +26,10 @@ export class GuideService {
     return this.api
       .put(GuideService.END_POINT_GUIDE+"/"+numGuide,guide)
       ;
+  }
+
+  disable(guideId: number) {
+    debugger;
+    return this.api.put(GuideService.END_POINT_GUIDE + this.disableurl+"/"+guideId);
   }
 }
