@@ -22,7 +22,7 @@ export class EmployeeService {
 
   getEmployeeList ( ) : Observable<EmployeeI[]> {
     return this.api
-      .get(EmployeeService.END_POINT_EMPLOYEE + this.findAll);
+      .get(EmployeeService.END_POINT_EMPLOYEE );
   }
 
   getEmployeeListPage(page: number, size: number, order: string, asc: boolean):Observable<any[]> {
