@@ -6,6 +6,7 @@ import {ApiService} from "../api.service";
 import {AlertService} from "../alert-service.service";
 import {GuideI} from "../../model/guide.interface";
 import {EmployeeI} from "../../model/Employee.interface";
+import {CityI} from "../../model/city.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class GuideService {
 
   static END_POINT_GUIDE = environment.REST_BACKEND + '/guide';
   private disableurl =  "/disable";
+  private statesurl =  "/status";
 
   constructor(private api : ApiService, private alertService: AlertService) {  }
 
@@ -54,5 +56,10 @@ export class GuideService {
       )
 
       ;
+  }
+
+  getStates(): Observable<string[]> {
+      return this.api
+        .get(GuideService.END_POINT_GUIDE + this.statesurl);
   }
 }

@@ -26,6 +26,7 @@ export class GuideAddComponent {
   cities:  CityI[];
   guideform: FormGroup;
   succesMsg: string = "";
+  states: string[];
 
   constructor(private formBuilder: FormBuilder, private guideService: GuideService,
               private ciudadService : CiudadService, private alertService : AlertService,
@@ -45,6 +46,10 @@ export class GuideAddComponent {
 
     this.customerService.getCustomersActivate(true).subscribe(data => {
       this.customers = data;
+    });
+
+    this.guideService.getStates().subscribe(data => {
+      this.states = data
     });
 
     this.doFormBuilder();

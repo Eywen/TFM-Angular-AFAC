@@ -5,8 +5,10 @@
   </div>
 
   <div class="col-md-6">
-    <label for="inputLastName1Detail" class="form-label">Estado</label>
-    <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" [(ngModel)]="guideDetail.status" />
+    <label for="inputStatusGuide" class="form-label">Estado</label>
+    <select class="form-select"  id = "inputStatusGuide" name = "inputStatusGuide" [(ngModel)]="guideDetail.status">
+      <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+    </select>
   </div>
 
   <div class="col-md-6">
@@ -94,7 +96,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ¿Está seguro de que desea Eliminar la guía:  {{selectedGuideId}} ?
+        ¿Está seguro de que desea modificar la guía:  {{selectedGuideId}} ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

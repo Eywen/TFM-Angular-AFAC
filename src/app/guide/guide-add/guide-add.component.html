@@ -6,6 +6,13 @@
     </div>
 
     <div class="col-md-6">
+      <label for="inputStatusGuide" class="form-label">Estado</label>
+      <select class="form-select"  id = "inputStatusGuide" name = "inputStatusGuide" formControlName="status" >
+        <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
       <label for="inputLastName2Detail" class="form-label">Fecha entrada</label>
       <input class="form-control " type="date" id="inputLastName2Detail" name="inputLastName2Detail" formControlName="entryDate" />
     </div>

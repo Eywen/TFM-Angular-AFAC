@@ -30,6 +30,7 @@ export class GuideUpdateComponent {
   mesagge: string;
   employees: EmployeeI[];
   customers: CustomerI[];
+  states: string[];
 
   constructor(private formBuilder: FormBuilder, private guideService: GuideService, private route: ActivatedRoute,
               private ciudadService : CiudadService, private alertService : AlertService,
@@ -41,6 +42,11 @@ export class GuideUpdateComponent {
 
     this.ciudadService.getCitiesList().subscribe(data => {
         this.cities = data;
+      }
+    );
+
+    this.guideService.getStates().subscribe(data => {
+        this.states = data;
       }
     );
 
