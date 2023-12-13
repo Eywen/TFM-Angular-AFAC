@@ -50,7 +50,7 @@ export class GuideUpdateComponent {
       }
     );
 
-    this.employeeService.getEmployeeList().subscribe(data => {
+    this.employeeService.getActivateEmployee().subscribe(data => {
       this.employees = data;
     });
 
