@@ -38,7 +38,7 @@ export class GuideUpdateComponent {
   }
 
   ngOnInit() {
-    debugger;
+
     this.ciudadService.getCitiesList().subscribe(data => {
         this.cities = data;
       }

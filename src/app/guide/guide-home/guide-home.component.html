@@ -2,7 +2,7 @@
 <div class="p-2 row g-3 ">
 
   <div class="col-md-2 row">
-    <button type="button" class="btn btn-primary" >Agregar guia</button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/afac', 'addGuide']">Agregar guia</button>
   </div>
   <div class="col-md-4">
   </div>
@@ -76,52 +76,52 @@
         <div class="p-2 row g-3">
           <div class="col-12">
             <label for="inputNameDetail" class="form-label">Número guía</label>
-            <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [ngModel]="guideDetail.idGuide" disabled/>
+            <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [ngModel]="guideDetail?.idGuide" disabled/>
           </div>
 
           <div class="col-md-6">
             <label for="inputLastName1Detail" class="form-label">Estado</label>
-            <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" [ngModel]="guideDetail.status" disabled/>
+            <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" [ngModel]="guideDetail?.status" disabled/>
           </div>
 
           <div class="col-md-6">
             <label for="inputLastName2Detail" class="form-label">Fecha entrada</label>
-            <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" [ngModel]="guideDetail.formatEntryDate" disabled/>
+            <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" [ngModel]="guideDetail?.formatEntryDate" disabled/>
           </div>
 
           <div class="col-md-6">
             <label for="inputAssignmentDateGuideDetail" class="form-label">Fecha cargue</label>
-            <input class="form-control " type="text" id="inputAssignmentDateGuideDetail" name="inputAssignmentDateGuideDetail" [ngModel]="guideDetail.formatassignmentDate" disabled/>
+            <input class="form-control " type="text" id="inputAssignmentDateGuideDetail" name="inputAssignmentDateGuideDetail" [ngModel]="guideDetail?.formatassignmentDate" disabled/>
           </div>
 
           <div class="col-md-6">
             <label for="inputDeliveryDateGuideDetail" class="form-label">Fecha entrega</label>
-            <input class="form-control " type="text" id="inputDeliveryDateGuideDetail" name="inputDeliveryDateGuideDetail" [ngModel]="guideDetail.formatDeliveryDate" disabled/>
+            <input class="form-control " type="text" id="inputDeliveryDateGuideDetail" name="inputDeliveryDateGuideDetail" [ngModel]="guideDetail?.formatDeliveryDate" disabled/>
           </div>
 
           <div class="col-md-10">
             <label for="inputEmployeeGuideDetail" class="form-label">Empleado</label>
-            <input class="form-control " type="text"  id="inputEmployeeGuideDetail" name="inputEmployeeGuideDetail" [ngModel]="guideDetail.employee.employeeName" disabled/>
+            <input class="form-control " type="text"  id="inputEmployeeGuideDetail" name="inputEmployeeGuideDetail" [ngModel]="guideDetail?.employee?.employeeName" disabled/>
           </div>
 
           <div class="col-10">
             <label for="inputClienteGuideDetail" class="form-label">Cliente</label>
-            <input class="form-control " type="text" id="inputClienteGuideDetail" name="inputClienteGuideDetail" [ngModel]="guideDetail.customer.customerName" disabled/>
+            <input class="form-control " type="text" id="inputClienteGuideDetail" name="inputClienteGuideDetail" [ngModel]="guideDetail?.customer?.customerName" disabled/>
           </div>
 
           <div class="col-md-4">
             <label for="employeeCityDetail" class="form-label">Ciudad</label>
-            <input class="form-control " type="text" id="employeeCityDetail" name="inputEmployeeCityDetail" [ngModel]="guideDetail.city" disabled/>
+            <input class="form-control " type="text" id="employeeCityDetail" name="inputEmployeeCityDetail" [ngModel]="guideDetail?.city" disabled/>
           </div>
 
           <div class="col-md-4">
             <label for="employeeAddressDetail" class="form-label">Dirección</label>
-            <input class="form-control " type="text" id="employeeAddressDetail" name="inputEmployeeCityDetail" [ngModel]="guideDetail.address" disabled/>
+            <input class="form-control " type="text" id="employeeAddressDetail" name="inputEmployeeCityDetail" [ngModel]="guideDetail?.address" disabled/>
           </div>
 
           <div class="col-md-4">
             <label for="inputTelephoneGuideDetail" class="form-label">Teléfono</label>
-            <input class="form-control " type="text" id="inputTelephoneGuideDetail" name="inputTelephoneGuideDetail" [ngModel]="guideDetail.telephone" disabled/>
+            <input class="form-control " type="text" id="inputTelephoneGuideDetail" name="inputTelephoneGuideDetail" [ngModel]="guideDetail?.telephone" disabled/>
           </div>
         </div>
 

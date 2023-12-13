@@ -16,6 +16,7 @@ import {CustomerDetailComponent} from "../customer/customer-detail/customer-deta
 import {CustomerUpdateComponent} from "../customer/customer-update/customer-update.component";
 import {GuideHomeComponent} from "../guide/guide-home/guide-home.component";
 import {GuideUpdateComponent} from "../guide/guide-update/guide-update.component";
+import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {GuideUpdateComponent} from "../guide/guide-update/guide-update.component
     CustomerDetailComponent,
     CustomerUpdateComponent,
     GuideUpdateComponent,
+    GuideAddComponent,
   ],
   imports: [
     CommonModule,

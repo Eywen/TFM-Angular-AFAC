@@ -24,8 +24,11 @@ export class GuideHomeComponent {
   }
 
   ngOnInit(){
-    /*debugger;
-    this.findByGuideId();*/
+    this.iniGuideToEmpty();
+  }
+
+  private iniGuideToEmpty() {
+
   }
 
   findByGuideId() {

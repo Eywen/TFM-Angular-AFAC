@@ -52,7 +52,7 @@
     </div>
 
     <div class="col-md-4">
-      <label for="employeeCityDetail" class="form-label">Ciudad* :</label>
+      <label for="employeeCityDetail" class="form-label">Ciudad :</label>
       <select class="form-select"  id = "employeeCityDetail" name = "employeeCityDetail" [(ngModel)]="guideDetail.city">
         <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
       </select>

@@ -1,10 +1,11 @@
 import {Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment.development";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {CustomerI} from "../../model/customer.interface";
 import {ApiService} from "../api.service";
 import {AlertService} from "../alert-service.service";
 import {GuideI} from "../../model/guide.interface";
+import {EmployeeI} from "../../model/Employee.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,29 @@ export class GuideService {
   }
 
   disable(guideId: number) {
-    debugger;
     return this.api.put(GuideService.END_POINT_GUIDE + this.disableurl+"/"+guideId);
+  }
+
+  createGuide(guide: GuideI): Observable<GuideI> {
+    return this.api
+      .post(GuideService.END_POINT_GUIDE, guide)
+      .pipe(
+        catchError(response => {
+          if ([409].includes(response.status)) {
+            //if (error.status === 409) {
+            // Manejo específico para el estado 409
+            const errorMessage = "La guia: " + guide.idGuide + " ya existe";
+            //this.showMessageError(errorMessage,  5000);
+            this.alertService.error(errorMessage);
+          } else {
+
+            // Si no es un error 409, propagar el error original
+            this.alertService.error("Error al crear la guia");
+          }
+          return throwError(response.error);
+        })
+      )
+
+      ;
   }
 }

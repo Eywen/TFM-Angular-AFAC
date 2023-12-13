@@ -1,0 +1,68 @@
+<div class="p-2 row g-3">
+  <form class="row g-3" (submit)="create(guideform)" [formGroup]="guideform">
+    <div class="col-12">
+      <label for="inputNameDetail" class="form-label">Número guía</label>
+      <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail" formControlName="idGuide"  required/>
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputLastName2Detail" class="form-label">Fecha entrada</label>
+      <input class="form-control " type="date" id="inputLastName2Detail" name="inputLastName2Detail" formControlName="entryDate" />
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputAssignmentDateguide" class="form-label">Fecha cargue</label>
+      <input class="form-control " type="date" id="inputAssignmentDateguide" name="inputAssignmentDateguide" formControlName="assignmentDate" />
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputDeliveryDateguide" class="form-label">Fecha entrega</label>
+      <input class="form-control " type="date" id="inputDeliveryDateguide" name="inputDeliveryDateguide" formControlName="deliveryDate" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="inputEmployeeGuide" class="form-label">Empleado</label>
+      <select class="form-select"  id = "inputEmployeeGuide" name = "inputEmployeeGuide" formControlName="employee" >
+        <option *ngFor="let employee of employees" [ngValue]="employee">{{employee.employeeName}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="inputClienteGuide" class="form-label">Cliente</label>
+      <select class="form-select"  id = "inputClienteGuide" name = "inputClienteGuide" formControlName="customer">
+        <option *ngFor="let customer of customers" [ngValue]="customer">{{customer.customerName}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="employeeCityDetail" class="form-label">Ciudad</label>
+      <select class="form-select"  id = "employeeCityDetail" name = "employeeCityDetail" formControlName="city" >
+        <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="employeerecipientDetail" class="form-label">Destinatario</label>
+      <input class="form-control " type="text" id="employeerecipientDetail" name="employeerecipientDetail" formControlName="recipient" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="employeeAddressDetail" class="form-label">Dirección</label>
+      <input class="form-control " type="text" id="employeeAddressDetail" name="inputEmployeeCityDetail" formControlName="address" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="inputTelephoneguide" class="form-label">Teléfono</label>
+      <input class="form-control " type="text" id="inputTelephoneguide" name="inputTelephoneguide" formControlName="telephone" />
+    </div>
+
+    <div class="row justify-content-center align-items-center p-4">
+      <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+        <button class="btn btn-primary" type="submit" > Enviar </button>
+      </div>
+      <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+        <button class="btn btn-info" type="reset" >Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
