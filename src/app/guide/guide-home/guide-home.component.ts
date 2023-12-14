@@ -4,6 +4,7 @@ import {GuideI} from "../../../shared/model/guide.interface";
 import {DatePipe, formatDate} from "@angular/common";
 import {AlertService} from "../../../shared/services/alert-service.service";
 import {UtilService} from "../../../shared/services/util.service";
+import {SearchGuideI} from "../../../shared/model/searchGuideOption";
 
 
 @Component({
@@ -19,12 +20,19 @@ export class GuideHomeComponent {
   modalTitle: string = "Detalle Guía";
   selectedGuideId: number;
   modalDisableTitle: string;
+  searchOptionList: SearchGuideI[];
+  searchOption: string;
 
   constructor(private guideService: GuideService, private alertService: AlertService, private utilService: UtilService) {
   }
 
   ngOnInit(){
     this.iniGuideToEmpty();
+
+    this.guideService.getSearchOption().subscribe(data => {
+      debugger;
+      this.searchOptionList = data;
+    });
   }
 
   private iniGuideToEmpty() {
@@ -32,6 +40,7 @@ export class GuideHomeComponent {
   }
 
   findByGuideId() {
+    console.log("busqueda: " + this.searchOption);
     this.guideService
       .findByGuideId(this.numGuide).subscribe(data => {
       this.guideDetail = data;

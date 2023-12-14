@@ -7,6 +7,7 @@ import {AlertService} from "../alert-service.service";
 import {GuideI} from "../../model/guide.interface";
 import {EmployeeI} from "../../model/Employee.interface";
 import {CityI} from "../../model/city.interface";
+import {SearchGuideI} from "../../model/searchGuideOption";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class GuideService {
   static END_POINT_GUIDE = environment.REST_BACKEND + '/guide';
   private disableurl =  "/disable";
   private statesurl =  "/status";
+  private searchoptionurl =  "/searchoption";
 
   constructor(private api : ApiService, private alertService: AlertService) {  }
 
@@ -61,5 +63,10 @@ export class GuideService {
   getStates(): Observable<string[]> {
       return this.api
         .get(GuideService.END_POINT_GUIDE + this.statesurl);
+  }
+
+  getSearchOption():Observable<SearchGuideI[]> {
+    return this.api
+      .get(GuideService.END_POINT_GUIDE + this.searchoptionurl);
   }
 }
