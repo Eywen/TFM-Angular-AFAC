@@ -13,6 +13,7 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 import {CustomerService} from "../../../shared/services/elements/customer.service";
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {CustomerI} from "../../../shared/model/customer.interface";
+import {SearchGuideI} from "../../../shared/model/searchGuideOption";
 
 @Component({
   selector: 'app-guide-update',

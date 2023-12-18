@@ -17,6 +17,7 @@ export class GuideService {
   static END_POINT_GUIDE = environment.REST_BACKEND + '/guide';
   private disableurl =  "/disable";
   private statesurl =  "/status";
+  private search ="/search";
   private searchoptionurl =  "/searchoption";
 
   constructor(private api : ApiService, private alertService: AlertService) {  }
@@ -67,6 +68,11 @@ export class GuideService {
 
   getSearchOption():Observable<SearchGuideI[]> {
     return this.api
-      .get(GuideService.END_POINT_GUIDE + this.searchoptionurl);
+      .get(GuideService.END_POINT_GUIDE + this.search + this.searchoptionurl);
+  }
+
+  findSearchOption(searchOption: string, searchValue: string):Observable<GuideI[]> {
+    return this.api
+      .get(GuideService.END_POINT_GUIDE + this.search + "/" + searchOption + "/" + searchValue);
   }
 }
