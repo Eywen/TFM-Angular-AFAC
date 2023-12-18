@@ -62,10 +62,10 @@ export class GuideHomeComponent {
   }
 
   findSearchOption() {
-    console.log("busqueda: " + this.searchOption);
     this.guideService
       .findSearchOption(this.searchOption, this.searchValue).subscribe(data => {
       this.guideSearch = data;
+      this.clearSearchById();
       this.guideSearch.forEach(guide => {
         guide.formatEntryDate = formatDate(guide.entryDate, 'yyyy-MM-dd','en-US');
         guide.formatassignmentDate = formatDate(guide.assignmentDate, 'yyyy-MM-dd','en-US');
@@ -99,5 +99,10 @@ export class GuideHomeComponent {
   private clearSearchOptions() {
     this.searchOption = "";
     this.searchValue = "";
+  }
+
+  private clearSearchById(){
+    // @ts-ignore
+    this.numGuide = null;
   }
 }
