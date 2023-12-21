@@ -30,7 +30,6 @@ export class GuideHomeComponent {
   }
 
   ngOnInit(){
-    this.iniGuideToEmpty();
 
     this.guideService.getSearchOption().subscribe(data => {
       debugger;
@@ -38,9 +37,6 @@ export class GuideHomeComponent {
     });
   }
 
-  private iniGuideToEmpty() {
-
-  }
 
   findByGuideId() {
     console.log("busqueda: " + this.numGuide);
