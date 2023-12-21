@@ -18,7 +18,8 @@
 
       <div class="col-md-1"></div>
       <div class="col-md-5">
-        <input class="form-control mr-sm-2" type="search" placeholder="valor de busqueda de guia"  [(ngModel)]="searchValue"/>
+        <input class="form-control mr-sm-2" type="text" placeholder = ""  [(ngModel)]="searchValue" *ngIf="!isDateOption()"/>
+        <input class="form-control mr-sm-2" type="Date" placeholder=""  [(ngModel)]="searchValue" *ngIf="isDateOption()"/>
       </div>
 
       <div class="col-md-3" >

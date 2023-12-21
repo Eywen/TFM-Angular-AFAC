@@ -5,6 +5,7 @@ import {DatePipe, formatDate} from "@angular/common";
 import {AlertService} from "../../../shared/services/alert-service.service";
 import {UtilService} from "../../../shared/services/util.service";
 import {SearchGuideI} from "../../../shared/model/searchGuideOption";
+import {Observable, of} from "rxjs";
 
 
 @Component({
@@ -49,13 +50,20 @@ export class GuideHomeComponent {
       this.guideDetail.formatEntryDate = formatDate(data.entryDate, 'yyyy-MM-dd','en-US');
       this.guideDetail.formatassignmentDate = formatDate(data.assignmentDate, 'yyyy-MM-dd','en-US');
       this.guideDetail.formatDeliveryDate = formatDate(data.deliveryDate, 'yyyy-MM-dd','en-US');
-      this.clearDetailGuideTable();
-      this.clearSearchOptions();
+      debugger;
+      if (undefined != this.guideSearch) {
+        this.clearDetailGuideTable();
+      } else {
+        this.guideSearch = new Array(0);
+      }
       this.guideSearch.push(this.guideDetail);
+      this.clearSearchOptions();
+
     });
   }
 
   private clearDetailGuideTable() {
+    debugger;
     if(this.guideSearch.length > 0) {
       this.guideSearch = new Array(0);
     }
@@ -104,5 +112,21 @@ export class GuideHomeComponent {
   private clearSearchById(){
     // @ts-ignore
     this.numGuide = null;
+  }
+
+  isDateOption():boolean{
+    let x =
+     this.searchOption === "ENTRY_DATE" ||
+      this.searchOption === "ASSIGNMENT_DATE" ||
+      this.searchOption === "DELIVERY_DATE";
+    return x;
+  }
+
+  isDateOption1():Observable<boolean>{
+    debugger;
+    let x = this.searchOption === "ENTRY_DATE" ||
+      this.searchOption === "ASSIGNMENT_DATE" ||
+      this.searchOption === "DELIVERY_DATE";
+    return of(x);
   }
 }
