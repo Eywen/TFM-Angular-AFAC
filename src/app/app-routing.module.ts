@@ -5,12 +5,14 @@ import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
 import {Employee_listComponent} from "./employee/employee-list/employee_list.component";
 import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
+import {GuideHomeComponent} from "./guide/guide-home/guide-home.component";
 //import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'afac'},
   {path: 'employee_list', component: Employee_listComponent },
   {path: 'customer_list', component: CustomerListComponent },
+  {path: 'home_guide', component: GuideHomeComponent },
   /*{path: 'login', component: LoginComponent },*/
   {path: 'home', component: HomeComponent },
   {path: 'afac', loadChildren: () => import('./home/home.module').then(module => module.HomeModule)}, // lazy load

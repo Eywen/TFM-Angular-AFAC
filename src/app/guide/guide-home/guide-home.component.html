@@ -1,0 +1,193 @@
+<div class="p-5">
+<div class="p-2 row g-3 ">
+
+  <div class="col-md-3 ">
+    <button type="button" class="btn btn-primary" [routerLink]="['/afac', 'addGuide']">Agregar guia</button>
+  </div>
+
+
+  <!--<div class="col-md-9 border border-success rounded" >-->
+  <div class="col-md-9  " >
+    <div class="input-group ">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Opcion</label>
+      </div>
+      <select class="form-select" id="inputGroupSelect01" name = "inputStatusGuide" [(ngModel)]="searchOption" >
+        <option *ngFor="let option of searchOptionList" [ngValue]="option.name">{{option.strState}}</option>
+      </select>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <input class="form-control mr-sm-2" type="text" placeholder = ""  [(ngModel)]="searchValue" *ngIf="!isDateOption()"/>
+        <input class="form-control mr-sm-2" type="Date" placeholder=""  [(ngModel)]="searchValue" *ngIf="isDateOption()"/>
+      </div>
+
+      <div class="col-md-3" >
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="findSearchOption()">Buscar</button>
+      </div>
+
+
+    </div>
+    <div class="input-group ">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <input class="form-control mr-sm-2" type="search" placeholder="Numero de guia a buscar"  [(ngModel)]="numGuide"/>
+      </div>
+
+      <div class="col-md-3" >
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="findByGuideId()">Buscar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="p-4">
+    <table class="table  table-striped" >  <!--*ngIf="null != guideDetail"-->
+      <thead>
+        <tr>
+          <th scope="col">Guia  </th>
+          <th scope="col">Estado  </th>
+          <th scope="col">Fecha entrada  </th>
+          <th scope="col">Fecha cargue trabajador  </th>
+          <th scope="col">Trabajador </th>
+          <th scope="col">Cliente  </th>
+          <th scope="col">Activo  </th>
+          <th scope="col">  </th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let guide of guideSearch">
+        <td>{{guide.idGuide}}</td>
+        <td>{{guide.status}}</td>
+        <td>{{guide.formatEntryDate}}</td>
+        <td>{{guide.formatassignmentDate}}</td>
+        <td>{{guide.employee.employeeName}}</td>
+        <td>{{guide.customer.customerName}}</td>
+        <td>{{guide.activate}}</td>
+
+<!--        <td>{{guideDetail.idGuide}}</td>
+        <td>{{guideDetail.status}}</td>
+        <td>{{guideDetail.formatEntryDate}}</td>
+        <td>{{guideDetail.formatassignmentDate}}</td>
+        <td>{{guideDetail.employee.employeeName}}</td>
+        <td>{{guideDetail.customer.customerName}}</td>
+        <td>{{guideDetail.activate}}</td>-->
+        <td align="right">
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <button class="btn btn-info" data-bs-toggle="modal"
+                    data-bs-target="#viewGuideModal"
+                    (click)="setSelectedEmployeeId(guide)">
+              <i class="fa-solid fa-eye"></i> Ver
+            </button>
+          </div>
+          <div class="btn-group me-2" role="group" aria-label="Second group">
+            <button class="btn btn-warning" [routerLink]="['/afac', 'updateGuide', guide.idGuide]"
+                    [disabled]="!guide.activate"><i class="fa-solid fa-pen-to-square"></i> Modificar</button>
+          </div>
+          <div class="btn-group" role="group" aria-label="Third group">
+            <button type="button" class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#customConfirmationModal"
+                    (click)="setSelectedEmployeeId(guide)"
+                    [disabled]="!guide.activate">
+              <i class="fa-solid fa-trash-can"></i>
+              Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+  <!-- Modal detalle-->
+  <div class="modal fade" id="viewGuideModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="p-2 row g-3">
+          <div class="col-12">
+            <label for="inputNameDetail" class="form-label">Número guía</label>
+            <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail" *ngIf="guideDetail && guideDetail.idGuide"  [ngModel]="guideDetail.idGuide"
+                    disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputLastName1Detail" class="form-label">Estado</label>
+            <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" *ngIf="guideDetail && guideDetail.status"  [ngModel]="guideDetail.status" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputLastName2Detail" class="form-label">Fecha entrada</label>
+            <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" *ngIf="guideDetail && guideDetail.formatEntryDate"  [ngModel]="guideDetail.formatEntryDate" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputAssignmentDateGuideDetail" class="form-label">Fecha cargue</label>
+            <input class="form-control " type="text" id="inputAssignmentDateGuideDetail" name="inputAssignmentDateGuideDetail" *ngIf="guideDetail && guideDetail.formatassignmentDate" [ngModel]="guideDetail.formatassignmentDate" disabled/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputDeliveryDateGuideDetail" class="form-label">Fecha entrega</label>
+            <input class="form-control " type="text" id="inputDeliveryDateGuideDetail" name="inputDeliveryDateGuideDetail" *ngIf="guideDetail && guideDetail.formatDeliveryDate"  [ngModel]="guideDetail.formatDeliveryDate" disabled/>
+          </div>
+
+          <div class="col-md-10">
+            <label for="inputEmployeeGuideDetail" class="form-label">Empleado</label>
+            <input class="form-control " type="text"  id="inputEmployeeGuideDetail" name="inputEmployeeGuideDetail" *ngIf="guideDetail && guideDetail.employee && guideDetail.employee.employeeName"  [ngModel]="guideDetail.employee.employeeName" disabled/>
+          </div>
+
+          <div class="col-10">
+            <label for="inputClienteGuideDetail" class="form-label">Cliente</label>
+            <input class="form-control " type="text" id="inputClienteGuideDetail" name="inputClienteGuideDetail" *ngIf="guideDetail && guideDetail.customer && guideDetail.customer.customerName"  [ngModel]="guideDetail.customer.customerName" disabled/>
+          </div>
+
+          <div class="col-md-4">
+            <label for="employeeCityDetail" class="form-label">Ciudad</label>
+            <input class="form-control " type="text" id="employeeCityDetail" name="inputEmployeeCityDetail" *ngIf="guideDetail && guideDetail.city"  [ngModel]="guideDetail.city" disabled/>
+          </div>
+
+          <div class="col-md-4">
+            <label for="employeeAddressDetail" class="form-label">Dirección</label>
+            <input class="form-control " type="text" id="employeeAddressDetail" name="inputEmployeeCityDetail" *ngIf="guideDetail && guideDetail.address" [ngModel]="guideDetail.address" disabled/>
+          </div>
+
+          <div class="col-md-4">
+            <label for="inputTelephoneGuideDetail" class="form-label">Teléfono</label>
+            <input class="form-control " type="text" id="inputTelephoneGuideDetail" name="inputTelephoneGuideDetail" *ngIf="guideDetail && guideDetail.telephone"  [ngModel]="guideDetail.telephone" disabled/>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="customConfirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalDisableTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro de que deseas eliminar la guia:  {{selectedGuideId}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmDisable(selectedGuideId)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
