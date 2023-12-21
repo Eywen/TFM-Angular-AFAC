@@ -1,0 +1,107 @@
+<div class="p-2 row g-3">
+  <div class="col-12">
+    <label for="inputNameDetail" class="form-label">Número guía</label>
+    <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [(ngModel)]="guideDetail.idGuide" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputStatusGuide" class="form-label">Estado</label>
+    <select class="form-select"  id = "inputStatusGuide" name = "inputStatusGuide" [(ngModel)]="guideDetail.status">
+      <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName2Detail" class="form-label">Fecha entrada</label>
+    <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" [(ngModel)]="guideDetail.formatEntryDate" />
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputAssignmentDateGuideDetail" class="form-label">Fecha cargue</label>
+    <input class="form-control " type="text" id="inputAssignmentDateGuideDetail"
+           name="inputAssignmentDateGuideDetail" [(ngModel)]="guideDetail.formatassignmentDate" />
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputDeliveryDateGuideDetail" class="form-label">Fecha entrega</label>
+    <input class="form-control " type="text" id="inputDeliveryDateGuideDetail"
+           name="inputDeliveryDateGuideDetail" [(ngModel)]="guideDetail.formatDeliveryDate" />
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputEmployeeGuideDetail" class="form-label">Empleado:</label>
+    <select class="form-select"  id = "inputEmployeeGuideDetail" name = "inputEmployeeGuideDetail" [(ngModel)]="guideDetail.employee">
+      <option *ngFor="let employee of employees" [ngValue]="employee">{{employee.employeeName}}</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputClienteGuideDetail" class="form-label">Cliente :</label>
+    <select class="form-select"  id = "inputClienteGuideDetail" name = "inputClienteGuideDetail" [(ngModel)]="guideDetail.customer">
+      <option *ngFor="let customer of customers" [ngValue]="customer">{{customer.customerName}}</option>
+    </select>
+  </div>
+
+  <div class="p-2 row g-3">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Datos envio</h5>
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputRecipientGuideDetail" class="form-label">Destinatario</label>
+      <input class="form-control " type="text" id="inputRecipientGuideDetail"
+             name="inputRecipientGuideDetail" [(ngModel)]="guideDetail.recipient" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="employeeCityDetail" class="form-label">Ciudad :</label>
+      <select class="form-select"  id = "employeeCityDetail" name = "employeeCityDetail" [(ngModel)]="guideDetail.city">
+        <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="employeeAddressDetail" class="form-label">Dirección</label>
+      <input class="form-control " type="text" id="employeeAddressDetail"
+             name="inputEmployeeCityDetail" [(ngModel)]="guideDetail.address" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="inputTelephoneGuideDetail" class="form-label">Teléfono</label>
+      <input class="form-control " type="text" id="inputTelephoneGuideDetail"
+             name="inputTelephoneGuideDetail" [(ngModel)]="guideDetail.telephone" />
+    </div>
+  </div>
+
+  <div class="row justify-content-right align-items-right p-2">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+      <button type="button" class="btn btn-primary" [disabled] = "!guideform.valid"
+              data-bs-toggle="modal"
+              data-bs-target="#updateGuideConfirmationModal"
+              (click)="setSelectedGuideId(guideDetail)">Enviar
+      </button>
+    </div>
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../home_guide">Volver</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateGuideConfirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalUpdateTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro de que desea modificar la guía:  {{selectedGuideId}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>

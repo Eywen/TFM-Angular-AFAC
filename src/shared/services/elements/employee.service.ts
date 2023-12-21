@@ -17,12 +17,18 @@ export class EmployeeService {
   private findAllActivate = "/readallactivate?";
   private findAllPage = "/readallpage?";
   private disableurl = "/disable";
+  private findByActivateurl = "/activate";
 
   constructor(private api : ApiService, private alertService: AlertService) {  }
 
   getEmployeeList ( ) : Observable<EmployeeI[]> {
     return this.api
-      .get(EmployeeService.END_POINT_EMPLOYEE + this.findAll);
+      .get(EmployeeService.END_POINT_EMPLOYEE );
+  }
+
+  getActivateEmployee ( ) : Observable<EmployeeI[]> {
+    return this.api
+      .get(EmployeeService.END_POINT_EMPLOYEE + this.findByActivateurl + "/true");
   }
 
   getEmployeeListPage(page: number, size: number, order: string, asc: boolean):Observable<any[]> {

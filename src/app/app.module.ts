@@ -19,6 +19,9 @@ import { EmployeeDetailComponent } from './employee/employee-detail/employee-det
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
+import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
+import { GuideUpdateComponent } from './guide/guide-update/guide-update.component';
+import { GuideAddComponent } from './guide/guide-add/guide-add.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { CustomerUpdateComponent } from './customer/customer-update/customer-upd
     AlertComponent,
     EmployeeDetailComponent,
     EmployeeUpdateComponent,
+    GuideHomeComponent,
     //CustomerListComponent,
   ],
   imports: [

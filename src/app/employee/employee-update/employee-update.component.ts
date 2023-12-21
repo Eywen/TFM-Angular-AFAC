@@ -44,8 +44,6 @@ export class EmployeeUpdateComponent {
       this.employeeService
         .findEmployeeById(this.id).subscribe(data => {
         this.employeeDetail = data;
-        /*console.log(this.employeeDetail.cedula);
-        console.log("form update valido: " + this.employeeDetail.lastName1);*/
         this.setFormValues();
       });
     });
