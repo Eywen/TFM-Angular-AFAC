@@ -30,7 +30,7 @@ export class GuideHomeComponent {
   }
 
   ngOnInit(){
-
+    this.utilService.setShowHome(false);
     this.guideService.getSearchOption().subscribe(data => {
       debugger;
       this.searchOptionList = data;
