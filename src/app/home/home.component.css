@@ -43,7 +43,7 @@ p {
   margin: 9vh 15%;
 }
 .context {
-  width: 50%;
+  width: 100%;
   position: absolute;
   top:10vh;
 }
@@ -52,15 +52,15 @@ p {
   background: #29a446;
   background: linear-gradient(to left, #3b7b50 , #29a446 );
   width: 100%;
-  height:100vh;
+  height:87vh;
 }
 
 .circles{
   position: absolute;
-  top: 20%;
+  top: 7%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 93%;
   overflow: hidden;
 }
 
@@ -174,7 +174,7 @@ p {
     height: 100vh;
   }
 
-  .container{
+  .containerHome{
     width: 80%;
     margin:  7% auto;
     display: grid;
@@ -206,7 +206,7 @@ p {
 }
 
 @media (min-width: 425px) and (max-width: 1024px) {
-  .container{
+  .containerHome{
     width: 80%;
     margin:  7% auto;
     display: grid;

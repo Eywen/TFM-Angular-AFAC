@@ -16,7 +16,6 @@
 }
 
 .xxwrapper {
-  margin-top: auto;
-  max-width: 800vw;
-  margin: auto;
+  margin-top: 35px;
+  max-width: 900vw;
 }
