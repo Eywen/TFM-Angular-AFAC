@@ -33,6 +33,7 @@ export class LoginComponent {
 
   ngOnInit() {
     this.credentials = new Credentials();
+    this.utilService.setShowHome(false);
   }
 
   public login(): void {
