@@ -2,3 +2,20 @@
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 }
+
+.wrapper {
+  margin-top: 50px;
+  max-width: 800vw;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+.contenedor{
+  max-width: 800vw;
+
+}
+
+.xxwrapper {
+  margin-top: 35px;
+  max-width: 900vw;
+}

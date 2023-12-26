@@ -1,0 +1,56 @@
+<!--<div >
+  <div  *ngIf="iserrorMsg">
+    <div class="alert alert-danger" >
+      <span>{{errorMsg}}</span>
+    </div>
+  </div>
+</div>-->
+<form class="row g-3" (submit)="create(customerform)" [formGroup]="customerform">
+  <div class="col-12">
+    <label for="inputCustomerName" class="form-label">Nombre*</label>
+    <input type="text" class="form-control " id="inputCustomerName" name="inputCustomerName" formControlName="customerName"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCustomerTelephone" class="form-label">Teléfono* :</label>
+    <input class="form-control " type="text"  id="inputCustomerTelephone" name="inputCustomerTelephone"  formControlName="customerTelephone"  required/>
+  </div>
+
+  <div class="col-8">
+    <label for="inputCustomerAddress" class="form-label">Dirección* :</label>
+    <input class="form-control " type="text" id="inputCustomerAddress" name="inputCustomerAddress" formControlName="customerAddress"  required/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">Ciudad :</label>
+    <input class="form-control " type="text" id="inputCity" name="inputCity" formControlName="customerCity"  />
+  </div>
+
+  <div class="col-md-6">
+    <label for="customerCloseMonthDay" class="form-label">Dia cierre :</label>
+    <input class="form-control " type="text" id="customerCloseMonthDay" name="customerCloseMonthDay" formControlName="customerCloseMonthDay"/>
+  </div>
+
+  <div class="p-2"></div>
+
+  <div class="row justify-content-center align-items-center p-4">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+      <button class="btn btn-primary" type="submit" [disabled] = "!customerform.valid"> Enviar </button>
+    </div>
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info" type="reset" [disabled]="customerform.pristine">Reset</button>
+    </div>
+  </div>
+</form>
+<div  >
+  <div class="alert bg-success p-2 text-white bg-opacity-50"  *ngIf="iscreateEmployee">
+    <!--    <span>{{succesMsg}}</span>-->
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+    * son campos obligatorios
+  </div>
+</div>

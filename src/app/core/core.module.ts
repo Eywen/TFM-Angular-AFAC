@@ -15,7 +15,7 @@ import {TokenInterceptor} from "./tokeninterceptor";
   ],
   providers: [
     SessionService,
-   ApiService,
+    ApiService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,

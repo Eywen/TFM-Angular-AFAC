@@ -62,10 +62,10 @@
 <!--<ng-container *ngIf="isAuthenticated() else notAutenthicated"> autenticado-->
 <ng-container >
 <!--<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark " data-bs-theme="dark" >-->
-  <nav class="navbar navbar-dark navbar-expand-lg border-bottom border-bottom-dark bg-success">
+  <nav class="navbar navbar-dark navbar-expand-lg border-bottom border-bottom-dark bg-success ">
 
   <div class="container-fluid d-flex">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" >AFAC</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -75,22 +75,27 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#">Features</a>
-        </li>
         <li class="nav-item dropdown" *ngIf="isAuthenticated()">
           <a class="nav-link dropdown-toggle me-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Empleado
+            Empleado_old
           </a>
           <ul class="dropdown-menu" >
-            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>
+<!--            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>-->
+            <li><a class="dropdown-item" routerLink="/afac/addEmployee" *ngIf="isAuthenticated()">Crear</a></li>
             <li><a class="dropdown-item" href="#">Modificar</a></li>
             <li><a class="dropdown-item" href="#">Ver</a></li>
             <li><a class="dropdown-item" href="#">Desahabilitar</a></li>
           </ul>
         </li>
-
-
+        <li class="nav-item">
+          <a class="nav-link " routerLink="employee_list">Empleado</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="customer_list">Cliente</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="home_guide">Guia</a>
+        </li>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
         <li class="nav-item dropdown ">
@@ -98,7 +103,7 @@
             Login
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/home/login" *ngIf="!isAuthenticated()">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/afac/login" *ngIf="!isAuthenticated()">Login</a></li>
             <li><a class="dropdown-item" (click)="logout()" *ngIf="isAuthenticated()">Logout</a></li>
           </ul>
         </li>

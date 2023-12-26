@@ -4,36 +4,48 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
 
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import { HomeComponent } from './home/home.component';
-import {LoginComponent} from "./login/login.component";
-import { AlertComponent } from './alert/alert.component';
-
-
+import {CoreModule} from "./core/core.module";
+import {NavbarComponent} from "./navbar/navbar.component";
+import {AlertComponent} from "./alert/alert.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
+import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
+import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
+import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
+import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
+import { GuideUpdateComponent } from './guide/guide-update/guide-update.component';
+import { GuideAddComponent } from './guide/guide-add/guide-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    //NavbarComponent,
     CustomerAddComponent,
-    //LoginComponent,
-    //HomeComponent
+    NavbarComponent,
+    AlertComponent,
+    EmployeeDetailComponent,
+    EmployeeUpdateComponent,
+    GuideHomeComponent,
+    //CustomerListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

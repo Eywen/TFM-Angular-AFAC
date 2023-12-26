@@ -1,0 +1,79 @@
+<div class="p-2 row g-3">
+  <div class="col-12">
+    <label for="inputNameDetail" class="form-label">Nombre</label>
+    <input class="form-control " type="text" id="inputNameDetail" name="inputNameDetail"  [(ngModel)]="employeeDetail.employeeName" />
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName1Detail" class="form-label">Primer apellido</label>
+    <input class="form-control " type="text" id="inputLastName1Detail" name="inputLastName1Detail" [(ngModel)]="employeeDetail.lastName1" />
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLastName2Detail" class="form-label">Segundo apellido:</label>
+    <input class="form-control " type="text" id="inputLastName2Detail" name="inputLastName2Detail" [(ngModel)]="employeeDetail.lastName2" />
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmployeeCedulaDetail" class="form-label">Cédula:</label>
+    <input class="form-control " type="text" id="inputEmployeeCedulaDetail" name="inputEmployeeCedulaDetail" [(ngModel)]="employeeDetail.cedula" disabled/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmployeeTelephoneDetail" class="form-label">Teléfono:</label>
+    <input class="form-control " type="text"  id="inputEmployeeTelephoneDetail" name="inputEmployeeTelephoneDetail" [(ngModel)]="employeeDetail.telephone" />
+  </div>
+
+  <div class="col-8">
+    <label for="inputEmployeeAddressDetail" class="form-label">Dirección:</label>
+    <input class="form-control " type="text" id="inputEmployeeAddressDetail" name="inputEmployeeAddressDetail" [(ngModel)]="employeeDetail.address" />
+  </div>
+
+  <div class="col-md-4">
+    <label for="employeeCityDetail" class="form-label">Ciudad* :</label>
+    <select class="form-select" id="employeeCityDetail"  [(ngModel)]="employeeDetail.city">
+      <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+<!--      <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>-->
+<!--      can use [ngValue]="c" instead of [ngValue]="c.id" where c is the complete country object.-->
+<!--      [value]="..." only supports string values-->
+<!--      [ngValue]="..." supports any type-->
+    </select>
+  </div>
+
+  <div class="p-2"></div>
+  <div class="row justify-content-right align-items-right p-2">
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
+<!--    <button class="btn btn-primary" (click)="update()" [disabled] = "!employeeform.valid"> Enviar -->
+
+      <button type="button" class="btn btn-primary" [disabled] = "!employeeform.valid"
+              data-bs-toggle="modal"
+              data-bs-target="#updateConfirmationModal"
+              (click)="setSelectedEmployeeId(employeeDetail)">Enviar
+
+    </button>
+
+    </div>
+    <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
+      <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateConfirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalDisableTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro de que desea modificar el empleado:  {{selectedEmployeeName}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
