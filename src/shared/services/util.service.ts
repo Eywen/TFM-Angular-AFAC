@@ -5,6 +5,7 @@ import {FieldError} from "../model/FieldError.interface";
   providedIn: 'root'
 })
 export class UtilService {
+  private showHome: boolean = true;
   public delaytime(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
@@ -18,5 +19,13 @@ export class UtilService {
     }
 
      return mesagge + elem.fieldName + ": " + errorValidation + ". ";
+  }
+
+  isShowHome() : boolean {
+    return this.showHome;
+  }
+
+  setShowHome(show: boolean){
+    this.showHome = show;
   }
 }

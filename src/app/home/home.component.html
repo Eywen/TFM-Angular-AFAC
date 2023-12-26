@@ -1,4 +1,42 @@
-<div class="container">
-  <div class="p-2"></div>
-<router-outlet></router-outlet>
+
+<router-outlet>
+</router-outlet>
+<div *ngIf="showHome()">
+  <div class="area" >
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div >
+
+  <div class="context">
+    <div class="containerHome">
+      <div class="caja_texto">
+        <h1>Bienvenido a Entregas del Valle</h1>
+        <br><br>
+        <p>En Entregas del Valle, nos enorgullece ser su socio confiable en soluciones de transporte.
+          Desde las vibrantes ciudades hasta las zonas rurales del Valle,
+          nos esforzamos por ofrecer servicios de entrega eficientes y seguros que
+          conectan comunidades y empresas.
+          <br><br>
+          Nuestro compromiso es simple: proporcionar soluciones logísticas que superen
+          sus expectativas. Ya sea que necesite enviar productos a nivel local o departamental,
+          nuestro equipo dedicado está aquí para garantizar que sus entregas lleguen a su
+          destino de manera puntual y en perfecto estado.
+        </p>
+      </div>
+      <div class="logo">
+        <img class="logo_img" src="../assets/images/LOGO.png">
+      </div>
+    </div>
+  </div>
 </div>
+

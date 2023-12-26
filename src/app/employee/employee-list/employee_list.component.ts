@@ -29,6 +29,7 @@ export class Employee_listComponent {
 
   ngOnInit(){
     this.getEmployeeActivateList();
+    this.utilService.setShowHome(false);
   }
 
   getEmployeeList(){

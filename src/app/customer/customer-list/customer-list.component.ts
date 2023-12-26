@@ -29,6 +29,7 @@ export class CustomerListComponent {
 
   ngOnInit(){
     this.getCustomerActivateList();
+    this.utilService.setShowHome(false);
   }
 
   /*getCustomerList(){
