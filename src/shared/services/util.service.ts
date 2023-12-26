@@ -6,6 +6,7 @@ import {FieldError} from "../model/FieldError.interface";
 })
 export class UtilService {
   private showHome: boolean = true;
+  private showLogin: boolean = true;
   public delaytime(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
@@ -26,6 +27,14 @@ export class UtilService {
   }
 
   setShowHome(show: boolean){
+    this.showHome = show;
+  }
+
+  isShowLogin(): boolean{
+    return this.showLogin;
+  }
+
+  setShowLogin(show: boolean){
     this.showHome = show;
   }
 }

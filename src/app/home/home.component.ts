@@ -8,6 +8,7 @@ import {UtilService} from "../../shared/services/util.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  area: string = "";
 
   constructor(private utilService: UtilService) {
   }
@@ -15,4 +16,13 @@ export class HomeComponent {
   showHome() {
     return this.utilService.isShowHome();
   }
+
+  showLogin(){
+    if (this.utilService.isShowLogin()){
+      this.area = "area"
+    } else {
+      this.area = "asd";
+    }
+  }
+
 }

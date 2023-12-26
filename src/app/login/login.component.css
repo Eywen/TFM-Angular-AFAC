@@ -1,1 +1,116 @@
+bodyLogin{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background: rgb(40,167,69);
+  background:
+    linear-gradient(146deg,
+    rgba(40,167,69,1) 0%,
+    rgba(165,189,127,1) 70%,
+    rgba(40,167,69,1) 100%);
+}
 
+.login{
+  width: 30%;
+  height: 500px;
+  text-align: center;
+  padding: 20px;
+  margin: 10% auto;
+  border: 5px solid #198754;
+  border-radius: 50px;
+  box-shadow: 2px 2px 20px #66e164fa;
+
+  background:
+    linear-gradient(146deg,
+    rgba(40,167,69,1) 0%,
+    rgba(165,189,127,1) 70%,
+    rgba(40,167,69,1) 100%);
+}
+
+.mybutton{
+  border: 5px solid rgba(165,189,127,1);
+  border-radius: 50px;
+  box-shadow: 2px 2px 20px rgba(143, 236, 142, 0.98);
+}
+
+.logo{
+  width: 250px;
+  height: 250px;
+  background-color: #60b15f;
+  margin: -150px auto;
+  margin-bottom: 50px;
+  border: 5px solid white;
+  border-radius: 100%;
+}
+
+.logo_img{
+  width: 90%;
+  padding: 70px 0px;
+}
+
+h2{
+  color:white;
+}
+
+color_purple{
+  color:purple;
+}
+
+input{
+  width: 80%;
+  height: 50px;
+  border-radius: 50px;
+  display: block;
+  margin : 0 auto;
+  border: 0px;
+}
+
+input::placeholder {
+  color: #622567;
+  opacity: 0.3;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 50px;
+}
+
+button{
+  margin: 50PX;
+  height: 80PX;
+  width: 70%;
+  background-color: #691b6e;
+}
+
+@media (min-width: 320px) and (max-width: 1024px) {
+
+  bodyLogin {
+    height: 100vh;
+  }
+
+  .login {
+    width: 80%;
+    height: 500px;
+    text-align: center;
+    padding: 20px;
+    margin: 100px auto;
+    border: 5px solid white;
+    border-radius: 50px;
+    box-shadow: 2px 2px 20px grey;
+  }
+
+  .logo {
+    width: 150px;
+    height: 150px;
+    background-color: #60b15f;
+    margin: -100px auto;
+    margin-bottom: 50px;
+    border: 5px solid white;
+    border-radius: 100%;
+  }
+
+  .logo_img {
+    width: 90%;
+    padding: 50px 0px;
+  }
+
+  input {
+    width: 100%;
+  }
+}
