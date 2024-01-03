@@ -13,6 +13,7 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 import {CustomerService} from "../../../shared/services/elements/customer.service";
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {CustomerI} from "../../../shared/model/customer.interface";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-guide-update',
@@ -35,7 +36,7 @@ export class GuideUpdateComponent {
   constructor(private formBuilder: FormBuilder, private guideService: GuideService, private route: ActivatedRoute,
               private ciudadService : CiudadService, private alertService : AlertService,
               private employeeService: EmployeeService, private customerService: CustomerService,
-              private utilService: UtilService) {
+              private utilService: UtilService, private sessionService: SessionService) {
   }
 
   ngOnInit() {
@@ -144,5 +145,9 @@ export class GuideUpdateComponent {
       this.alertService.error(this.mesagge);
       this.ngOnInit();
     }
+  }
+
+  isAuthenticated() {
+    return this.sessionService.isAuthenticated();
   }
 }

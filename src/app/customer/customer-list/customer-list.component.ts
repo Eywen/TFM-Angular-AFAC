@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {AlertService} from "../../../shared/services/alert-service.service";
 import {UtilService} from "../../../shared/services/util.service";
 import {CustomerI} from "../../../shared/model/customer.interface";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-customer-list',
@@ -25,11 +26,16 @@ export class CustomerListComponent {
   selectedCustomerName: string;
 
   constructor(private customerService: CustomerService, private router: Router,
-              private alertService: AlertService, private utilService: UtilService){  }
+              private alertService: AlertService, private utilService: UtilService,
+              private sessionService: SessionService){  }
 
   ngOnInit(){
     this.getCustomerActivateList();
     this.utilService.setShowHome(false);
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   /*getCustomerList(){

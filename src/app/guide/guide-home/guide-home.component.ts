@@ -6,6 +6,7 @@ import {AlertService} from "../../../shared/services/alert-service.service";
 import {UtilService} from "../../../shared/services/util.service";
 import {SearchGuideI} from "../../../shared/model/searchGuideOption";
 import {Observable, of} from "rxjs";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 
 @Component({
@@ -26,7 +27,8 @@ export class GuideHomeComponent {
   searchOption: string;
   guideSearch: GuideI[];
 
-  constructor(private guideService: GuideService, private alertService: AlertService, private utilService: UtilService) {
+  constructor(private guideService: GuideService, private alertService: AlertService,
+              private utilService: UtilService, private sessionService: SessionService) {
   }
 
   ngOnInit(){
@@ -124,5 +126,9 @@ export class GuideHomeComponent {
       this.searchOption === "ASSIGNMENT_DATE" ||
       this.searchOption === "DELIVERY_DATE";
     return of(x);
+  }
+
+  isAuthenticated() {
+    return this.sessionService.isAuthenticated();
   }
 }

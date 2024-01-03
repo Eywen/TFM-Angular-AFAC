@@ -4,6 +4,7 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 import {Router} from "@angular/router";
 import {AlertService} from "../../../shared/services/alert-service.service";
 import {UtilService} from "../../../shared/services/util.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-employee',
@@ -25,12 +26,17 @@ export class Employee_listComponent {
   selectedEmployeeName: string;
 
   constructor(private employeeService: EmployeeService, private router: Router,
-              private alertService: AlertService, private utilService: UtilService){  }
+              private alertService: AlertService, private utilService: UtilService,
+              private sessionService: SessionService){  }
 
   ngOnInit(){
     this.getEmployeeActivateList();
     this.utilService.setShowHome(false);
     this.utilService.setShowLogin(false);
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   getEmployeeList(){

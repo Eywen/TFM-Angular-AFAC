@@ -10,6 +10,7 @@ import {UtilService} from "../../../shared/services/util.service";
 import {FieldError, getFormErrors} from "../../../shared/model/FieldError.interface";
 import {CustomerI} from "../../../shared/model/customer.interface";
 import {CustomerService} from "../../../shared/services/elements/customer.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-customer-update',
@@ -31,7 +32,8 @@ export class CustomerUpdateComponent {
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private customerService: CustomerService,
               private ciudadService : CiudadService,private route: ActivatedRoute,
-              private alertService: AlertService, private utilService: UtilService ) {
+              private alertService: AlertService, private utilService: UtilService,
+              private sessionService: SessionService) {
   }
   ngOnInit(){
     /*this.ciudadService.getCitiesList().subscribe(data => {
@@ -96,4 +98,7 @@ export class CustomerUpdateComponent {
 
   }
 
+  isAuthenticated() {
+    return this.sessionService.isAuthenticated();
+  }
 }

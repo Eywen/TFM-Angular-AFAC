@@ -3,6 +3,7 @@ import {ApiService} from "../../../shared/services/api.service";
 import {EmployeeService} from "../../../shared/services/elements/employee.service";
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {ActivatedRoute} from "@angular/router";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-employee-detail',
@@ -14,7 +15,8 @@ export class EmployeeDetailComponent {
   id:number;
   employeeDetail: EmployeeI;
 
-  constructor(private api:ApiService,private employeeService: EmployeeService,private route: ActivatedRoute) {
+  constructor(private api:ApiService,private employeeService: EmployeeService,
+              private route: ActivatedRoute, private sessionService: SessionService) {
   }
   ngOnInit(){
     this.route.params.subscribe(params => {
@@ -26,6 +28,10 @@ export class EmployeeDetailComponent {
       });
 
     });
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
 }

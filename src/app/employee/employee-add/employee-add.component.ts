@@ -10,6 +10,7 @@ import {CityI} from "../../../shared/model/city.interface";
 import {Route, Router} from "@angular/router";
 import {UtilService} from "../../../shared/services/util.service";
 import {AlertService} from "../../../shared/services/alert-service.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-employee-add',
@@ -27,7 +28,7 @@ export class EmployeeAddComponent {
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
               private ciudadService : CiudadService, private router: Router, private utilService: UtilService,
-              private alertService: AlertService) {
+              private alertService: AlertService, private sessionService: SessionService) {
 
     this.iserrorMsg = false;
     this.iscreateEmployee = false;
@@ -48,6 +49,10 @@ export class EmployeeAddComponent {
         this.cities = data;
       }
     );
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   create(data: FormGroup): void {

@@ -1,4 +1,4 @@
-<div class="p-2 row g-3 wrapperGuide">
+<div class="p-2 row g-3 wrapperGuide" *ngIf="isAuthenticated()" >
   <form class="row g-3" (submit)="create(guideform)" [formGroup]="guideform">
     <div class="col-12">
       <label for="inputNameDetail" class="form-label">Número guía</label>

@@ -1,4 +1,4 @@
-<div class="wrapperEmployee">
+<div class="wrapperEmployee" *ngIf="isAuthenticated()">
   <div class="p-4"></div>
   <div>
     <button type="button" class="btn btn-primary" (click)="addEmploye()">Crear empleado</button>
