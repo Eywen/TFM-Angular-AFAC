@@ -10,6 +10,7 @@ import {UtilService} from "../../../shared/services/util.service";
 import {AlertService} from "../../../shared/services/alert-service.service";
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {CustomerService} from "../../../shared/services/elements/customer.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-customer-add',
@@ -47,7 +48,8 @@ export class CustomerAddComponent {
   //}
  ////////////////////////////////////////////////////////
   constructor(private formBuilder: FormBuilder,private api:ApiService,private customerService: CustomerService,
-              private router: Router, private utilService: UtilService, private alertService: AlertService) {
+              private router: Router, private utilService: UtilService, private alertService: AlertService,
+              private sessionService: SessionService) {
 
     this.iserrorMsg = false;
     this.iscreateEmployee = false;
@@ -59,6 +61,10 @@ export class CustomerAddComponent {
       customerTelephone: ['', [Validators.required, Validators.minLength(4)]],
       customerCloseMonthDay: ['']
     });
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   create(data: FormGroup): void {

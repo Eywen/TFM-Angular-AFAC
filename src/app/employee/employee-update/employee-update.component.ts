@@ -9,6 +9,7 @@ import {CiudadService} from "../../../shared/services/elements/ciudad.service";
 import {CityI} from "../../../shared/model/city.interface";
 import {AlertService} from "../../../shared/services/alert-service.service";
 import {UtilService} from "../../../shared/services/util.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-employee-update',
@@ -30,7 +31,8 @@ export class EmployeeUpdateComponent {
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
               private ciudadService : CiudadService,private route: ActivatedRoute,
-              private alertService: AlertService, private utilService: UtilService ) {
+              private alertService: AlertService, private utilService: UtilService,
+              private sessionService: SessionService) {
   }
   ngOnInit(){
   this.ciudadService.getCitiesList().subscribe(data => {
@@ -47,6 +49,10 @@ export class EmployeeUpdateComponent {
         this.setFormValues();
       });
     });
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   private doFormBuilder() {

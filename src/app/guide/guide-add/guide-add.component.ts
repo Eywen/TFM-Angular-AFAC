@@ -12,6 +12,7 @@ import {EmployeeService} from "../../../shared/services/elements/employee.servic
 import {CustomerService} from "../../../shared/services/elements/customer.service";
 import {UtilService} from "../../../shared/services/util.service";
 import {formatDate} from "@angular/common";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-guide-add',
@@ -31,7 +32,8 @@ export class GuideAddComponent {
   constructor(private formBuilder: FormBuilder, private guideService: GuideService,
               private ciudadService : CiudadService, private alertService : AlertService,
               private employeeService: EmployeeService, private customerService: CustomerService,
-              private utilService: UtilService,private router: Router) {
+              private utilService: UtilService,private router: Router,
+              private sessionService: SessionService) {
   }
 
   ngOnInit() {
@@ -123,4 +125,7 @@ export class GuideAddComponent {
     };
   }
 
+  isAuthenticated() {
+    return this.sessionService.isAuthenticated();
+  }
 }

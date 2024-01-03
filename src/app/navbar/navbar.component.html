@@ -75,26 +75,26 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item dropdown" *ngIf="isAuthenticated()">
+        <!--<li class="nav-item dropdown" *ngIf="isAuthenticated()">
           <a class="nav-link dropdown-toggle me-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Empleado_old
           </a>
           <ul class="dropdown-menu" >
-<!--            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>-->
+&lt;!&ndash;            <li><a class="dropdown-item" routerLink="addCustomer" *ngIf="isAuthenticated()">Crear</a></li>&ndash;&gt;
             <li><a class="dropdown-item" routerLink="/afac/addEmployee" *ngIf="isAuthenticated()">Crear</a></li>
             <li><a class="dropdown-item" href="#">Modificar</a></li>
             <li><a class="dropdown-item" href="#">Ver</a></li>
             <li><a class="dropdown-item" href="#">Desahabilitar</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
+        </li>-->
+        <li class="nav-item" *ngIf="isAuthenticated()">
           <a class="nav-link " routerLink="employee_list">Empleado</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuthenticated()">
           <a class="nav-link " routerLink="customer_list">Cliente</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " routerLink="home_guide">Guia</a>
+          <a class="nav-link " routerLink="home_guide" *ngIf="isAuthenticated()">Guia</a>
         </li>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
