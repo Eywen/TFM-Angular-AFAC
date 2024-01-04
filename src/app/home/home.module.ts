@@ -11,6 +11,12 @@ import {LoginComponent} from "../login/login.component";
 import {AlertComponent} from "../alert/alert.component";
 import {Employee_listComponent} from "../employee/employee-list/employee_list.component";
 import {AfacRoutingModule} from "./afac.routing.module";
+import {CustomerListComponent} from "../customer/customer-list/customer-list.component";
+import {CustomerDetailComponent} from "../customer/customer-detail/customer-detail.component";
+import {CustomerUpdateComponent} from "../customer/customer-update/customer-update.component";
+import {GuideHomeComponent} from "../guide/guide-home/guide-home.component";
+import {GuideUpdateComponent} from "../guide/guide-update/guide-update.component";
+import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +24,12 @@ import {AfacRoutingModule} from "./afac.routing.module";
     EmployeeAddComponent,
     LoginComponent,
     //AlertComponent,
-    Employee_listComponent
+    Employee_listComponent,
+    CustomerListComponent,
+    CustomerDetailComponent,
+    CustomerUpdateComponent,
+    GuideUpdateComponent,
+    GuideAddComponent,
   ],
   imports: [
     CommonModule,

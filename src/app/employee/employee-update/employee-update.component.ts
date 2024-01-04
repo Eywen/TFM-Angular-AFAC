@@ -7,6 +7,9 @@ import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/for
 import {FieldError, getFormErrors} from "../../../shared/model/FieldError.interface";
 import {CiudadService} from "../../../shared/services/elements/ciudad.service";
 import {CityI} from "../../../shared/model/city.interface";
+import {AlertService} from "../../../shared/services/alert-service.service";
+import {UtilService} from "../../../shared/services/util.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-employee-update',
@@ -23,10 +26,13 @@ export class EmployeeUpdateComponent {
   modalDisableTitle: string;
   selectedEmployeeId: number;
   selectedEmployeeName: string;
+  private errorValidation: string;
 
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
-              private ciudadService : CiudadService,private route: ActivatedRoute) {
+              private ciudadService : CiudadService,private route: ActivatedRoute,
+              private alertService: AlertService, private utilService: UtilService,
+              private sessionService: SessionService) {
   }
   ngOnInit(){
   this.ciudadService.getCitiesList().subscribe(data => {
@@ -37,15 +43,16 @@ export class EmployeeUpdateComponent {
     this.doFormBuilder();
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log("param id: " + this.id);
       this.employeeService
         .findEmployeeById(this.id).subscribe(data => {
         this.employeeDetail = data;
-        console.log(this.employeeDetail.cedula);
-        console.log("form update valido: " + this.employeeDetail.lastName1);
         this.setFormValues();
       });
     });
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   private doFormBuilder() {
@@ -64,17 +71,24 @@ export class EmployeeUpdateComponent {
     this.setFormValues();
     if (this.employeeform.valid) {
       this.employeeService.update(this.id,this.employeeDetail).subscribe(
-        data => {console.log("update: " + data)}
+        data => {
+          this.alertService.success('Empleado modificado correctamente');
+        }
       );
     } else {
       let errors: FieldError[] = []
       getFormErrors(this.employeeform, "root", "", errors);
       errors.forEach(elem => {
-        this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
+        //this.mesagge = this.mesagge + elem.fieldName + ": " + elem.errorCode + ", ";
+        this.mesagge = this.utilService.getValidationFormErrorMessagge(elem,this.mesagge);
       });
-      this.employeeService.showMessageError(this.mesagge,20000);
+      ///this.employeeService.showMessageError(this.mesagge,20000);
+      this.alertService.error(this.mesagge);
+      this.ngOnInit();
     }
   }
+
+
 
   private setFormValues() {
     this.employeeform.patchValue({

@@ -9,6 +9,8 @@ import {CiudadService} from "../../../shared/services/elements/ciudad.service";
 import {CityI} from "../../../shared/model/city.interface";
 import {Route, Router} from "@angular/router";
 import {UtilService} from "../../../shared/services/util.service";
+import {AlertService} from "../../../shared/services/alert-service.service";
+import {SessionService} from "../../../shared/services/session/session.service";
 
 @Component({
   selector: 'app-employee-add',
@@ -18,14 +20,15 @@ import {UtilService} from "../../../shared/services/util.service";
 export class EmployeeAddComponent {
 
   employeeform: FormGroup;
-  succesMsg = "iniicio";
+  succesMsg = "inicio";
   iserrorMsg:boolean;
   iscreateEmployee:boolean;
   employee: EmployeeI ;
   cities: CityI[];
 
   constructor(private formBuilder: FormBuilder,private api:ApiService,private employeeService: EmployeeService,
-              private ciudadService : CiudadService, private router: Router, private utilService: UtilService) {
+              private ciudadService : CiudadService, private router: Router, private utilService: UtilService,
+              private alertService: AlertService, private sessionService: SessionService) {
 
     this.iserrorMsg = false;
     this.iscreateEmployee = false;
@@ -46,6 +49,10 @@ export class EmployeeAddComponent {
         this.cities = data;
       }
     );
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isAuthenticated();
   }
 
   create(data: FormGroup): void {
@@ -70,9 +77,12 @@ export class EmployeeAddComponent {
 
               (async () => {
                 // Do something before delay
-                this.employeeService.showMessageSuccess(this.succesMsg ,2000);
+                //this.employeeService.showMessageSuccess(this.succesMsg ,2000);
+                this.alertService.success("Empleado Creado");
 
+                //wait time 3 s
                 await this.utilService.delaytime(3000);
+
 
                 // Do something after
                 this.router.navigate(['../../../employee_list']);

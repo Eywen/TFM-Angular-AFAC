@@ -8,6 +8,7 @@ import {CredentialI} from "../model/credential.interface";
 import {catchError, EMPTY, map, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment.development";
+import {AlertService} from "./alert-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,8 @@ export class ApiService {
   private duration: number =  5000;
   private LOGIN_END_POINT: boolean;
 
-  constructor(private http: HttpClient,private snackBar: MatSnackBar,private router: Router) {
+  constructor(private http: HttpClient,private snackBar: MatSnackBar,private router: Router,
+              private alertService: AlertService) {
     this.resetOptions();/*
     this.headers = new HttpHeaders();
     this.params = new HttpParams();
@@ -100,8 +102,8 @@ export class ApiService {
       /*this.snackBar.open(this.successfulNotification, '', {
         duration: 2000
       });*/
-    if (showMessagge)
-      this.showSucces("Operación realizada",2000);
+    /*if (showMessagge)
+      this.showSucces("Operación realizada",2000);*/
       //this.successfulNotification = undefined;
     //}
     const contentType = response.headers.get('content-type');
@@ -117,43 +119,47 @@ export class ApiService {
     }
   }
 
-  public showError(notification: string, duration: number): void {
+  /*public showError(notification: string, duration: number): void {
     if (this.errorNotification) {
       this.snackBar.open(this.errorNotification, 'Error', {duration: duration});
       this.errorNotification = undefined;
     } else {
       this.snackBar.open(notification, 'Error', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['error-snackbar']});
     }
-  }
-  public showSucces(notification: string, duration: number): void {
+  }*/
+  /*public showSucces(notification: string, duration: number): void {
     if (this.successfulNotification) {
       this.snackBar.open(this.successfulNotification, '', {duration: duration});
       this.successfulNotification = undefined;
     } else {
       this.snackBar.open(notification, '', { horizontalPosition: this.horizontalPosition, duration: duration,  panelClass: ['success-snackbar']});
     }
-  }
+  }*/
 
   // @ts-ignore
   private handleError(response): any {
     debugger;
     let error: Error;
     if (response.status === ApiService.UNAUTHORIZED) {
-      this.showError('Unauthorized', this.duration);
+      //this.showError('Unauthorized', this.duration);
+      this.alertService.error('Unauthorized');
       this.router.navigate(['']).then();
       return EMPTY;
     } else if (response.status === ApiService.CONNECTION_REFUSE) {
-      this.showError('Connection Refuse',this.duration);
+      //this.showError('Connection Refuse',this.duration);
+      this.alertService.error('Connection Refuse');
       return EMPTY;
     } else if (response.status === ApiService.CONFLICT){
       return throwError(() => response);
     } else {
       try {
         error = response.error; // with 'text': JSON.parse(response.error);
-        this.showError(error.message + ' (' + response.status + '): ' + error.message,this.duration);
+        //this.showError(error.message + ' (' + response.status + '): ' + error.message,this.duration);
+        this.alertService.error(error.message + ' (' + response.status + '): ' + error.message);
         return throwError(() => error);
       } catch (e) {
-        this.showError('Not response',this.duration);
+        //this.showError('Not response',this.duration);
+        this.alertService.error('Not response');
         return throwError(() => response.error);
       }
     }
