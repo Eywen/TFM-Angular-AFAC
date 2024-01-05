@@ -14,7 +14,8 @@ import {SearchGuideI} from "../../model/searchGuideOption";
 })
 export class GuideService {
 
-  static END_POINT_GUIDE = environment.REST_BACKEND + '/guide';
+  //static END_POINT_GUIDE = environment.REST_BACKEND + '/guide';
+  static END_POINT_GUIDE = 'http://localhost:8080' + '/guide';
   private disableurl =  "/disable";
   private statesurl =  "/status";
   private search ="/search";

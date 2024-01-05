@@ -11,8 +11,8 @@ import {AlertService} from "../alert-service.service";
 })
 export class EmployeeService {
 
-  static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/employees';
-  //static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
+  //static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/employees';
+  static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
   private findAll = "/readall";
   private findAllActivate = "/readallactivate?";
   private findAllPage = "/readallpage?";
