@@ -15,7 +15,8 @@ import {AlertService} from "./alert-service.service";
 })
 export class ApiService {
 
-  private baseurl = environment.REST_BACKEND;//"http://localhost:8080";
+  //private baseurl = environment.REST_BACKEND;//"http://localhost:8080";
+  private baseurl = "http://localhost:8080";
   private LOGIN_VALIDATE_END_POINT = this.baseurl + '/users/token';
 
   static CONNECTION_REFUSE = 0;

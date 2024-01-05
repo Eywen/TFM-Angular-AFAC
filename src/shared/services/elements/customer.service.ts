@@ -11,8 +11,8 @@ import {CustomerI} from "../../model/customer.interface";
 })
 export class CustomerService {
 
-  static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/customers';
-  //static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/employees';
+  //static END_POINT_EMPLOYEE = environment.REST_BACKEND + '/customers';
+  static END_POINT_EMPLOYEE = 'http://localhost:8080' + '/customers';
   private findAll = "/readall";
   //private findAllActivate = "/readallactivate?";
   private findAllActivate = "/activate?";
