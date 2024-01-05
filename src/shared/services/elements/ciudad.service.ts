@@ -10,7 +10,8 @@ import {environment} from "../../../environments/environment.development";
 })
 export class CiudadService {
 
-  static END_POINT_CITY = environment.REST_BACKEND+'/ciudad';
+  //static END_POINT_CITY = environment.REST_BACKEND+'/ciudad';
+  static END_POINT_CITY = 'http://localhost:8080' +'/ciudad';
   //'http://localhost:8080' + '/ciudad';
 
   constructor(private api : ApiService) {  }

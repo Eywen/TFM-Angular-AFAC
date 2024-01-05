@@ -15,8 +15,8 @@ import {environment} from "../../../environments/environment.development";
 })
 export class SessionService {
 
-  static END_POINT = environment.REST_BACKEND + '/users/token';
-  //static END_POINT = 'http://localhost:8080' + '/users/token';
+  //static END_POINT = environment.REST_BACKEND + '/users/token';
+  static END_POINT = 'http://localhost:8080' + '/users/token';
   private session: Session | null;
 
   constructor(private api: ApiService, private router: Router) {
