@@ -101,6 +101,8 @@ export class GuideAddComponent {
            })();
          }
        );
+   } else {
+     this.alertService.error("Verifique los datos ya que no se puede crear una guia sin ID");
    }
 
   }
