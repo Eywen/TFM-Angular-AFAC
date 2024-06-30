@@ -15,6 +15,9 @@ const routes: Routes = [
   {path: 'home_guide', component: GuideHomeComponent },
   /*{path: 'login', component: LoginComponent },*/
   {path: 'home', component: HomeComponent },
+  //--------------
+  {path: 'login', component: LoginComponent},
+  //------------------------------
   {path: 'afac', loadChildren: () => import('./home/home.module').then(module => module.HomeModule)}, // lazy load
 ];
 

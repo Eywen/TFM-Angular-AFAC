@@ -22,7 +22,7 @@ import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
   declarations: [
     HomeComponent,
     EmployeeAddComponent,
-    LoginComponent,
+    //LoginComponent,
     //AlertComponent,
     Employee_listComponent,
     CustomerListComponent,

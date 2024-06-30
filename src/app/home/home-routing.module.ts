@@ -21,7 +21,7 @@ const routes: Routes = [
       {path: 'about', component: AboutComponent},
       {path: 'contact', component: ContactComponent},
       {path: 'register', component: RegisterComponent},*/
-      {path: 'login', component: LoginComponent},
+      //{path: 'login', component: LoginComponent},
       {path: 'employee_list', component: Employee_listComponent },
       {path: 'addCustomer', component: CustomerAddComponent },
       {path: 'addEmployee', component: EmployeeAddComponent },

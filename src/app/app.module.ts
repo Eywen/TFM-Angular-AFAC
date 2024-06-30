@@ -22,6 +22,7 @@ import { CustomerUpdateComponent } from './customer/customer-update/customer-upd
 import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
 import { GuideUpdateComponent } from './guide/guide-update/guide-update.component';
 import { GuideAddComponent } from './guide/guide-add/guide-add.component';
+import {LoginComponent} from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { GuideAddComponent } from './guide/guide-add/guide-add.component';
     EmployeeUpdateComponent,
     GuideHomeComponent,
     //CustomerListComponent,
+    //--------------
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
