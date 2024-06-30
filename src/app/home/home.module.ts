@@ -29,7 +29,7 @@ import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
     //CustomerDetailComponent,
     //CustomerUpdateComponent,
     GuideUpdateComponent,
-    GuideAddComponent,
+    //GuideAddComponent,
   ],
   imports: [
     CommonModule,

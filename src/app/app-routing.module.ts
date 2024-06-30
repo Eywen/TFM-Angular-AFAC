@@ -11,6 +11,7 @@ import {EmployeeDetailComponent} from "./employee/employee-detail/employee-detai
 import {EmployeeUpdateComponent} from "./employee/employee-update/employee-update.component";
 import {CustomerDetailComponent} from "./customer/customer-detail/customer-detail.component";
 import {CustomerUpdateComponent} from "./customer/customer-update/customer-update.component";
+import {GuideAddComponent} from "./guide/guide-add/guide-add.component";
 //import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'detailCustomer/:id', component: CustomerDetailComponent },
   {path: 'updateCustomer/:id', component: CustomerUpdateComponent },
   {path: 'home_guide', component: GuideHomeComponent },
+  {path: 'addGuide', component: GuideAddComponent },
   /*{path: 'login', component: LoginComponent },*/
   {path: 'home', component: HomeComponent },
   //--------------
