@@ -21,7 +21,7 @@ import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
 @NgModule({
   declarations: [
     HomeComponent,
-    EmployeeAddComponent,
+    //EmployeeAddComponent,
     //LoginComponent,
     //AlertComponent,
     Employee_listComponent,

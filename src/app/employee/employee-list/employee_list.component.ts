@@ -91,7 +91,7 @@ export class Employee_listComponent {
   }
 
   addEmploye() {
-    this.router.navigate(['/afac/addEmployee']);
+    this.router.navigate(['/addEmployee']);
   }
 
 

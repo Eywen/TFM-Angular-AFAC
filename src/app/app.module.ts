@@ -23,6 +23,7 @@ import { GuideHomeComponent } from './guide/guide-home/guide-home.component';
 import { GuideUpdateComponent } from './guide/guide-update/guide-update.component';
 import { GuideAddComponent } from './guide/guide-add/guide-add.component';
 import {LoginComponent} from "./login/login.component";
+import {EmployeeAddComponent} from "./employee/employee-add/employee-add.component";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {LoginComponent} from "./login/login.component";
     CustomerAddComponent,
     NavbarComponent,
     AlertComponent,
+    EmployeeAddComponent,
     EmployeeDetailComponent,
     EmployeeUpdateComponent,
     GuideHomeComponent,
