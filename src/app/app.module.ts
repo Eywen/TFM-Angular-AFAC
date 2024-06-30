@@ -24,6 +24,7 @@ import { GuideUpdateComponent } from './guide/guide-update/guide-update.componen
 import { GuideAddComponent } from './guide/guide-add/guide-add.component';
 import {LoginComponent} from "./login/login.component";
 import {EmployeeAddComponent} from "./employee/employee-add/employee-add.component";
+import {Employee_listComponent} from "./employee/employee-list/employee_list.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {EmployeeAddComponent} from "./employee/employee-add/employee-add.compone
     CustomerAddComponent,
     NavbarComponent,
     AlertComponent,
+    Employee_listComponent,
     EmployeeAddComponent,
     EmployeeDetailComponent,
     EmployeeUpdateComponent,

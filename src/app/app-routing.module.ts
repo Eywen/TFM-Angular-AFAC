@@ -7,12 +7,15 @@ import {Employee_listComponent} from "./employee/employee-list/employee_list.com
 import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
 import {GuideHomeComponent} from "./guide/guide-home/guide-home.component";
 import {EmployeeAddComponent} from "./employee/employee-add/employee-add.component";
+import {EmployeeDetailComponent} from "./employee/employee-detail/employee-detail.component";
 //import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'afac'},
   {path: 'employee_list', component: Employee_listComponent },
+  //{path: 'employee_list', component: Employee_listComponent },
   {path: 'addEmployee', component: EmployeeAddComponent },
+  {path: 'detailEmployee/:id', component: EmployeeDetailComponent },
   {path: 'customer_list', component: CustomerListComponent },
   {path: 'home_guide', component: GuideHomeComponent },
   /*{path: 'login', component: LoginComponent },*/

@@ -24,7 +24,7 @@ import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
     //EmployeeAddComponent,
     //LoginComponent,
     //AlertComponent,
-    Employee_listComponent,
+    //Employee_listComponent,
     CustomerListComponent,
     CustomerDetailComponent,
     CustomerUpdateComponent,
