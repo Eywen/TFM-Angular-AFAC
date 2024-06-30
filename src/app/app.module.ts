@@ -25,17 +25,19 @@ import { GuideAddComponent } from './guide/guide-add/guide-add.component';
 import {LoginComponent} from "./login/login.component";
 import {EmployeeAddComponent} from "./employee/employee-add/employee-add.component";
 import {Employee_listComponent} from "./employee/employee-list/employee_list.component";
+import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerAddComponent,
     NavbarComponent,
     AlertComponent,
     Employee_listComponent,
     EmployeeAddComponent,
     EmployeeDetailComponent,
     EmployeeUpdateComponent,
+    CustomerAddComponent,
+    CustomerListComponent,
     GuideHomeComponent,
     //CustomerListComponent,
     //--------------

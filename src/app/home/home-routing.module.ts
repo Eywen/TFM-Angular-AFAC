@@ -23,7 +23,7 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent},*/
       //{path: 'login', component: LoginComponent},
       //{path: 'employee_list', component: Employee_listComponent },
-      {path: 'addCustomer', component: CustomerAddComponent },
+      //{path: 'addCustomer', component: CustomerAddComponent },
       //{path: 'addEmployee', component: EmployeeAddComponent },
       //{path: 'cpanel', loadChildren: () => CpanelModule},
     ]

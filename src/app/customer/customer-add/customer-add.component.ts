@@ -89,14 +89,14 @@ export class CustomerAddComponent {
               (async () => {
                 // Do something before delay
                 //this.employeeService.showMessageSuccess(this.succesMsg ,2000);
-                this.alertService.success("Empleado Creado");
+                this.alertService.success("Cliente Creado");
 
                 //wait time 3 s
                 await this.utilService.delaytime(3000);
 
 
                 // Do something after
-                this.router.navigate(['../../../customer_list']);
+                this.router.navigate(['../../customer_list']);
               })();
             }
           );

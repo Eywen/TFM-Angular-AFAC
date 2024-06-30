@@ -90,7 +90,7 @@ export class CustomerListComponent {
   }
 
   addCustomer() {
-    this.router.navigate(['/afac/addCustomer']);
+    this.router.navigate(['/addCustomer']);
   }
 
 
