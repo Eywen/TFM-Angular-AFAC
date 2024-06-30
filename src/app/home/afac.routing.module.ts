@@ -22,7 +22,7 @@ const routes: Routes = [
       //{path: 'addEmployee', component: EmployeeAddComponent },
       {path: 'addGuide', component: GuideAddComponent },
       //{path: 'detailEmployee/:id', component: EmployeeDetailComponent },
-      {path: 'updateEmployee/:id', component:  EmployeeUpdateComponent},
+      //{path: 'updateEmployee/:id', component:  EmployeeUpdateComponent},
       {path: 'detailCustomer/:id', component: CustomerDetailComponent },
       {path: 'updateCustomer/:id', component: CustomerUpdateComponent },
       {path: 'updateGuide/:idguide', component: GuideUpdateComponent, },
