@@ -26,7 +26,7 @@ import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
     //AlertComponent,
     //Employee_listComponent,
     //CustomerListComponent,
-    CustomerDetailComponent,
+    //CustomerDetailComponent,
     CustomerUpdateComponent,
     GuideUpdateComponent,
     GuideAddComponent,
