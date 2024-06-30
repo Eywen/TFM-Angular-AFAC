@@ -39,6 +39,7 @@ import {CustomerListComponent} from "./customer/customer-list/customer-list.comp
     CustomerAddComponent,
     CustomerListComponent,
     CustomerDetailComponent,
+    CustomerUpdateComponent,
     GuideHomeComponent,
     //CustomerListComponent,
     //--------------

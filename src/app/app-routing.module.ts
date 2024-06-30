@@ -10,6 +10,7 @@ import {EmployeeAddComponent} from "./employee/employee-add/employee-add.compone
 import {EmployeeDetailComponent} from "./employee/employee-detail/employee-detail.component";
 import {EmployeeUpdateComponent} from "./employee/employee-update/employee-update.component";
 import {CustomerDetailComponent} from "./customer/customer-detail/customer-detail.component";
+import {CustomerUpdateComponent} from "./customer/customer-update/customer-update.component";
 //import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'addCustomer', component: CustomerAddComponent },
   {path: 'customer_list', component: CustomerListComponent },
   {path: 'detailCustomer/:id', component: CustomerDetailComponent },
+  {path: 'updateCustomer/:id', component: CustomerUpdateComponent },
   {path: 'home_guide', component: GuideHomeComponent },
   /*{path: 'login', component: LoginComponent },*/
   {path: 'home', component: HomeComponent },
