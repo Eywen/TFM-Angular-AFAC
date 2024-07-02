@@ -5,8 +5,6 @@
     <button type="button" class="btn btn-primary" [routerLink]="['/addGuide']">Agregar guia</button>
   </div>
 
-
-  <!--<div class="col-md-9 border border-success rounded" >-->
   <div class="col-md-9  " >
     <div class="input-group ">
       <div class="input-group-prepend">
@@ -42,7 +40,7 @@
 
 
   <div class="p-4">
-    <table class="table  table-striped" >  <!--*ngIf="null != guideDetail"-->
+    <table class="table  table-striped" >
       <thead>
         <tr>
           <th scope="col">Guia  </th>
@@ -65,13 +63,6 @@
         <td>{{guide.customer.customerName}}</td>
         <td>{{guide.activate}}</td>
 
-<!--        <td>{{guideDetail.idGuide}}</td>
-        <td>{{guideDetail.status}}</td>
-        <td>{{guideDetail.formatEntryDate}}</td>
-        <td>{{guideDetail.formatassignmentDate}}</td>
-        <td>{{guideDetail.employee.employeeName}}</td>
-        <td>{{guideDetail.customer.customerName}}</td>
-        <td>{{guideDetail.activate}}</td>-->
         <td align="right">
           <div class="btn-group me-2" role="group" aria-label="First group">
             <button class="btn btn-info" data-bs-toggle="modal"
