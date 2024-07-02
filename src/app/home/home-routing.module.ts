@@ -17,15 +17,6 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
-      /*{path: '', component: RetailComponent},
-      {path: 'about', component: AboutComponent},
-      {path: 'contact', component: ContactComponent},
-      {path: 'register', component: RegisterComponent},*/
-      //{path: 'login', component: LoginComponent},
-      //{path: 'employee_list', component: Employee_listComponent },
-      //{path: 'addCustomer', component: CustomerAddComponent },
-      //{path: 'addEmployee', component: EmployeeAddComponent },
-      //{path: 'cpanel', loadChildren: () => CpanelModule},
     ]
   },
 

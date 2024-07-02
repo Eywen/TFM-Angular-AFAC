@@ -26,10 +26,12 @@ import {LoginComponent} from "./login/login.component";
 import {EmployeeAddComponent} from "./employee/employee-add/employee-add.component";
 import {Employee_listComponent} from "./employee/employee-list/employee_list.component";
 import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
+import {HomeComponent} from "./home/home.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     NavbarComponent,
     AlertComponent,
     Employee_listComponent,

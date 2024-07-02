@@ -20,7 +20,7 @@ import {GuideAddComponent} from "../guide/guide-add/guide-add.component";
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    //HomeComponent,
     //EmployeeAddComponent,
     //LoginComponent,
     //AlertComponent,

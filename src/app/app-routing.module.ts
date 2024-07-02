@@ -13,12 +13,11 @@ import {CustomerDetailComponent} from "./customer/customer-detail/customer-detai
 import {CustomerUpdateComponent} from "./customer/customer-update/customer-update.component";
 import {GuideAddComponent} from "./guide/guide-add/guide-add.component";
 import {GuideUpdateComponent} from "./guide/guide-update/guide-update.component";
-//import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'afac'},
+  {path: '', component: HomeComponent},
   {path: 'employee_list', component: Employee_listComponent },
-  //{path: 'employee_list', component: Employee_listComponent },
   {path: 'addEmployee', component: EmployeeAddComponent },
   {path: 'detailEmployee/:id', component: EmployeeDetailComponent },
   {path: 'updateEmployee/:id', component:  EmployeeUpdateComponent},
@@ -29,12 +28,8 @@ const routes: Routes = [
   {path: 'home_guide', component: GuideHomeComponent },
   {path: 'addGuide', component: GuideAddComponent },
   {path: 'updateGuide/:idguide', component: GuideUpdateComponent, },
-  /*{path: 'login', component: LoginComponent },*/
   {path: 'home', component: HomeComponent },
-  //--------------
   {path: 'login', component: LoginComponent},
-  //------------------------------
-  {path: 'afac', loadChildren: () => import('./home/home.module').then(module => module.HomeModule)}, // lazy load
 ];
 
 @NgModule({
