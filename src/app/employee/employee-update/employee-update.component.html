@@ -33,23 +33,16 @@
     <label for="employeeCityDetail" class="form-label">Ciudad* :</label>
     <select class="form-select" id="employeeCityDetail"  [(ngModel)]="employeeDetail.city">
       <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
-<!--      <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>-->
-<!--      can use [ngValue]="c" instead of [ngValue]="c.id" where c is the complete country object.-->
-<!--      [value]="..." only supports string values-->
-<!--      [ngValue]="..." supports any type-->
     </select>
   </div>
 
   <div class="p-2"></div>
-  <div class="row justify-content-right align-items-right p-2">
-    <div class="col-md-2 btn-group me-2" role="group" aria-label="First group">
-<!--    <button class="btn btn-primary" (click)="update()" [disabled] = "!employeeform.valid"> Enviar -->
-
+  <div class="row justify-content-righign-items-right p-2">
+    <div class="col-md-2 btn-group me-2" role="group" aria-labt alel="First group">
       <button type="button" class="btn btn-primary" [disabled] = "!employeeform.valid"
               data-bs-toggle="modal"
               data-bs-target="#updateConfirmationModal"
               (click)="setSelectedEmployeeId(employeeDetail)">Enviar
-
     </button>
 
     </div>

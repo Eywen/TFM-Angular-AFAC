@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CustomerI} from "../../../shared/model/customer.interface";
 import {ApiService} from "../../../shared/services/api.service";
-//import {EmployeeService} from "../../../shared/services/employee.service";
 import {EmployeeService} from "../../../shared/services/elements/employee.service";
 import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {CiudadService} from "../../../shared/services/elements/ciudad.service";
