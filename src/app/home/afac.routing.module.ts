@@ -25,7 +25,7 @@ const routes: Routes = [
       //{path: 'updateEmployee/:id', component:  EmployeeUpdateComponent},
       //{path: 'detailCustomer/:id', component: CustomerDetailComponent },
       //{path: 'updateCustomer/:id', component: CustomerUpdateComponent },
-      {path: 'updateGuide/:idguide', component: GuideUpdateComponent, },
+      //{path: 'updateGuide/:idguide', component: GuideUpdateComponent, },
     ]
   },
 
