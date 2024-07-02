@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {EmployeeI} from "../../../shared/model/Employee.interface";
 import {ApiService} from "../../../shared/services/api.service";
-import {EmployeeService} from "../../../shared/services/elements/employee.service";
 import {ActivatedRoute} from "@angular/router";
 import {CustomerI} from "../../../shared/model/customer.interface";
 import {CustomerService} from "../../../shared/services/elements/customer.service";

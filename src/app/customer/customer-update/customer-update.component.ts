@@ -36,10 +36,6 @@ export class CustomerUpdateComponent {
               private sessionService: SessionService) {
   }
   ngOnInit(){
-    /*this.ciudadService.getCitiesList().subscribe(data => {
-        this.cities = data;
-      }
-    );*/
     this.doFormBuilder();
     this.route.params.subscribe(params => {
       this.id = params['id'];

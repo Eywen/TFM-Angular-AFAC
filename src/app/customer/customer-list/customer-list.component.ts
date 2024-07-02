@@ -38,19 +38,6 @@ export class CustomerListComponent {
     return this.sessionService.isAuthenticated();
   }
 
-  /*getCustomerList(){
-    this.customerService.getCustomerListPage(this.page,this.size,this.order,this.acs).subscribe(data => {
-        // @ts-ignore
-        this.customers = data.content;
-        // @ts-ignore
-        this.isFirstPage = data.first;
-        // @ts-ignore
-        this.isLastPage = data.last;
-        // @ts-ignore
-        this.totalPages = new Array(data['totalPages']);
-      }
-    )
-  }*/
   getCustomerActivateList(){
     this.customerService.getCustomerActivateListPage(this.page,this.size,this.order,this.acs).subscribe(data => {
         // @ts-ignore

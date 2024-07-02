@@ -1,11 +1,4 @@
 <div class="wrapperCustomer" *ngIf="isAuthenticated()">
-  <!--<div >
-    <div  *ngIf="iserrorMsg">
-      <div class="alert alert-danger" >
-        <span>{{errorMsg}}</span>
-      </div>
-    </div>
-  </div>-->
   <form class="row g-3" (submit)="create(customerform)" [formGroup]="customerform">
     <div class="col-12">
       <label for="inputCustomerName" class="form-label">Nombre*</label>
@@ -45,7 +38,6 @@
   </form>
   <div  >
     <div class="alert bg-success p-2 text-white bg-opacity-50"  *ngIf="iscreateEmployee">
-      <!--    <span>{{succesMsg}}</span>-->
       <div class="col-md-2 btn-group me-2" role="group" aria-label="Second group">
         <button class="btn btn-info"  routerLink="../../../employee_list">Volver</button>
       </div>
